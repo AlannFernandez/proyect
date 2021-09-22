@@ -1,0 +1,36 @@
+<div class="col-md-4 mx-auto">
+
+    <div class="card">
+        <div class="card-body">
+            <form action="/links/edit/{{link.id}}" method="POST">
+                <img src="/uploads/{{link.img}}" alt=""  srcset="">
+                <div class="form-group">
+                    <input type="file" name="image" id="">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="title" class="form-control" placeholder="Nombre" value="{{link.title}}" autofocus>
+                </div>
+                <div class="form-group">                        
+                    <select name="category" id="category" class="form-control">
+                        <option value="0">Categoria</option>
+                        <option value="1">Panificado</option>
+                        <option value="2">Carniceria</option>
+                        <option value="3">Verduleria</option>
+                        <option value="4">Otro</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="price" class="form-control" placeholder="Precio" value="{{link.price}}">
+                </div>
+                <div class="form-group">
+                    <textarea name="description" rows="2" class="form-control" placeholder="Descripcion">{{link.description}}</textarea>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-success btn-block">
+                        Guardar
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
