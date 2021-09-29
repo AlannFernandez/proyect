@@ -1,0 +1,281 @@
+<form action="/profile" method="post" id="dataProfile">
+<input type="hidden" name="user" value="{{user.id}}">
+<div class="main-container profile">
+    <h1 style="font-size:20px; font-weight:700;" class="my-5">Mis datos</h1>
+{{!--account data--}}
+    <div class="section d-flex mb-3">
+        <div class="section__title" style="width:60%; line-height:1.25;">
+            <h2 class="subtitle "style="font-size:18px; font-weight:700;">Datos de la cuenta</h2>
+        </div>
+    </div>
+
+    <div class="andes-card andes-card--flat andes-card--default profile-card andes-card--padding-default">
+        <div class="row__value">
+            <div class="col-sm my-3">
+            Usuario
+            </div>
+            <div class="col-sm my-3">
+            {{user.username}}
+            </div>
+            <div class="col-sm my-3 text-right">
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+            </div>
+        </div>
+       
+        <div class="row__value">
+            <div class="col-sm my-3">
+            Email
+            </div>
+            <div class="col-sm my-3">
+            {{user.email}}
+            </div>
+            <div class="col-sm my-3 text-right">
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+{{!-- personal data --}}
+<div class="section d-flex mb-3">
+        <div class="section__title" style="width:60%; line-height:1.25;">
+            <h2 class="subtitle "style="font-size:18px; font-weight:700;">Datos personales</h2>
+        </div>
+    </div>
+
+    <div class="andes-card andes-card--flat andes-card--default profile-card andes-card--padding-default">
+        <div class="row__value">
+            <div class="col-sm my-3">Nombre y apellido</div>
+            <div class="col-sm my-3">{{user.name}} {{user.lastname}}</div>
+            <div class="col-sm my-3 text-right">
+                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-1" title="Dismissible popover"
+                data-content="And here's some amazing content. It's very engaging. Right?">
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+                </a>
+                <!-- Modal: modalPoll -->
+                <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="false">
+                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                        <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">Corregir mi nombre y/o apellido</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center">
+                            <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                            </div>
+
+                            <hr>                                                
+                            <div class="text-center">
+                                <div class="text-left">
+                               Si es por un error ortográfico en tu nombre o apellido, o si te registraste con tu DNI verdadero y un nombre de fantasía, y querés cambiarlo al real, <a href="#"> podés corregirlo</a>. Vas a necesitar fotos del frente y del dorso de tu DNI para validar el cambio.
+                                </div>
+
+
+
+                                <div class="text-left mt-5" >
+                                   Si lo que querés es tener tu cuenta a nombre de otra persona o empresa, entonces tenés que <a href="#"> cambiar la titularidad de tu cuenta</a>.
+                                </div>
+                            </div>                        
+
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">                        
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal: modalPoll -->
+            </div>
+        </div>
+        
+        <div class="row__value">
+            <div class="col-sm my-3">Documento</div>
+            <div class="col-sm my-3">{{user.dni}}</div>
+            <div class="col-sm my-3 text-right">
+                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-2" title="Dismissible popover"
+                data-content="And here's some amazing content. It's very engaging. Right?">
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+                </a>                
+                <div class="modal fade right" id="modalPoll-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="false">
+                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                        <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">Corregir mi DNI</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center">
+                            <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                            </div>
+
+                            <hr>                                                
+                            <div class="text-center">
+                                <div class="text-left">
+                                Si es por un error en tu número de documento, <a href="#">podés corregirlo</a>. Vamos a necesitar una copia de tu DNI para validar el cambio.
+                                </div>
+
+                                <div class="text-left mt-5" >
+                                    Si querés cambiar el DNI de tu cuenta por el de otra persona o empresa, entonces tenés que <a href="#">cambiar la titularidad de tu cuenta</a>.
+                                </div>
+                            </div>                        
+
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">                        
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>                
+            </div>
+        </div>
+        <div class="row__value">
+            <div class="col-sm my-3">Teléfono</div>
+            <div class="col-sm my-3">{{user.telephone}}</div>
+            <div class="col-sm my-3 pr-0">
+                   <a class="nav-link text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                    <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                        <g fill="#000000cc" fill-rule="evenodd">
+                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path>
+                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse>
+                        </g>
+                    </svg>
+                    </a>
+                    {{!--  --}}
+                    
+                    <form action="/profile" method="post">
+                        <div class="modal fade" id="modaltelephone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header text-center">
+                                        <h4 class="modal-title w-100 font-weight-bold">Modificar teléfono </h4>
+                                    </div>
+                                    <div class="modal-body mx-3">
+                                        <div class="md-form mb-5">    
+                                            <input type="text" id="newTel" name="telephone" class="form-control validate" value="{{user.telephone}}" autofocus>
+                                            <label for="newTel">Ingresá un teléfono</label>
+                                        </div>    
+                                    </div>
+
+                                    <div class="modal-footer d-flex justify-content-center">
+                                        <button class="btn btn-primary" name="updateTel" id="updateTel">Guardar</button>
+                                        <button class="btn btn-grey" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modaltelephone">Modificar teléfono</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Eliminar teléfono</a>
+                        </div>
+                    </form>
+                    {{!--  --}}
+                
+            </div>
+        </div>
+
+        <div class="row__value">
+            <div class="col-sm my-3">Teléfono Alternativo</div>
+            <div class="col-sm my-3"></div>
+            <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header text-center">
+                            <h4 class="modal-title w-100 font-weight-bold">Agregá un teléfono alternativo</h4>
+                        </div>
+                        <div class="modal-body mx-3">
+                            <div class="md-form mb-5">    
+                                <input type="text" id="form34" class="form-control validate">
+                                <label for="form34">Teléfono alternativo</label>
+                            </div>    
+                        </div>
+
+                        <div class="modal-footer d-flex justify-content-center">
+                            <button class="btn btn-primary">Guardar</button>
+                            <button class="btn btn-grey" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center">
+            <a href="" data-toggle="modal" data-target="#modalContactForm">
+                <div class="col-sm my-3 text-right">
+                    Agregar
+                </div>
+                </a>
+            </div>  
+        </div>
+    </div>
+{{!-- addresses --}}
+    <div class="section d-flex mb-3">
+        <div class="section__title" style="width:60%; line-height:1.25;">
+            <h2 class="subtitle "style="font-size:18px; font-weight:700;">Domicilios</h2>
+        </div>
+    </div>
+
+    <div class="andes-card andes-card--flat andes-card--default profile-card andes-card--padding-default">
+        <div class="row__value">
+            <div class="col-sm my-3">
+            Domicilio
+            </div>
+            <div class="col-sm my-3">
+            
+            </div>
+            <div class="col-sm my-3 pr-0 ">        
+                <a class="nav-link  text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">
+                <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
+                    <g fill="#000000cc" fill-rule="evenodd">
+                        <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path>
+                        <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse>
+                    </g>
+                </svg>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="#">Modificar domicilio</a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Eliminar domicilio</a>
+                </div>
+            </div>
+        </div>
+       
+        <div class="row__value">
+            <div class="col-sm my-3">
+            <a href="links/address">Agregar domicilio</a>
+            </div>
+            
+            <div class="col-sm my-3 text-right">
+                
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div>
+</form>

@@ -1,0 +1,128 @@
+{{!-- <div class="container p-4">
+  <div class="row">
+    <div class="col-md-4 mx-auto">
+      <div class="card text-center">
+        <div class="card-header">
+          <h3>Registrarse</h3>
+        </div>
+        <div class="card-body">
+          <form action="/signup" method="POST">
+            <div class="form-group">
+              <input type="type" name="fullname" placeholder="Nombre" class="form-control" autofocus>
+            </div>
+            <div class="form-group">
+              <input type="text" name="username" placeholder="Usuario" class="form-control">
+            </div>
+            <div class="form-group">
+              <input type="password" name="password" placeholder="Contraseña" class="form-control">
+            </div>
+           
+            <div class="form-group">
+              <button class="btn btn-success btn-block">
+                Continuar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --}}
+
+
+
+{{!-- new signUp --}}
+
+<!-- Main navigation -->
+<div class="container-fluid mt-3 mb-5">
+  
+      <!-- Full Page Intro -->
+  <section >
+    <!-- Mask & flexbox options-->
+    <div class="mask d-flex justify-content-center align-items-center">
+      <!-- Content -->
+      <div class="container py-5 my-5">
+        
+        
+        
+        <!--Grid row-->
+        <div class="row d-flex align-items-center justify-content-center">
+          
+          <!--Grid column-->
+          <div class="col-md-12 col-xl-7">
+          <h3 class="font-weight-bold text-left black-text ">Completá tus datos</h3> 
+            <!--Form-->
+            <form action="/signup" method="post" id="formSingup">
+              <div class="card">
+                <div class="card-body z-depth- px-10">
+                  {{!-- Section name and lastname --}}
+                  <div class="form-row ml-3 ">
+                      <div class="md-form mt-6 ">     
+                          <div class="block m-auto">
+                              <input type="text" name="name" id="form3" class="form-control">
+                              <label for="form3">Nombre</label>
+                              <span class="andes-form-control__message">Ingresalo tal como figura en tu documento.</span>
+                          </div>          
+                      </div>
+
+                      <div class="md-form m-auto">  
+                          <div class="block ">     
+                              <input type="text" name="lastname" id="form2" class="form-control">
+                              <label for="form2">Apellido </label>
+                              <span class="andes-form-control__message">Ingresalo tal como figura en tu documento.</span>
+                          </div> 
+                      </div>
+                  </div>
+                  {{!-- section DNI --}}
+                  <div class="form-row ml-3">        
+                      <div class="md-form">    
+                          <div class="block">
+                              <input type="text" name="dni" id="form1" class="form-control">
+                              <label for="form1">DNI</label>
+                          </div>            
+                      </div>
+                  </div>
+                  {{!-- Section email --}}
+                  <div class="form-row ml-3">
+                      <div class="md-form">   
+                        <div class="block">
+                              <input type="text" name="email" id="form4" class="form-control">
+                              <label for="form4">Email</label>
+                        </div>                              
+                      </div>
+
+                      <div class="md-form m-auto">    
+                          <div class="block">
+                              <input type="password" name="password" id="form5" class="form-control">
+                              <label for="form5">Contraseña</label>
+                          </div>            
+                      </div>
+                  </div>
+                  <div class=" ml-3">                      
+                      <label class="label" for="">Al registrarte estás aceptando los <a href="">terminos</a> y <a href="">condiciones </label>
+                  </div>
+                  <div class="text-left my-3 ml-3">
+                    <button class="btn btn-primary ">Continuar</button>
+                    <a class="float-right my-3" href="/company">Crear una cuenta de empresa 
+                    <svg width="6" height="10" viewBox="0 0 6 10" class="right-arrow"><path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path></svg>
+                    </a>
+                  </div>
+                  
+                </div>
+                
+              </div>
+            </form>           
+            <!--/.Form-->
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+  </section>
+  <!-- Full Page Intro -->
+  
+</div>
+<!-- Main navigation -->
