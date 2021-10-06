@@ -260,4 +260,46 @@ body {
       font-size: 5.5rem;
     }
 }
-    
+.andes-form-control__message {
+    min-height: 14px;
+}
+.andes-form-control__message {
+    font-size: 14px;
+    line-height: 1em;
+    color: rgba(0,0,0,.45);
+    margin-top: .3333333333em;
+    opacity: 0;
+    -webkit-transition: opacity .15s ease-out;
+    transition: opacity .15s ease-out;
+    text-align: left;
+}
+.andes-form-control__message {
+    display: block;
+    width: 100%;
+}
+.thumb{
+    display:flex;
+    height: 170px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input-group.md-form.form-sm.form-1 input{
+    border: 1px solid #bdbdbd;
+    border-top-right-radius: 0.25rem;
+    border-bottom-right-radius: 0.25rem;
+  }
+  .input-group.md-form.form-sm.form-2 input {
+    border: 1px solid #bdbdbd;
+    border-top-left-radius: 0.25rem;
+    border-bottom-left-radius: 0.25rem;
+  }
+  .input-group.md-form.form-sm.form-2 input.red-border {
+    border: 1px solid #ef9a9a;
+  }
+  .input-group.md-form.form-sm.form-2 input.lime-border {
+    border: 1px solid #cddc39;
+  }
+  .input-group.md-form.form-sm.form-2 input.amber-border {
+    border: 1px solid #ffca28;
+  }

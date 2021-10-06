@@ -75,27 +75,6 @@ passport.use('local.signup', new LocalStrategy({
   
 }));
 
-//  signup Companys
-passport.use('local.company', new LocalStrategy({
-  usernameField: 'cuit',
-  passwordField: 'password',
-  passReqToCallback: true
-}, async (req, cuit, password, done) => {
-
-  const { social_reason, email } = req.body;
-  let newCompany = {
-    social_reason,
-    cuit,
-    email,
-    password
-  };
-  newCompany.password = await helpers.encryptPassword(password);
-  // Saving in the Database
-  const result = await pool.query('INSERT INTO companys SET ? ', newCompany);
-  newCompany.id = result.insertId;
-  console.log(newCompany);
-  return done(null, newCompany);
-}));
 
 
 passport.serializeUser((user, done) => {

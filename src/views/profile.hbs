@@ -50,9 +50,54 @@
             <div class="col-sm my-3">Nombre y apellido</div>
             <div class="col-sm my-3">{{user.name}} {{user.lastname}}</div>
             <div class="col-sm my-3 text-right">
+                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-1" title="Dismissible popover"
+                data-content="And here's some amazing content. It's very engaging. Right?">
                 <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
                     <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                 </svg>
+                </a>
+                <!-- Modal: modalPoll -->
+                <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="false">
+                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                        <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">Corregir mi nombre y/o apellido</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center">
+                            <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                            </div>
+
+                            <hr>                                                
+                            <div class="text-center">
+                                <div class="text-left">
+                               Si es por un error ortográfico en tu nombre o apellido, o si te registraste con tu DNI verdadero y un nombre de fantasía, y querés cambiarlo al real, <a href="#"> podés corregirlo</a>. Vas a necesitar fotos del frente y del dorso de tu DNI para validar el cambio.
+                                </div>
+
+
+
+                                <div class="text-left mt-5" >
+                                   Si lo que querés es tener tu cuenta a nombre de otra persona o empresa, entonces tenés que <a href="#"> cambiar la titularidad de tu cuenta</a>.
+                                </div>
+                            </div>                        
+
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">                        
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Modal: modalPoll -->
             </div>
         </div>
         
@@ -60,16 +105,57 @@
             <div class="col-sm my-3">Documento</div>
             <div class="col-sm my-3">{{user.dni}}</div>
             <div class="col-sm my-3 text-right">
+                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-2" title="Dismissible popover"
+                data-content="And here's some amazing content. It's very engaging. Right?">
                 <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
                     <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                 </svg>
+                </a>                
+                <div class="modal fade right" id="modalPoll-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                    aria-hidden="true" data-backdrop="false">
+                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+                        <div class="modal-content">
+                        <!--Header-->
+                        <div class="modal-header">
+                            <p class="heading lead">Corregir mi DNI</p>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true" class="white-text">×</span>
+                            </button>
+                        </div>
+
+                        <!--Body-->
+                        <div class="modal-body">
+                            <div class="text-center">
+                            <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                            </div>
+
+                            <hr>                                                
+                            <div class="text-center">
+                                <div class="text-left">
+                                Si es por un error en tu número de documento, <a href="#">podés corregirlo</a>. Vamos a necesitar una copia de tu DNI para validar el cambio.
+                                </div>
+
+                                <div class="text-left mt-5" >
+                                    Si querés cambiar el DNI de tu cuenta por el de otra persona o empresa, entonces tenés que <a href="#">cambiar la titularidad de tu cuenta</a>.
+                                </div>
+                            </div>                        
+
+                        </div>
+
+                        <!--Footer-->
+                        <div class="modal-footer justify-content-center">                        
+                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
+                        </div>
+                        </div>
+                    </div>
+                </div>                
             </div>
         </div>
         <div class="row__value">
             <div class="col-sm my-3">Teléfono</div>
             <div class="col-sm my-3">{{user.telephone}}</div>
             <div class="col-sm my-3 pr-0">
-                   <a class="nav-link dropdown-toggle p-0 text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                   <a class="nav-link text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                     <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                         <g fill="#000000cc" fill-rule="evenodd">
@@ -161,7 +247,7 @@
             
             </div>
             <div class="col-sm my-3 pr-0 ">        
-                <a class="nav-link dropdown-toggle p-0 text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                <a class="nav-link  text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
                 <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
                     <g fill="#000000cc" fill-rule="evenodd">

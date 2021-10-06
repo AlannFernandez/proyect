@@ -1,19 +1,59 @@
+
 // -----------------------  validations forms -------------------------
 
 // form signUp
 const SignUp = document.getElementById('formSingup');
 const inputs = document.querySelectorAll('#formSingup input');
 const expresions = {
-  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/
+  email: /^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
+  names: /^[a-zA-ZÀ-ÿ\s]{1,40}$/, // Letras y espacios, pueden llevar acentos.
+	password: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d){8,15}[^'\s]/,
+	dni: /^\d{8}$/ // 8 numeros.
 }
+
 
 const validateForm = (e)=>{
   switch(e.target.name){
+    
+    // NAME
+    case "name":
+      if(expresions.names.test(e.target.value)){
+        console.log('nombre aceptado');
+               
+      }else{      
+        console.log('ingrese un nombre valido');
+      }
+    break;
+    // LASTNAME
+    case "lastname":
+      if(expresions.names.test(e.target.value)){
+        console.log('apellido aceptado');
+      }else{      
+        console.log('ingrese un apellido valido');
+      }
+    break;
+    // dni
+    case "dni":
+      if(expresions.dni.test(e.target.value)){
+        console.log('dni aceptado');        
+      }else{      
+        console.log('ingrese un dni valido');
+      }
+    break;
+    // MAIL
     case "email":
       if(expresions.email.test(e.target.value)){
-        console.log('email aceptado');
+        console.log('email aceptado');        
       }else{      
         console.log('ingrese un email valido');
+      }
+    break;
+    // PASSWORD
+    case "password":
+      if(expresions.password.test(e.target.value)){
+        console.log('contraseña aceptado');
+      }else{      
+        console.log('ingrese una contraseña valida');
       }
     break;
   }
@@ -23,62 +63,56 @@ inputs.forEach((input)=>{
   input.addEventListener('keyup', validateForm);
   input.addEventListener('blur', validateForm);
 });
- 
-SignUp.addEventListener('submit',(e)=>{
-e.preventDefault();
-});
 
-// ----------------------------------------------
+
+
+// --------------------cart functions--------------------------
 function add(id){
-  let product_id=id;
-  const URI = '/links/addCart';
-  $.ajax({
-      url: URI,
-      method: 'POST',
-      data: {
-        product_id
-      },
-      success: function(res) {
-        if(res){
-          toastr["success"]("Producto agregado al carrito", "EXITO")
-          toastr.options = {
-            "closeButton": true,
-            "debug": false,
-            "newestOnTop": false,
-            "progressBar": false,
-            "positionClass": "toast-bottom-right",
-            "preventDuplicates": false,
-            "onclick": null,
-            "showDuration": "300",
-            "hideDuration": "1000",
-            "timeOut": "5000",
-            "extendedTimeOut": "1000",
-            "showEasing": "swing",
-            "hideEasing": "linear",
-            "showMethod": "fadeIn",
-            "hideMethod": "fadeOut"
+const bntCart = document.getElementById(id);
+ if(bntCart.value == "add"){ 
+    let product_id=id;
+    const URI = '/links/addCart';
+    $.ajax({
+        url: URI,
+        method: 'POST',
+        data: {
+          product_id
+        },
+        success: function(res) {       
+          if(res){
+            toastr["success"]("Producto agregado al carrito", "EXITO")
+            toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-bottom-right",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
           }
+          
+        },
+        error: function (err) {
+          console.log(err);
+          toastr["error"]("Al parecer ha ocurrido un error", "Ups");
         }
-        
-      },
-      error: function (err) {
-        console.log(err);
-        toastr["error"]("Al parecer ha ocurrido un error", "Ups");
-      }
-  });    
-}
-
-const changeQuantity = document.body.querySelector('#quantity');
-changeQuantity.addEventListener('click', event=>{
-  event.preventDefault();
-  alert("click en input");
-})
-function total() {
-  
-}
-
-function quit(id){
-  let product_id=id;
+    });
+    bntCart.classList.remove('btn-primary');
+    bntCart.classList.add('btn-grey');
+    bntCart.innerHTML ='<i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Quitar del carrito';
+    bntCart.value = "quit";    
+    return;
+  }else{
+    let product_id=id;
   const URI = '/links/quitCart';
   $.ajax({
       url: URI,
@@ -87,33 +121,47 @@ function quit(id){
         product_id
       },
       success: function(res) {
-       console.log(res);
+       if(res){
+        toastr["info"]("Producto quitado del carrito", "EXITO")
+
+        toastr.options = {
+          "closeButton": true,
+          "debug": false,
+          "newestOnTop": false,
+          "progressBar": false,
+          "positionClass": "toast-bottom-right",
+          "preventDuplicates": false,
+          "onclick": null,
+          "showDuration": "300",
+          "hideDuration": "1000",
+          "timeOut": "5000",
+          "extendedTimeOut": "1000",
+          "showEasing": "swing",
+          "hideEasing": "linear",
+          "showMethod": "fadeIn",
+          "hideMethod": "fadeOut"
+        }
+       }
       },
       error: function (err) {
         console.log(err);
       }
     });
-  toastr["info"]("Producto quitado del carrito", "EXITO")
-
-  toastr.options = {
-    "closeButton": true,
-    "debug": false,
-    "newestOnTop": false,
-    "progressBar": false,
-    "positionClass": "toast-bottom-right",
-    "preventDuplicates": false,
-    "onclick": null,
-    "showDuration": "300",
-    "hideDuration": "1000",
-    "timeOut": "5000",
-    "extendedTimeOut": "1000",
-    "showEasing": "swing",
-    "hideEasing": "linear",
-    "showMethod": "fadeIn",
-    "hideMethod": "fadeOut"
+    bntCart.classList.remove('btn-grey');
+    bntCart.classList.add('btn-primary');
+    bntCart.innerHTML ='<i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Añadir al carrito';
+    bntCart.value = "add";
+    return; 
   }
   
 }
+
+// ////////////////////  /cart functions  ////////////////////// 
+
+
+
+// ////////////////////   PROFILE    /////////////////////////////
+
 
 // change thelephone
 function changeNumber() {
@@ -163,7 +211,7 @@ window.addEventListener('DOMContentLoaded', event => {
 
 
 // area chart
-// Set new default font family and font color to mimic Bootstrap's default styling
+
 Chart.defaults.global.defaultFontFamily = 'Nunito', '-apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif';
 Chart.defaults.global.defaultFontColor = '#858796';
 
@@ -317,3 +365,29 @@ var myPieChart = new Chart(ctx, {
     cutoutPercentage: 80,
   },
 });
+
+// function view img add product
+
+function archivo(evt) {
+  var files = evt.target.files;
+   
+  //Obtenemos la imagen del campo "file". 
+  for (var i = 0, f; f = files[i]; i++) {         
+    //Solo admitimos imágenes.
+    if (!f.type.match('image.*')) {
+      continue;
+    }
+   
+    var reader = new FileReader();
+       
+    reader.onload = (function(theFile) {
+      return function(e) {
+        // Creamos la imagen.
+        document.getElementById("list").innerHTML = ['<img class="thumb" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join('');
+      };
+    })(f);
+
+    reader.readAsDataURL(f);
+   }
+}
+document.getElementById('files').addEventListener('change', archivo, false);

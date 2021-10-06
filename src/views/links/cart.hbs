@@ -25,8 +25,11 @@
             <th class="font-weight-bold">
               <strong>Cantidad</strong>
             </th>
+            <th class="font-weight-bold">
+              <strong>Quitar</strong>
+            </th>
             
-            <th></th>
+            
           </tr>
         </thead>
         <!-- /.Table head -->
@@ -34,7 +37,7 @@
         <!-- Table body -->
         <tbody>                  
             {{#each product}}                  
-              <tr>
+              <tr class="shoppingCartItem">
                 <th scope="row">
                   <img src="../uploads/{{img}}" alt="{{description}}" class="img-fluid z-depth-0">
                 </th>
@@ -46,16 +49,19 @@
                 </td>
                 
                 <td></td>
-                <td>${{price}}</td>
+                <td class="shoppingCartItemPrice" id="price">${{price}}</td>
                 
-                <td>
-                  <input type="number" value="1" aria-label="Search" id="quantity" class="form-control" style="width: 100px">
+                <td>                 
+                  <input type="number" value="1" aria-label="Search" id="quantity" class=" shoppingCartItemQuantity form-control" style="width: 100px">
                 </td>
                 
                 <td>
-                  <button type="button" id="{{id}}" onclick="quit(this.id);" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
-                    title="Quitar producto"><i class="fas fa-trash-alt"></i>
-                  </button>
+                  <form action="/quitCart" method="post">
+                    <input type="hidden" name="product_id" value="{{id}}" id="product_id">
+                    <button type="button" class="btn btn-sm btn-primary" data-toggle="tooltip" data-placement="top"
+                      title="Quitar producto"><i class="fas fa-trash-alt"></i>
+                    </button>
+                  </form>
                 </td>
               </tr>
             {{/each}}
@@ -70,7 +76,7 @@
             </td>
             <td class="text-right">
               <h4 class="mt-2">
-                <strong>$2600</strong>
+                <strong id="total" class="shoppingCartTotal">$2600</strong>
               </h4>
             </td>
             <td colspan="3" class="text-right">

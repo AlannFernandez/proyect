@@ -108,10 +108,11 @@
           <div class="col-lg-4 col-md-12 mb-4 d-flex align-items-stretch">
             
             <!-- Card -->
+            
             <div class="card card-ecommerce">
             
               <div class="view overlay">
-                <img src="../uploads/{{img}}" class="img-fluid" alt="{{title}}" >
+                <img class="card-img img-fluid" src="../uploads/{{img}}"  alt="{{title}}" >
                 <a href="/links/view/{{id}}">
                   <div class="mask rgba-white-slight">nombre de la tienda</div>
                 </a>
@@ -119,28 +120,29 @@
 
               <div class="card-body">
 
-                <h5 class="card-title mb-1"><strong><a href="/links/view/{{id}}" class="dark-grey-text">${{price}}</a></strong></h5>
+                <h5 class="mb-1"><strong><a href="/links/view/{{id}}" class="card-price dark-grey-text">${{price}}</a></strong></h5>
                 <span class="badge badge-danger mb-2">Cerrado</span>              
                 
                 <div class="card-footer pb-0">
                   <div class="row mb-0">
                     <span class="float-left">
-                      <strong>{{title}}</strong>
+                      <strong class="card-title">{{title}}</strong>
                     </span>
                     
                   </div>
                 </div>                                           
                
                 <div class="row mt-3 mb-4">
-                  <div class="col-md-12 text-center text-md-left text-md-center">                                                                             
-                       <button class="btn btn-primary btn-rounded"  id="{{id}}" onclick="add(this.id);">
+                  <div class="card-btn col-md-12 text-center text-md-left text-md-center btns">                                                                             
+                       <button class="btn btn-primary btn-rounded"  value="add" id="{{id}}" onclick="add(this.id);" >
                       <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Añadir al carrito
-                      </button>                   
+                      </button>                                                                                                      
                   </div>
                 </div>  
               </div>
             
-            </div>            
+            </div>          
+            
             <!-- Card -->
             
           </div>

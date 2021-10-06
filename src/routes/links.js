@@ -26,8 +26,15 @@ function deleteFile(rout){
     });
 };
  
+                                                        // routes
 
-router.get('/add', (req, res) => {
+
+router.get('../', (req, res)=>{
+console.log("estas en el inicio");
+});
+
+// add product
+router.get('/add', isLoggedIn, (req, res) => {
     res.render('links/add');
 });
 
@@ -75,11 +82,10 @@ router.post('/address', async (req, res) => {
     res.redirect('/profile');
 });
 
-//    ------------------------------SECTION CART ---------------------------
 
 // add item at cart user
 router.post('/addCart', isLoggedIn, async(req, res) => {
-    const {product_id}= req.body;
+    const {product_id}= req.body;      
     const addCart = {
         user_id: req.user.id,
         product_id,
@@ -95,7 +101,7 @@ router.post('/quitCart', isLoggedIn, async (req, res)=>{
     
     console.log(product_id, req.user.id);
     await pool.query('DELETE FROM users_cart WHERE user_id = ? AND product_id = ?',[req.user.id, product_id]);
-    res.json('Eliminado exitosamente');
+    res.json('success');
 });
 
 //get items from cart user
@@ -104,14 +110,15 @@ router.get('/cart', isLoggedIn, async(req, res) =>{
     res.render('links/cart',{product});   
 })
 
-// count items cart
-router.get('/', isLoggedIn, async (req, res) => {
-    const count = await pool.query('SELECT count() FROM users_cart WHERE user_id = ?', [req.user.id]);  
-    console.log("hay tanto itens "+count);
-    // res.render('/', { count });
+
+
+// search
+router.post('/search', async(req, res)=>{
+    const {search}= req.body;
+    const request ="%"+search+"%";    
+    const result = await pool.query("SELECT * FROM links WHERE title LIKE ?",[request]);        
+    res.render('links/search',{result});
 });
-
-
 
 
 //view products 
