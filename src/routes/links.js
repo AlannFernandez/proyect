@@ -3,6 +3,8 @@ const router = express.Router();
 
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
+const io = require('socket.io');
+
 
 const path = require('path');
 const multer = require('multer');
@@ -28,11 +30,6 @@ function deleteFile(rout){
  
                                                         // routes
 
-
-router.get('../', (req, res)=>{
-console.log("estas en el inicio");
-});
-
 // add product
 router.get('/add', isLoggedIn, (req, res) => {
     res.render('links/add');
@@ -50,7 +47,7 @@ router.post('/add', async (req, res) => {
     };
     await pool.query('INSERT INTO links set ?', [newProduct]);
     req.flash('success', 'Producto agregado exitosamente');
-    res.redirect('/links');
+    res.redirect('/links/dashboard');
 });
 
 
@@ -106,9 +103,15 @@ router.post('/quitCart', isLoggedIn, async (req, res)=>{
 
 //get items from cart user
 router.get('/cart', isLoggedIn, async(req, res) =>{
-    const product =await pool.query("SELECT links.id, links.img, links.title, links.description, links.price FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);            
+    const product = await pool.query("SELECT * FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);        
     res.render('links/cart',{product});   
 })
+
+// addresses users
+router.get('/addresses',isLoggedIn, async(req, res) =>{
+    const userDir = await pool.query("SELECT * FROM addresses  WHERE user_id = ?",[req.user.id]);        
+    res.render('links/addressView',{userDir});
+});
 
 
 
@@ -120,6 +123,22 @@ router.post('/search', async(req, res)=>{
     res.render('links/search',{result});
 });
 
+// view shop
+router.get('/shops/:id', async (req, res) => {
+    const { id } = req.params;
+    const productos = await pool.query('SELECT * FROM links WHERE user_id = ?', [id]);
+    const nombre = await pool.query('SELECT social_reason FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
+    const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
+    console.log(nombre);
+    console.log(direccion);
+    console.log(productos);
+
+    res.render('links/shops',{productos, tienda:nombre[0],ubi: direccion[0]});
+});
+
+router.get('/info/:id', async (req, res) => {    
+    res.render('links/compInfo');
+});
 
 //view products 
 router.get('/view/:id', async (req, res) => {
@@ -167,12 +186,7 @@ router.post('/edit/:id', async (req, res) => {
 });
 
 
-// view shop
 
-router.get('/shops', async (req, res) => {
-    
-    res.render('links/shops');
-});
 
 // dashboard
 router.get('/dashboard',isLoggedIn, async (req, res) =>{
@@ -180,5 +194,40 @@ router.get('/dashboard',isLoggedIn, async (req, res) =>{
     res.render('links/dashboard', { product });
 });
 
+// function count items cart
+router.post('/inicio',isLoggedIn, async (req, res) =>{
+    const cart = await pool.query('SELECT count(*) FROM users_cart WHERE user_id = ?',[req.user.id]);        
+    res.json(cart);
+    
+});
 
+// purchases
+router.get('/purchases',isLoggedIn, async (req, res) =>{    
+    const purchases = await pool.query('SELECT * FROM purchases WHERE user_id = ?',[req.user.id]);
+    res.render('links/purchases', {purchases});
+});
+
+// favorites
+router.get('/favorites',isLoggedIn, async (req, res) =>{        
+    res.render('links/favorites');
+});
+
+// Update tel users
+router.post('/UpdateTel',isLoggedIn, async (req, res) =>{
+    const {telephone} = req.body; 
+    console.log("usuario "+ req.user.id);        
+    console.log(telephone);      
+    const update = {telephone};
+    await pool.query('UPDATE users set ? WHERE id = ?', [update, req.user.id]);
+    res.redirect('/profile');
+}); 
+
+router.get('/sell', isLoggedIn, async(req, res)=>{
+res.render('links/sell');
+});
+
+
+router.post('/pay',isLoggedIn, async (req, res) =>{
+    console.log("se hizo una compra");
+});
 module.exports = router;

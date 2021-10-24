@@ -1,4 +1,35 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
+});
 
+
+
+$(document).ready(function(){
+  $('.sidenav').sidenav();
+});
+
+$( document ).ready(function(){
+  
+  const URI ='/links/inicio';
+  $.ajax({
+    url: URI,
+    method: 'POST',
+    data: {
+    },
+    success: function(res) { 
+      console.log(res);
+      if(res.length>0){
+        console.log(res);        
+        let bdcart = document.querySelector('#badge-cart');
+        bdcart.style.display = "block";        
+      }
+    },
+    error: function (err) {
+      console.log(err);
+    }
+});
+});
 // -----------------------  validations forms -------------------------
 
 // form signUp
@@ -163,10 +194,28 @@ const bntCart = document.getElementById(id);
 // ////////////////////   PROFILE    /////////////////////////////
 
 
-// change thelephone
-function changeNumber() {
-  const URI = '/links/profile';
-}
+// Updates users thelephones
+
+  $("#updateTel").click(function(e){
+    e.preventDefault();
+      const tel = document.querySelector('#newTel').value;      
+      let telephone=tel;
+      const URI = '/links/UpdateTel';
+      $.ajax({
+        url: URI,
+        method: 'POST',
+        data: {
+          telephone
+        },
+          success: function(){
+              console.log("se cambio el telefono");
+          }
+      });
+  });
+
+
+
+
 // MDB Lightbox Init
 $(function () {
   $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");

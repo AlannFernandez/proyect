@@ -1,4 +1,4 @@
-<form action="/profile" method="post" id="dataProfile">
+
 <input type="hidden" name="user" value="{{user.id}}">
 <div class="main-container profile">
     <h1 style="font-size:20px; font-weight:700;" class="my-5">Mis datos</h1>
@@ -153,7 +153,7 @@
         </div>
         <div class="row__value">
             <div class="col-sm my-3">Teléfono</div>
-            <div class="col-sm my-3">{{user.telephone}}</div>
+            <div class="col-sm my-3" id="userTel">{{user.telephone}}</div>
             <div class="col-sm my-3 pr-0">
                    <a class="nav-link text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                     aria-haspopup="true" aria-expanded="false">
@@ -166,39 +166,40 @@
                     </a>
                     {{!--  --}}
                     
-                    <form action="/profile" method="post">
-                        <div class="modal fade" id="modaltelephone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
-                                <div class="modal-content">
-                                    <div class="modal-header text-center">
-                                        <h4 class="modal-title w-100 font-weight-bold">Modificar teléfono </h4>
-                                    </div>
-                                    <div class="modal-body mx-3">
-                                        <div class="md-form mb-5">    
-                                            <input type="text" id="newTel" name="telephone" class="form-control validate" value="{{user.telephone}}" autofocus>
-                                            <label for="newTel">Ingresá un teléfono</label>
-                                        </div>    
-                                    </div>
+                        <form action="#" method="post">
+                            <div class="modal fade" id="modaltelephone" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header text-center">
+                                            <h4 class="modal-title w-100 font-weight-bold">Modificar teléfono </h4>
+                                        </div>
+                                        <div class="modal-body mx-3">
+                                            <div class="md-form mb-5">    
+                                                <input type="text" id="newTel" name="telephone" class="form-control validate" value="{{user.telephone}}" autofocus>
+                                                <label for="newTel">Ingresá un teléfono</label>
+                                            </div>    
+                                        </div>
 
-                                    <div class="modal-footer d-flex justify-content-center">
-                                        <button class="btn btn-primary" name="updateTel" id="updateTel">Guardar</button>
-                                        <button class="btn btn-grey" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                        <div class="modal-footer d-flex justify-content-center">
+                                            <button class="btn btn-primary" name="updateTel" id="updateTel" type="submit" >Guardar</button>
+                                            <button class="btn btn-grey" data-dismiss="modal" aria-label="Close">Cancelar</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </form>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="#"  data-toggle="modal" data-target="#modaltelephone">Modificar teléfono</a>
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Eliminar teléfono</a>
                         </div>
-                    </form>
+                    
                     {{!--  --}}
                 
             </div>
         </div>
 
-        <div class="row__value">
+        <div class="row__value" id="alt-phone">
             <div class="col-sm my-3">Teléfono Alternativo</div>
             <div class="col-sm my-3"></div>
             <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -263,6 +264,32 @@
                 </div>
             </div>
         </div>
+        
+        <main role="main" id="root-app">		
+    <div class="ml-addresses">
+        <div>
+            <ul class="ml-addresses__list">        
+                <li class="ml-addresses__list-item">
+                    <div class="ml-addresses-data">
+                        <dl>
+                            <dt>Direccion:</dt>
+                                <dd class="ml-addresses-data__item ml-addresses-data__item--strong">Lisandro De La Torre SN</dd>
+                            <dt>Datos Adicionales:</dt>
+                                <dd class="ml-addresses-data__item"></dd>    
+                            <dt>Referencias:</dt>
+                                <dd class="ml-addresses-data__item">Barrio 40 Viviendas Manzana 82 Casa 13. Casa Bord&oacute;, Ventanas Grises</dd>    
+                            <dt>Localidad:</dt>
+                                <dd class="ml-addresses-data__item">Corrientes(3342), Gobernador Ingeniero V Virasoro</dd>
+                            <dt>Contacto:</dt>
+                                <dd class="ml-addresses-data__item">Fern&aacute;ndez Alan Nahuel - 3756451433</dd>
+                        </dl>  
+                    </div>                    
+                </li>
+            </ul>
+        </div>
+    </div>
+        </main>
+          
        
         <div class="row__value">
             <div class="col-sm my-3">
@@ -278,4 +305,4 @@
         </div>
     </div>
 </div>
-</form>
+

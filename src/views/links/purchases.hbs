@@ -1,0 +1,56 @@
+<div class="desktop">
+    <div class="container my-5 py-3 z-depth-1 rounded">
+        {{#if purchases}}
+        lista de compras del usuario
+        {{else}}
+        <div class="view grey lighten-3">
+            <style>
+            .view {
+            height: 100%;
+            }
+        </style>
+            <!-- Mask & flexbox options-->
+            <div class="mask">
+            <!-- Content -->
+            <div class="container h-100">
+                <!--Grid row-->
+                <div class="row align-items-center h-100">
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <h1 class="mb-4">Al parecer todavía no tienes compras </h1>
+                    <p class="mb-4 pb-2 dark-grey-text">Encontra el producto que estás buscando en nuestra tienda.</p>
+                    <button type="button" class="btn btn-primary btn-rounded btn-md ml-md-0">Empezar a comprar</button>
+                    <button type="button" class="btn btn-outline-grey btn-rounded btn-md">Más tarde</button>
+                </div>
+                <!--Grid column-->
+            
+                <!--Grid column-->
+                <div class="col-md-6">
+                    <img src="https://mdbootstrap.com/img/illustrations/hiker-man-colour.svg" alt="" class="img-fluid">
+                </div>
+                <!--Grid column-->
+                </div>
+                <!--Grid row-->
+            </div>
+            <!-- Content -->
+            </div>
+            <!-- Mask & flexbox options-->
+        </div>
+        {{/if}}
+    </div>
+</div>
+<div class="mobile">
+    {{#if purchases}}
+    {{else}}
+    <div class="sc-1rt4n1p-0 hwkBmQ">
+        <div class="sc-11awyvm-0 sc-1qiglmv-0 kzfZXp sc-1f25ngo-1 exTtiN">
+            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='141' height='140' viewBox='0 0 141 140'%3E %3Cg fill='none' fill-rule='evenodd'%3E %3Cg%3E %3Cg%3E %3Cg%3E %3Cg%3E %3Cpath fill='%23FFF' d='M139.077 82.005c0-.232.005-.478.013-.736l.022-.534.046-.867.093-1.613.037-.703.033-.736.027-.767c.32-10.577-1.566-29.78-30.213-52.73C85.557 4.43 65.849-.634 50.01 8.125c-6.993 3.94-9.72 11.264-8.185 21.973l.054.367c1.628 10.75.7 18.522-2.785 23.316l-.155.21c-4.555 6.18-11.75 10.265-21.586 12.255l-.478.094C6.795 68.293 1.17 75.382 0 87.606c.598 13.804 5.823 23.905 15.676 30.302 9.853 6.397 20.007 9.39 30.464 8.98 6.173-.516 12.692-3.847 19.557-9.993l.362-.327c5.791-5.258 14.777-8.713 26.956-10.364l1.022-.133c.687-.086 1.383-.167 2.09-.242l1.066-.108c1.253-.122 2.536-.226 3.85-.313 20.385 3.203 33.063-4.598 38.034-23.403z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222)'/%3E %3Cpath fill='%23CAC5D0' d='M35.403 4.342l64.518.512c2.948.024 5.322 2.429 5.306 5.377l-.444 84.5c-.015 2.943-2.405 5.321-5.348 5.322l-64.163.011c-2.954.001-5.35-2.393-5.35-5.348v-.006l.09-85.025c.002-2.954 2.4-5.347 5.354-5.344h.037z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(6 67.586 52.182)'/%3E %3Cpath fill='%23EAE3E3' d='M40.146 10.913h48.079l5.221 6.79c.247.322.53.614.842.87l6.636 5.461-.197 69.22c-.003 1.003-.287 1.984-.82 2.833-1.573 2.5-2.427 3.747-2.564 3.74-1.29-.06-3.866-5.209-4.437-5.008-1.686.594-4.293 5.207-4.927 5.21-2.028.01-3.55-5.163-4.436-5.008-1.382.242-4.255 5.207-4.927 5.21-2.402-.53-2.433-5.21-3.663-5.089-1.452.143-4.196 4.431-5.008 4.437-2.296.016-4.063-5.023-5.21-4.927-2.08.174-3.823 5.199-4.927 5.21-2.246.024-4.003-4.988-5.21-4.927-2.064.106-3.775 4.438-5.009 4.437-2.68-.002-4.278-4.878-5.983-4.845-1.606.03-2.824 4.355-4.235 4.355-1.003-.812-1.86-1.503-2.57-2.072-1.266-1.015-2.004-2.55-2.004-4.174V16.262c0-2.954 2.395-5.349 5.35-5.349z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(6 67.86 55.572)'/%3E %3Cpath fill='%23EFEDF0' d='M38.59 9.357h48.08l5.22 6.791c.247.321.53.613.842.87l6.636 5.46-.196 69.221c-.003 1.002-.288 1.984-.821 2.832-1.573 2.5-2.427 3.747-2.564 3.74-1.29-.06-3.865-5.208-4.436-5.007-1.687.593-4.293 5.207-4.927 5.21-2.028.01-3.551-5.163-4.437-5.008-1.381.242-4.255 5.206-4.927 5.21-2.401-.53-2.432-5.21-3.663-5.09-1.452.144-4.195 4.432-5.008 4.437-2.296.016-4.062-5.023-5.21-4.927-2.08.175-3.823 5.2-4.927 5.21-2.246.024-4.003-4.988-5.21-4.926-2.063.105-3.775 4.437-5.008 4.436-2.68-.002-4.278-4.877-5.984-4.845-1.605.03-2.824 4.355-4.235 4.355-1.002-.812-1.859-1.502-2.57-2.072-1.266-1.015-2.003-2.55-2.003-4.174V14.706c0-2.954 2.395-5.349 5.349-5.349z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(6 66.305 54.017)'/%3E %3Cpath fill='%23FFF' d='M38.673 8.152l36.148.016c1.852 17.554 1.983 33.344.392 47.368-1.591 14.025-6.064 26.454-13.418 37.288-1.589 2.864-2.742 4.29-3.46 4.274-2.321.244-4.63-5.13-5.21-4.926-1.608.566-4.082 4.46-5.009 4.436-2.32.244-4.772-4.97-5.984-4.845-1.442.147-3.087 4.355-4.234 4.355-.706-.572-1.56-1.257-2.561-2.056-1.272-1.015-2.013-2.554-2.013-4.181V13.498c-.002-2.954 2.392-5.349 5.347-5.349l.002.003z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(6 54.82 52.628)'/%3E %3Cpath stroke='%23CAC5D0' stroke-linecap='round' stroke-width='3' d='M44.333 50.556c10.89 2.074 25.148 3.63 42.778 4.666M43.167 57.944c10.889 2.075 25.148 3.63 42.777 4.667' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222)'/%3E %3Cpath stroke='%23CAC5D0' stroke-dasharray='1 7' stroke-linecap='round' stroke-width='3' d='M41.611 71.666c7 2 15.815 3.037 26.445 3.11' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222)'/%3E %3Cpath fill='%23CAC5D0' fill-rule='nonzero' d='M68.762 18.932c-6.67 0-12.085 5.414-12.085 12.085 0 6.671 5.414 12.085 12.085 12.085 6.671 0 12.085-5.414 12.085-12.085 0-6.67-5.414-12.085-12.085-12.085zm0 21.753c-5.33 0-9.668-4.338-9.668-9.668 0-5.33 4.339-9.668 9.668-9.668 5.33 0 9.668 4.339 9.668 9.668 0 5.33-4.338 9.668-9.668 9.668zm4.69-14.151l-7.107 7.106-2.272-2.272c-.471-.472-1.232-.472-1.704 0-.47.47-.47 1.232 0 1.704l3.13 3.13c.472.47 1.233.47 1.704 0l7.964-7.964c.472-.472.472-1.233 0-1.704-.471-.472-1.244-.472-1.716 0z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222)'/%3E %3Cpath fill='%23CAC5D0' d='M93.404 23.412c2.913 2.198 4.731 3.764 5.455 4.699.723.934 1.398 2.472 2.026 4.612l1.928-5.581-5.244-3.73h-4.165z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(-13 98.108 28.067)'/%3E %3Cpath fill='%23FFF' d='M90.503 12.35l6.415 6.521.06.063 6.225 6.537-7.43.025c-2.955.01-5.358-2.376-5.368-5.33v-.087l.098-7.73z' transform='translate(-118 -222) translate(1 222) translate(117.499) translate(0 6.222) rotate(6 96.77 18.932)'/%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/g%3E %3C/svg%3E" alt="Sin items">
+            <h3 class="sc-6byl81-0 cqSWlb">Aún no has realizado pedidos</h3>
+            <p class="sc-1raioyb-0 iTwfqi">¡Buscá entre todas nuestras opciones y disfrutá de tu primer pedido!</p>
+            <div class="sc-1f25ngo-0 dtrAVT">
+                <button type="button" class="sc-1y8jm7q-0 ehbNhA" id="noItems_button" color="primary">Comenzar búsqueda</button>
+            </div>
+        </div>
+    </div>
+    {{/if}}
+</div>

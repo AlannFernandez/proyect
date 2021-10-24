@@ -11,9 +11,15 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const multer = require('multer');
 const { v4: uuidv4 } = require('uuid');
+const http = require('http');
+const socketIO = require('socket.io');
+const app = express();
+const server = http.Server(app);
+
+const io = socketIO(server);
 
 const storage = multer.diskStorage({
-  destination: path.join(__dirname,'../public/uploads'),
+  destination: path.join(__dirname,'/public/uploads'),
   filename: (req, file, cb) => {
     cb(null, uuidv4() + path.extname(file.originalname).toLocaleLowerCase());
   }
@@ -28,7 +34,7 @@ const { ExpressHandlebars } = require('express-handlebars');
 
 
 // Intializations
-const app = express();
+
 require('./lib/passport');
 
 // Settings
@@ -76,6 +82,7 @@ app.use(multer({
 }).single('image'));
 
 
+
 // Global variables
 app.use((req, res, next) => {
   app.locals.message = req.flash('message');
@@ -89,6 +96,8 @@ app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/links'));
 
+// sockets
+require('./socket')(io);
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));
