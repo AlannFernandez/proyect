@@ -589,6 +589,7 @@
                 <div class="sc-111181-0 gACav sc-111181-1 lkWCDe">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16"><path d="M11.502 1C13.791 1 15.5 2.84 15.5 5.226c0 2.193-1.223 3.92-5.015 7.566l-1.154 1.096-.953.899a.495.495 0 01-.315.135L8 14.92l-.063.002a.475.475 0 01-.244-.08l-.071-.055-1.83-1.73C1.782 9.226.5 7.471.5 5.226.5 2.84 2.209 1 4.498 1c1.157 0 2.408.62 3.338 1.488l.141.138.174-.16c.917-.811 2.046-1.385 3.122-1.458l.23-.008zm0 1c-1.043 0-2.291.72-3.166 1.689a.5.5 0 01-.757-.018C6.813 2.74 5.549 2 4.499 2 2.778 2 1.5 3.377 1.5 5.226c0 1.947 1.338 3.669 5.563 7.66l.937.882 1.221-1.152c3.909-3.712 5.218-5.407 5.277-7.257l.002-.133C14.5 3.377 13.221 2 11.502 2z"></path>
                   </svg>
+                  {{!-- <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16"><path d="M11.502 1C13.791 1 15.5 2.84 15.5 5.226c0 2.193-1.223 3.92-5.015 7.566l-1.154 1.096-.953.899a.495.495 0 01-.315.135L8 14.92l-.063.002a.475.475 0 01-.244-.08l-.071-.055-1.83-1.73C1.782 9.226.5 7.471.5 5.226.5 2.84 2.209 1 4.498 1c1.157 0 2.408.62 3.338 1.488l.141.138.174-.16c.917-.811 2.046-1.385 3.122-1.458l.23-.008z"></path></svg> --}}
                 </div>
               </div>
 
@@ -608,7 +609,11 @@
           <div class="kfsud2-0 ksFpim">
             <span>10 - 25 min</span>
             <span class="sc-1s7azl4-0 jLYXBL">·</span>
-            <span>$109 envío</span>
+            {{#if tienda.price_delivery}}
+            <span>${{tienda.price_delivery}} envío</span>
+            {{else}}
+            <span>meraki envíos</span>
+            {{/if}}
             <span class="sc-1s7azl4-0 jLYXBL">·</span>
             <span>Mínimo $299</span>
           </div>
@@ -622,34 +627,43 @@
   {{!-- header titles --}}
   <div class="rimijh-0 cjScwJ sc-1gje7nt-1 qfq3s6-1 cZaPHI">
     <div class="yxaxac-0 iuxFoD">
-        <div class="cggoy4-0 iFGKVa wioz0i-0 sc-1gje7nt-0 bLpJlS" id="swiper__element_tabs"><div width="50" class="sc-24nox7-0 hQRLbY"><span class="sc-24nox7-1 dOGfkH">Catálogo</span>
-            </div>
-            <div width="50" class="sc-24nox7-0 lkyWWV">
-                <span class="sc-24nox7-1 ibfyzr">Secciones</span>
-            </div>
-            <div class="sc-15krnmr-0 bVtfTt"></div>
+        <div class="cggoy4-0 iFGKVa wioz0i-0 sc-1gje7nt-0 bLpJlS" id="swiper__element_tabs">
+          <div width="50" class="sc-24nox7-0 hQRLbY">
+            <span class="sc-24nox7-1 dOGfkH">Productos</span>
+          </div>
+          <div class="sc-24nox7-0 lkyWWV">
+              <span class="sc-24nox7-1 ibfyzr"><input type="search" placeholder="Buscar..." name="" id=""></span>
+          </div>        
         </div>
     </div>
   </div>
-  {{!-- title descripcion  --}}
-  <div class="xcrn65-0 fEahBh sc-1bt0piu-0 d2ly8b-1 XmpOu">
-    <span class="sc-1rcjn1n-0 ktEUQh">
-      <h3 class="g8fctk-0 clWljy">Pizzas</h3>      
-    </span>
-  </div>
+  {{!-- categories  --}}
+  {{#if categories}}
+    {{#each categories}}
+      <div class="xcrn65-0 fEahBh sc-1bt0piu-0 d2ly8b-1 XmpOu">
+        <span class="sc-1rcjn1n-0 ktEUQh">
+          <h3 class="g8fctk-0 clWljy">{{name_category}}</h3>      
+        </span>
+      </div>
+    {{/each}}
+  {{else}}
+  {{/if}}
+ 
+
 
   {{!-- card product --}}
   <div class="full_width">
     
     <div class="yxaxac-0 iuxFoD">
       <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves-section3493304">
+          {{#each productos}}
           <div id="infocard" direction="column" class="sc-1uudfj-0 sc-10rx79f-0 lmGvas">
             <div class="sc-7kom5h-0 fRQOGO">
               <div class="sc-19kh4fu-0 hqyyDh">
                 <picture>
-                  <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;webp=1&amp;dpi=1.5 1.5x">
-                  <img src="/uploads/{{productos.img}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-19kh4fu-1 ghgZpN ls-is-cached lazyloaded" alt="Promo - Pizza Muzza + Bomb V.Split" data-src="https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70, https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70, https://images.deliveryhero.io/image/pedidosya/products/7f1f063d-7463-498a-8b87-34b3e829d294.jpg?quality=90&amp;height=70&amp;width=70&amp;dpi=1.5 1.5x">
-                </picture>
+                  <source type="image/webp" data-srcset="../uploads/{{img}}" srcset="../uploads/{{img}}">
+                  <img src="../uploads/{{img}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-19kh4fu-1 ghgZpN ls-is-cached lazyloaded" alt="{{title}}" data-src="../uploads/{{img}}" data-srcset="../uploads/{{img}}" srcset="../uploads/{{img}}">
+                  </picture>
               </div>
               
               <div class="sc-1pnv15w-0 YwRaS">
@@ -659,7 +673,7 @@
             <div>
               <div class="sc-5gm38m-0 jdWDGL one-click-element">
                 
-                <div class="sc-1gtngjx-0 fTsiLt">
+                <div class="sc-1gtngjx-0 fTsiLt" >
                   
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16"><path d="M7 7V3c0-1.333 2-1.333 2 0v4h4a1 1 0 010 2H9v4c0 1.333-2 1.333-2 0V9H3a1 1 0 010-2h4z"></path>
                   </svg>
@@ -673,7 +687,7 @@
                 <div>
                     <div class="sc-1yeh8k-0 gmmKyp">
                         <span class="sc-1ozo3ha-0 kkuzRX">
-                          {{item.title}}
+                          {{title}}                                                    
                         </span>
                     </div>
                 </div>
@@ -683,7 +697,7 @@
 
                     <span class="sc-68i9x5-0 ekcLNF">
                       <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">
-                        ${{item.price}}
+                        ${{price}}
                       </span>
                     </span>
 
@@ -692,7 +706,7 @@
                 </span>
             </div>
           </div>
-
+          {{/each}}
           <div class="sc-15krnmr-0 bVtfTt"></div>
       
       </div>
@@ -700,6 +714,6 @@
     
   </div>
   {{else}}
-  upa no hay nada
-{{/if}}
+  no hay productos
+  {{/if}}
 </div>

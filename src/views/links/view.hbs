@@ -1,112 +1,252 @@
+<div class="desktop">
+  <div class="container my-5 py-5 z-depth-1">
 
-<div class="container my-5 py-5 z-depth-1">
 
+    <!--Section: Content-->
+    <section class="text-center">
 
-  <!--Section: Content-->
-  <section class="text-center">
+      <!-- Section heading -->
+      <h3 class="font-weight-bold mb-5"><a href="/links/shops/{{link.user_id}}">Nombre de la tienda</a></h3>
 
-    <!-- Section heading -->
-    <h3 class="font-weight-bold mb-5"><a href="/links/shops/{{link.user_id}}">Nombre de la tienda</a></h3>
+      <div class="row">
+        <div class="col-lg-6">
 
-    <div class="row">
-      <div class="col-lg-6">
+          <!--Carousel Wrapper-->
+          <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4" data-ride="carousel">
 
-        <!--Carousel Wrapper-->
-        <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4" data-ride="carousel">
+            <!--Slides-->
+            <div class="carousel-inner text-center text-md-left" role="listbox">
+              <div class="carousel-item active">
+                <img src="/uploads/{{link.img}}"
+                  alt="First slide" class="img-fluid">
+              </div>            
+            </div>
+            <!--/.Slides-->
 
-          <!--Slides-->
-          <div class="carousel-inner text-center text-md-left" role="listbox">
-            <div class="carousel-item active">
-              <img src="/uploads/{{link.img}}"
-                alt="First slide" class="img-fluid">
-            </div>            
+            <!--Thumbnails-->
+            <a class="carousel-control-prev" href="#carousel-thumb1" role="button" data-slide="prev">
+              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+              <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carousel-thumb1" role="button" data-slide="next">
+              <span class="carousel-control-next-icon" aria-hidden="true"></span>
+              <span class="sr-only">Next</span>
+            </a>
+            <!--/.Thumbnails-->
+
           </div>
-          <!--/.Slides-->
+        
+          
+        </div>
 
-          <!--Thumbnails-->
-          <a class="carousel-control-prev" href="#carousel-thumb1" role="button" data-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-          </a>
-          <a class="carousel-control-next" href="#carousel-thumb1" role="button" data-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-          </a>
-          <!--/.Thumbnails-->
+        <div class="col-lg-5 text-center text-md-left">
 
+          <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{link.title}}</h2>
+          <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">cerrado</span>
+          {{!-- <span class="badge badge-success product mb-4 ml-2">SALE</span> --}}
+
+          <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
+            <span class="red-text font-weight-bold">
+              <strong>${{link.price}}</strong>
+            </span>
+            <span class="grey-text">
+              <small>
+                <s></s>
+              </small>
+            </span>
+          </h3>
+
+          <div class="font-weight-normal">
+            
+            <p class="ml-xl-0 ml-4"><strong>Descripción: </strong>{{link.description}}</p>          
+            <p class="ml-xl-0 ml-4">
+              <strong>Formato de venta: </strong></p>
+            <p class="ml-xl-0 ml-4">  
+              <strong>Stock: </strong>Disponible</p>
+            </p>          
+            <p class="ml-xl-0 ml-4">
+              <strong>Disponibilidad: </strong></p>
+            <p class="ml-xl-0 ml-4">
+              <strong>Elaboración: </strong><i class="far fa-clock"></i> 20 Minutos </p>
+            
+            <div class="mt-5">
+              <p class="grey-text">Cantidad</p>            
+              <div class="stepper">
+                <!-- Minus button -->
+                <button class="stepper__button"><i class="fas fa-minus"></i></button>
+
+                <!-- Input container -->
+                <div class="stepper__content">
+                    <input type="text" class="stepper__input" />
+                </div>
+
+                <!-- Plus button -->
+                <button class="stepper__button"><i class="fas fa-plus"></i></button>
+              </div>
+              {{#if user}}
+              <div class="row mt-3 mb-4">
+                <div class="col-md-12 text-center text-md-left text-md-right">
+                  <button class="btn btn-primary btn-rounded">
+                    <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
+                </div>
+              </div>
+              {{else}}
+              <div class="row mt-3 mb-4">
+                <div class="col-md-12 text-center text-md-left text-md-right">
+                  <button disabled class="btn btn-primary btn-rounded">
+                    <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
+                </div>
+              </div>
+              {{/if}}
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+
+    </section>
+    <!--Section: Content-->
+
+
+  </div>
+</div>
+
+<div class="mobile">
+  <div class="flex-x9ump0-0 sc-1fpz7sq-0 gnKdUo">
+    <div opacity="1" class="sc-1ueiixb-0 bWaZhC">
+      <div class="sc-1azcpr8-0 dSqDeq full_width">
+        <div class="wcdsjj-0 jXTGAd">
+          <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2b1a46" viewBox="0 0 16 16">
+            <g fill-rule="evenodd">
+              <circle fill="#EAE3E3" cx="8" cy="8" r="8"></circle>
+              <path d="M5.849 5.096l.075.062L8 7.235l2.076-2.077a.541.541 0 01.828.69l-.062.076L8.765 8l2.077 2.076a.541.541 0 01-.69.828l-.076-.062L8 8.765l-2.076 2.077a.541.541 0 01-.828-.69l.062-.076L7.235 8 5.158 5.924a.541.541 0 01.69-.828z"></path>
+            </g>
+          </svg>
+        </div>
+        <div class="hp94dw-0 iUdgAV">
+
+        </div>
+        <picture>
+          <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1&amp;dpi=1.5 1.5x"><img src="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 bHbZgR header_image ls-is-cached lazyloaded" alt="header" data-src="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;dpi=1.5 1.5x">
+        </picture>
+      </div>
+      
+      <div class="nae5lz-0 ccTROh">
+
+      </div>
+      
+      <div class="sc-4v0xea-0 hgnJzs">
+        <div class="sc-4v0xea-4 bZlgWJ">
+          <h3 class="sc-85ihu9-0 kKFWvo title_component">Papas Fritas</h3>
+        </div>
+        
+        <span class="sc-68i9x5-0 ekcLNF sc-4v0xea-2 hJUVPh">
+          <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">$249</span>
+        </span>
+      </div>
+      
+    </div>
+    
+    <div opacity="0" class="sc-1ueiixb-1 jSacSH">
+      <div id="fixed_header" class="rixve5-5 fitCJw">
+        <div class="rixve5-4 kNafWj">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2b1a46" viewBox="0 0 16 16" class="rixve5-3 gNNNJ">
+            <path d="M28.927-238.385c0 50.863-42.919 92.243-95.679 92.243H-330.75l-119.21 385.144h-29.11l-.934-.292 128.044-413.648h285.208c36.891 0 66.905-28.465 66.905-63.447zm133.068 0c0 59.718-23.822 115.852-67.086 158.042C51.739-38.236-5.631-15.047-66.634-15.047H-236.85L-316.067 239h-30.193l88.197-282.844h191.429c53.435 0 103.648-20.282 141.403-57.103 37.657-36.732 58.4-85.543 58.4-137.44zM95.99-238c.01.247.01.499.01.756 0 42.601-16.96 82.644-47.768 112.731-30.705 30.008-71.51 46.53-114.894 46.53H-284.76L-382.893 239H-413l107.044-345.757h239.294c73.836 0 133.908-58.54 133.908-130.487 0-.257-.005-.509-.01-.756zM6.084 8l4.458 4.458a.625.625 0 01-.884.884l-4.9-4.9a.625.625 0 010-.884l4.9-4.9a.625.625 0 01.884.884L6.084 8z"></path>
+          </svg>
+          <div class="rixve5-6 iGsILO">Papas Fritas</div>
+        </div>
+      </div>
+    
+    </div>
+    
+    <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+      <div class="d11zps-2 dgDVVW">
+        <span class="d11zps-1 jCEUsl">Unidades</span>
+      </div>
+      
+      <div class="vhiqdd-0 bHzmQc">
+        <div class="a6s04m-0 koFxum">
+          <span class="sc-1vo6r1k-0 hxSGkb">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#2b1a46" viewBox="0 0 16 16">
+              <path d="M3 9h10a1 1 0 000-2H3a1 1 0 000 2z"></path>
+            </svg>
+          </span>
+          
+          <span class="nwydec-0 WYSEu">1</span>
+          <span class="sc-1vo6r1k-0 hxSGkb">
+            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#2b1a46" viewBox="0 0 16 16">
+              <path d="M7 7V3c0-1.333 2-1.333 2 0v4h4a1 1 0 010 2H9v4c0 1.333-2 1.333-2 0V9H3a1 1 0 010-2h4z"></path>
+            </svg>
+          </span>
+
+        </div>
+
+      </div>
+
+    </div>
+    
+    <div class="sc-1lfe7mo-0 kzytvw">
+      <div class="xcrn65-0 dOElNm sc-1bt0piu-0 sc-1lfe7mo-1 iwmvnm">
+        <span class="sc-1rcjn1n-0 ktEUQh">
+          <h3 class="g8fctk-0 clWljy">¿Querés aclarar algo?</h3>
+        </span>
+      </div>
+      
+      <div direction="column" class="sc-1uudfj-0 iiTDbT">
+        <div class="ptwdv1-0 dfDAtG">
+          <div class="axxvqp-0 heZlBN wnl44z-0 fQOrqs">
+            <label for="product_config_clarification" class="sc-1hs0vh7-0 jDvTIY">Notas al producto</label>
+            <textarea type="text" autocomplete="off" id="product_config_clarification" rows="1" data-hj-allow="false" class="sc-1ysv6qi-0 QswoJ"></textarea>
+            
+            <div class="qis1gi-0 hQKEAC">
+
+            </div>
+            <p class="kzfj6u-0 gUjbom"></p>
+          </div>
+          
+          <div class="sc-146g071-0 jJGlkz">0/250</div>
+          
+        </div>
+
+      </div>
+
+    </div>
+    
+    <div class="sc-1dfoxyf-0 cwvyqR sc-1dfoxyf-2 n18cvb-0 iNhRIx">
+      <div class="sc-1sv9q4r-0 fZCGsY">
+        <button type="button" class="sc-1y8jm7q-0 cPPpUY" id="product__add__action" color="primary">Agregar a mi pedido</button>
+      </div>
+
+    </div>
+    
+    <div id="fixed_footer_ref" class="sc-1dfoxyf-1 jhvHsI"></div>
+    
+    <div class="sc-1wya6b0-0 drIZEB">
+      <div type="informative" id="box__message" direction="row" class="sc-1uudfj-0 w64jd3-0 itOaAw">
+        <div class="sc-1qe7sb7-0 emsyvk">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2b1a46" viewBox="0 0 16 16">
+            <path d="M8 .5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 1a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm.064 5.257a.5.5 0 01.492.41l.008.09v3.5H9.62a.5.5 0 01.492.41l.008.09a.5.5 0 01-.41.492l-.09.008H8.064a.499.499 0 01-.491-.41l-.009-.09v-3.5H6.82a.5.5 0 01-.492-.41l-.008-.09a.5.5 0 01.41-.492l.09-.008h1.244zM7.711 4a.858.858 0 110 1.715.858.858 0 010-1.715z"></path>
+          </svg>
+
+        </div>
+        
+        <div class="dns8d4-0 llCThh">
+          <div class="sc-1t17gbv-0 gJBAnq">
+            <div class="t4yf7u-0 efYXbh">
+              <span class="sc-1oant8r-0 lelXKX"></span>
+            </div>
+          </div>
+          <div class="sc-1juic81-0 jPKigS">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16">
+              <path d="M8 7.116l3.765-3.765a.625.625 0 01.884.884L8.884 8l3.765 3.765a.625.625 0 01-.884.884L8 8.884l-3.765 3.765a.625.625 0 01-.884-.884L7.116 8 3.351 4.235a.625.625 0 01.884-.884L8 7.116z"></path>
+            </svg>
+          </div>
         </div>
       
-        
-      </div>
-
-      <div class="col-lg-5 text-center text-md-left">
-
-        <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{link.title}}</h2>
-        <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">cerrado</span>
-        {{!-- <span class="badge badge-success product mb-4 ml-2">SALE</span> --}}
-
-        <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-          <span class="red-text font-weight-bold">
-            <strong>${{link.price}}</strong>
-          </span>
-          <span class="grey-text">
-            <small>
-              <s></s>
-            </small>
-          </span>
-        </h3>
-
-        <div class="font-weight-normal">
-          
-          <p class="ml-xl-0 ml-4"><strong>Descripción: </strong>{{link.description}}</p>          
-          <p class="ml-xl-0 ml-4">
-            <strong>Formato de venta: </strong></p>
-          <p class="ml-xl-0 ml-4">  
-            <strong>Stock: </strong>Disponible</p>
-          </p>          
-          <p class="ml-xl-0 ml-4">
-            <strong>Disponibilidad: </strong></p>
-          <p class="ml-xl-0 ml-4">
-            <strong>Elaboración: </strong><i class="far fa-clock"></i> 20 Minutos </p>
-          
-          <div class="mt-5">
-            <p class="grey-text">Cantidad</p>            
-            <div class="stepper">
-              <!-- Minus button -->
-              <button class="stepper__button"><i class="fas fa-minus"></i></button>
-
-              <!-- Input container -->
-              <div class="stepper__content">
-                  <input type="text" class="stepper__input" />
-              </div>
-
-              <!-- Plus button -->
-              <button class="stepper__button"><i class="fas fa-plus"></i></button>
-            </div>
-            {{#if user}}
-            <div class="row mt-3 mb-4">
-              <div class="col-md-12 text-center text-md-left text-md-right">
-                <button class="btn btn-primary btn-rounded">
-                  <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
-              </div>
-            </div>
-            {{else}}
-            <div class="row mt-3 mb-4">
-              <div class="col-md-12 text-center text-md-left text-md-right">
-                <button disabled class="btn btn-primary btn-rounded">
-                  <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
-              </div>
-            </div>
-            {{/if}}
-          </div>
-
-        </div>
-
       </div>
     </div>
-
-  </section>
-  <!--Section: Content-->
-
+    
+  </div>
 
 </div>

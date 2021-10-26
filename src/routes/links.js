@@ -101,9 +101,20 @@ router.post('/quitCart', isLoggedIn, async (req, res)=>{
     res.json('success');
 });
 
+// checkout
+router.get('/checkout', isLoggedIn, async (req, res)=>{
+    res.render('links/checkout');
+});
+router.get('/checkout/notes', isLoggedIn, async (req, res)=>{
+    res.render('links/notes');
+});
+router.get('/checkout/payment', isLoggedIn, async (req, res)=>{
+    res.render('links/payment');
+});
+
 //get items from cart user
 router.get('/cart', isLoggedIn, async(req, res) =>{
-    const product = await pool.query("SELECT * FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);        
+    const product = await pool.query("SELECT * FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);            
     res.render('links/cart',{product});   
 })
 
@@ -126,17 +137,22 @@ router.post('/search', async(req, res)=>{
 // view shop
 router.get('/shops/:id', async (req, res) => {
     const { id } = req.params;
-    const productos = await pool.query('SELECT * FROM links WHERE user_id = ?', [id]);
-    const nombre = await pool.query('SELECT social_reason FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
+    const nombre = await pool.query('SELECT * FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
     const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
-    console.log(nombre);
-    console.log(direccion);
-    console.log(productos);
-
-    res.render('links/shops',{productos, tienda:nombre[0],ubi: direccion[0]});
+    const categories = await pool.query('SELECT * FROM categories where user_id = ?', [id]);
+    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ORDER by category', [id]);
+    res.render('links/shops',{categories, productos, tienda:nombre[0], ubi: direccion[0]});
 });
 
+// all shops
+router.get('/companies', async (req, res) => {
+    const companies = await pool.query('SELECT * FROM companys where active = 1 ORDER by sponsored desc');
+    res.render('links/allshops',{companies});
+});
+
+
 router.get('/info/:id', async (req, res) => {    
+    
     res.render('links/compInfo');
 });
 
@@ -197,9 +213,9 @@ router.get('/dashboard',isLoggedIn, async (req, res) =>{
 // function count items cart
 router.post('/inicio',isLoggedIn, async (req, res) =>{
     const cart = await pool.query('SELECT count(*) FROM users_cart WHERE user_id = ?',[req.user.id]);        
-    res.json(cart);
-    
+    res.json(cart);    
 });
+
 
 // purchases
 router.get('/purchases',isLoggedIn, async (req, res) =>{    

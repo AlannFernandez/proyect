@@ -8,7 +8,9 @@
         <div class="user-view">      
         <a href="#user"><img class="circle img-home" src="https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?fit=300%2C300" alt="usuario foto"> </a>
         <a href="#name"><span class="black-text name">{{user.name}}</span></a>
-        <a href="#adress"><span class="black-text adress">Direccion</span></a>
+        {{#if dir}}
+        <a href="#adress"><span class="black-text adress">direccion del usuario</span></a>
+        {{/if}}
         </div>
     </li>
 

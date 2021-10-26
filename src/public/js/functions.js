@@ -6,21 +6,18 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 $(document).ready(function(){
+  // ejecutar el sidenav para dispostivos mobiles
   $('.sidenav').sidenav();
-});
 
-$( document ).ready(function(){
-  
+  // envia un evento post para comprobar si el usuario tiene productos en el carrito
   const URI ='/links/inicio';
   $.ajax({
     url: URI,
     method: 'POST',
     data: {
     },
-    success: function(res) { 
-      console.log(res);
-      if(res.length>0){
-        console.log(res);        
+    success: function(res) {       
+      if(res.length>0){               
         let bdcart = document.querySelector('#badge-cart');
         bdcart.style.display = "block";        
       }
@@ -28,7 +25,10 @@ $( document ).ready(function(){
     error: function (err) {
       console.log(err);
     }
-});
+  });
+
+  
+  
 });
 // -----------------------  validations forms -------------------------
 
@@ -216,10 +216,7 @@ const bntCart = document.getElementById(id);
 
 
 
-// MDB Lightbox Init
-$(function () {
-  $("#mdb-lightbox-ui").load("mdb-addons/mdb-lightbox-ui.html");
-});
+
 
 
 // datatable
@@ -240,23 +237,6 @@ window.addEventListener('DOMContentLoaded', event => {
 });
  
 
-window.addEventListener('DOMContentLoaded', event => {
-
-  // Toggle the side navigation
-  const sidebarToggle = document.body.querySelector('#sidebarToggle');
-  if (sidebarToggle) {
-      // Uncomment Below to persist sidebar toggle between refreshes
-      // if (localStorage.getItem('sb|sidebar-toggle') === 'true') {
-      //     document.body.classList.toggle('sb-sidenav-toggled');
-      // }
-      sidebarToggle.addEventListener('click', event => {
-          event.preventDefault();
-          document.body.classList.toggle('sb-sidenav-toggled');
-          localStorage.setItem('sb|sidebar-toggle', document.body.classList.contains('sb-sidenav-toggled'));
-      });
-  }
-
-});
 
 
 // area chart
