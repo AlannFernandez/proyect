@@ -1,8 +1,8 @@
 const cacheName = 'meraki';
 const staticAssets = [  
-  'src/public/css/nav.css', 
-  'src/public/js/functions.js', 
-  'src/public/img/logo.png'  
+  '../css/nav.css', 
+  'functions.js', 
+  '../img/logo.png'  
 ];
 
 self.addEventListener('install', async e => {
