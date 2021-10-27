@@ -1,10 +1,13 @@
 {
-    "name": "Meraki ",
-    "short_name":"Meraki",
-    "start_url": ".",
-    "display": "standalone",
-    "background_color":"#FFF",
-    "description":"Meraki",
+  "name": "Meraki",
+  "short_name": "Meraki",
+  "start_url": "./index",
+  "display": "standalone",
+  "background_color": "#fff",
+  "theme_color": "#fff",
+  "orientation": "portrait",
+  "description": "Aplicación para pedidos de comidas online",
+  "lang": "es-MX",
     "icons": [
         {
           "src": "android/android-launchericon-512-512.png",

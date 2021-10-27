@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
@@ -29,6 +31,7 @@ const storage = multer.diskStorage({
 const { database } = require('./keys');
 const { getFips } = require('crypto');
 const { ExpressHandlebars } = require('express-handlebars');
+const { request } = require('express');
 
 
 

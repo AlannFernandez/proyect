@@ -379,7 +379,7 @@ body{
 /* carrito con productos */
 
 .fzpPye {
-  background-color: white;
+
   height: 274px;
   transition: height 0.3s ease 0s;
   overflow: auto;
@@ -391,7 +391,7 @@ body{
   box-shadow: rgb(230 235 241) 0px 1px 0px 0px;
   background-color: rgb(255, 255, 255);
   width: 100%;
-  margin: 0px 0px 1px;
+  margin: 3px 0px 1px;
 }
 .bhHMOU {
   align-self: start;
@@ -730,12 +730,30 @@ body{
 /* seccion shops */
 
 /* header shops */
+.kgIKhH {
+  display: flex;
+  margin: 12px 16px;
+  border-radius: 6px;
+  background: rgb(255, 255, 255);
+  box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+  padding: 0px;
+  flex-direction: column;
+}
+.iBZBqC {
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  color: rgb(16, 4, 35);
+  background: rgb(250, 243, 162);
+  padding: 4px;
+  border-radius: 6px 6px 0px 0px;
+  text-transform: uppercase;
+}
 .eYOlte {
   position: relative;
 }
 .dnEywU {
-  border-radius: 24px 24px 0px 0px;
-  background-color: rgb(255, 255, 255);
+  border-radius: 24px 24px 0px 0px;  
 }
 .hOxaVc {
   padding: 16px 16px 0px;

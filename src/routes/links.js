@@ -5,6 +5,7 @@ const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 const io = require('socket.io');
 
+const webpush = require('../webpush');
 
 const path = require('path');
 const multer = require('multer');
@@ -29,6 +30,23 @@ function deleteFile(rout){
 };
  
                                                         // routes
+let pushSubscription;
+
+// test notificaciones
+router.post("/pedido", async (req, res) => {
+    pushSubscription = req.body;
+    res.status(200).json();
+    const payload= JSON.stringify({
+        title:"notificación",
+        message:"hello world"
+    });
+    try{
+        await webpush.sendNotification(pushSubscription, payload);
+    }catch(error){
+        console.log(error);
+    }
+})
+
 
 // add product
 router.get('/add', isLoggedIn, (req, res) => {
@@ -78,7 +96,9 @@ router.post('/address', async (req, res) => {
     req.flash('success', 'Dirección agregada exitosamente');
     res.redirect('/profile');
 });
-
+router.get('/forms',  async (req, res)=>{
+    res.render('links/forms');
+});
 
 // add item at cart user
 router.post('/addCart', isLoggedIn, async(req, res) => {
