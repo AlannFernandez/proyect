@@ -1,5 +1,4 @@
-{
-    comprador
+comprador
 
 (create_ad 29/10/2021)
 {
@@ -20,5 +19,4 @@ vendedor
     "password": "qatest5366",
     "site_status": "active",
     "email": "test_user_58816188@testuser.com"
-}
 }

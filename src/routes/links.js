@@ -4,7 +4,7 @@ const router = express.Router();
 const pool = require('../database');
 const { isLoggedIn } = require('../lib/auth');
 const io = require('socket.io');
-
+const mercadopago = require ('mercadopago');
 const webpush = require('../webpush');
 
 const path = require('path');
@@ -131,6 +131,42 @@ router.get('/checkout/notes', isLoggedIn, async (req, res)=>{
 router.get('/checkout/payment', isLoggedIn, async (req, res)=>{
     res.render('links/payment');
 });
+// configuracion de mercado pago
+
+// Agrega credenciales
+mercadopago.configure({
+    access_token: 'APP_USR-4037073938063396-102918-9548b26cf609d150c11074cae50e2554-1009171182'
+});
+
+router.post('/checkout', (req, res) => {
+    // Crea un objeto de preferencia
+    
+    let preference = {
+        
+        items: [
+          {
+            title:"item de prueba",
+            unit_price: 200,
+            quantity: 1,
+          }
+        ],
+        redirect_urls: { 
+          failure: '', 
+          pending: '', 
+          success: '' 
+        },
+    };
+      
+    mercadopago.preferences.create(preference)
+      .then(function(response){
+        console.log(response.body);
+        res.redirect(response.body.init_point);
+       
+      }).catch(function(error){
+        console.log(error);
+    });
+});
+
 
 //get items from cart user
 router.get('/cart', isLoggedIn, async(req, res) =>{
@@ -268,7 +304,7 @@ res.render('links/sell');
 });
 
 
-router.post('/pay',isLoggedIn, async (req, res) =>{
-    console.log("se hizo una compra");
-});
+
+
+
 module.exports = router;
