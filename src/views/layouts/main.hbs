@@ -20,20 +20,19 @@
   <link rel="stylesheet" href="/css/styles.css">
   <link rel="stylesheet" href="/css/table.css">
   
-  {{!-- MDBOOTSTRAP --}}
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
-  <link rel="stylesheet" href="/mdbootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="/mdbootstrap/css/mdb.min.css">
   
   {{!-- dashboard --}}
   <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
   {{!-- materialize --}}
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-{{!-- flaticon --}}
+  {{!-- flaticon --}}
   <link rel='stylesheet' href='https://cdn-uicons.flaticon.com/uicons-regular-straight/css/uicons-regular-straight.css'>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+  {{!-- leaflet  --}}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
 </head>
 
 <body>
@@ -53,11 +52,7 @@
   <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
   {{!-- TOASTR --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
-  {{!-- SCRIPTS MDBOOTSTRAP --}}
-  <script type="text/javascript" src="/mdbootstrap/js/jquery.min.js"></script>
-  <script type="text/javascript" src="/mdbootstrap/js/popper.min.js"></script>
-  <script type="text/javascript" src="/mdbootstrap/js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="/mdbootstrap/js/mdb.min.js"></script>
+ 
   {{!-- materialize --}}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   {{!-- dashboard --}}
@@ -65,6 +60,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
   <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>  
   <script src="https://cdn.lordicon.com/libs/mssddfmo/lord-icon-2.1.0.js"></script>
-  <script src="/js/functions.js"></script>
+  {{!-- leaftlet --}}
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+   {{!--  --}}
+   <script src="/js/functions.js"></script>
 </body>
 </html>

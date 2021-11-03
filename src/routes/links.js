@@ -159,9 +159,10 @@ router.get('/shops/:id', async (req, res) => {
     const { id } = req.params;
     const nombre = await pool.query('SELECT * FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
     const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
-    const categories = await pool.query('SELECT * FROM categories where user_id = ?', [id]);
+    
     const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ORDER by category', [id]);
-    res.render('links/shops',{categories, productos, tienda:nombre[0], ubi: direccion[0]});
+    
+    res.render('links/shops',{ productos, tienda:nombre[0], ubi: direccion[0]});
 });
 
 // all shops
@@ -174,6 +175,10 @@ router.get('/companies', async (req, res) => {
 router.get('/info/:id', async (req, res) => {    
     
     res.render('links/compInfo');
+});
+router.get('/mapa', async (req, res) => {    
+    
+    res.render('links/map');
 });
 
 //view products 

@@ -1,3 +1,9 @@
+document.addEventListener('DOMContentLoaded', function() {
+  var elems = document.querySelectorAll('.sidenav');
+  var instances = M.Sidenav.init(elems);
+});
+
+
 const PUBLIC_VAPID_KEY = 'BM4IVJoZisF0FAc_Bx0VDnRvCgRifTTmY-3asAvfWUHTmG5l2pr14HTI6Y2B7MSX_BnOWPNuVWX8sX0jJG8ijKE';
 
 
@@ -43,6 +49,9 @@ function urlBase64ToUint8Array(base64String) {
   return outputArray;
 }
 
+
+
+
 const form = document.querySelector('#myform');
 const message = document.querySelector('#message');
 form.addEventListener('submit', (e) => {
@@ -62,11 +71,6 @@ if ("serviceWorker" in navigator) {
   subscription().catch(err => console.log(err));
 }
 
-
-document.addEventListener('DOMContentLoaded', function() {
-  var elems = document.querySelectorAll('.sidenav');
-  var instances = M.Sidenav.init(elems);
-});
 
 $(document).ready(function(){
   // ejecutar el sidenav para dispostivos mobiles
@@ -207,8 +211,8 @@ const bntCart = document.getElementById(id);
     return;
   }else{
     let product_id=id;
-  const URI = '/links/quitCart';
-  $.ajax({
+    const URI = '/links/quitCart';
+    $.ajax({
       url: URI,
       method: 'POST',
       data: {
