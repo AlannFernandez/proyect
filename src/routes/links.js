@@ -114,22 +114,34 @@ router.post('/addCart', isLoggedIn, async(req, res) => {
 
 // delete item from cart
 router.post('/quitCart', isLoggedIn, async (req, res)=>{
-    const {product_id} = req.body;
-    
-    console.log(product_id, req.user.id);
+    const {product_id} = req.body;    
     await pool.query('DELETE FROM users_cart WHERE user_id = ? AND product_id = ?',[req.user.id, product_id]);
     res.json('success');
 });
 
 // checkout
 router.get('/checkout', isLoggedIn, async (req, res)=>{
-    res.render('links/checkout');
+    const id_compra= uuidv4();
+    console.log(id_compra)
+    const userDir = await pool.query("SELECT * FROM addresses  WHERE user_id = ?",[req.user.id]);     
+    res.render('links/checkout',{direccion:userDir[0]});
 });
 router.get('/checkout/notes', isLoggedIn, async (req, res)=>{
     res.render('links/notes');
 });
+router.post('/notes', isLoggedIn, async (req, res)=>{    
+    const {notes}= req.body;
+    
+    res.redirect('/links/checkout');
+});
+
 router.get('/checkout/payment', isLoggedIn, async (req, res)=>{
     res.render('links/payment');
+});
+router.post('/method_payment', isLoggedIn, async (req, res)=>{
+    const{method_payment} = req.body;
+
+    res.redirect('/links/checkout');
 });
 // configuracion de mercado pago
 
@@ -140,7 +152,7 @@ mercadopago.configure({
 
 router.post('/checkout', (req, res) => {
     // Crea un objeto de preferencia
-    
+    console.log(req.body);
     let preference = {
         
         items: [
@@ -149,12 +161,7 @@ router.post('/checkout', (req, res) => {
             unit_price: 200,
             quantity: 1,
           }
-        ],
-        redirect_urls: { 
-          failure: '', 
-          pending: '', 
-          success: '' 
-        },
+        ]
     };
       
     mercadopago.preferences.create(preference)
@@ -171,6 +178,7 @@ router.post('/checkout', (req, res) => {
 //get items from cart user
 router.get('/cart', isLoggedIn, async(req, res) =>{
     const product = await pool.query("SELECT * FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);            
+    console.log(product)
     res.render('links/cart',{product});   
 })
 
@@ -196,8 +204,7 @@ router.get('/shops/:id', async (req, res) => {
     const nombre = await pool.query('SELECT * FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
     const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
     
-    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ORDER by category', [id]);
-    
+    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ORDER by category', [id]);    
     res.render('links/shops',{ productos, tienda:nombre[0], ubi: direccion[0]});
 });
 

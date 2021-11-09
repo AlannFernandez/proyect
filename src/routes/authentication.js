@@ -20,6 +20,9 @@ router.post('/company', passport.authenticate('local.company', {
 router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
+router.get('/ingreso', (req, res) => {
+  res.render('auth/ingr eso');
+});
 
 router.post('/signup', passport.authenticate('local.signup', {
   successRedirect: '/profile',

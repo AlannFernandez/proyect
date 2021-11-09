@@ -20,3 +20,9 @@ vendedor
     "site_status": "active",
     "email": "test_user_58816188@testuser.com"
 }
+
+tarjeta prueba
+Visa	
+4075 5957 1648 3764	
+123	
+11/25

@@ -96,20 +96,20 @@
               <div class="sc-1pnv15w-0 YwRaS">
               </div>
             </div>
-
+            
             <div>
               <div class="sc-5gm38m-0 jdWDGL one-click-element">
-                
+                {{#if discount}}
                 <div class="sc-1gtngjx-0 fTsiLt" >
-                  
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16"><path d="M7 7V3c0-1.333 2-1.333 2 0v4h4a1 1 0 010 2H9v4c0 1.333-2 1.333-2 0V9H3a1 1 0 010-2h4z"></path>
-                  </svg>
-                
+                  <div class="DiscountInfo-sc-1pv6v3q jYLMiH">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#007aff" fill-rule="evenodd" d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-11.757-.757c-.781.78-2.048.78-2.829 0a2.003 2.003 0 010-2.829 2.003 2.003 0 012.829 0c.78.781.78 2.048 0 2.829zm-.707-.707c-.391.39-1.024.39-1.415 0a1.002 1.002 0 010-1.415c.39-.39 1.024-.39 1.415 0 .39.39.39 1.024 0 1.415zm5.656 5.656a2 2 0 11-2.828-2.828 2 2 0 012.828 2.828zm-.707-.707a1 1 0 11-1.414-1.416 1 1 0 011.414 1.416zm.354-7.424a.5.5 0 01.707.707l-7.778 7.778a.5.5 0 01-.707-.707l7.778-7.778z" clip-rule="evenodd"></path></svg>
+                    <span color="secondary4100" data-testid="typography" class="sc-bdVaJa fkiyoO DiscountValue-sc-c3ix1r eOBnGw">-{{discount}}%</span>                  
+                  </div>
                 </div>
-
+                {{/if}}
               </div>
             </div>
-          
+            
             <div class="sc-11j7acj-0 egWzFC">
                 <div>
                     <div class="sc-1yeh8k-0 gmmKyp">
@@ -121,17 +121,26 @@
                 <span class="sc-1qr090j-0 eiPaRy">
 
                   <div id="price" class="oel5gd-0 fRdyRp">
-
+                  {{#if discount}}
+                   
+                  <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">${{price}}</span>
+                    
+                  <span color="graya100" data-testid="typography" class="sc-bdVaJa exHXJW ProductValue-sc-hf5t3s ProductRealValue-sc-6uts84 cVIMBu">${{price}},00</span>
+                  {{else}}
                     <span class="sc-68i9x5-0 ekcLNF">
                       <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">
                         ${{price}}
                       </span>
                     </span>
-
+                  {{/if}}  
                   </div>
 
                 </span>
             </div>
+            
+            <button class="white-text bttnapc" value="add" id="{{id}}" onclick="add(this.id);">
+              Añadir<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#fff"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none"/><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>
+            </button>
           </div>
           {{/each}}
           <div class="sc-15krnmr-0 bVtfTt"></div>

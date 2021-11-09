@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
+
 const PUBLIC_VAPID_KEY = 'BM4IVJoZisF0FAc_Bx0VDnRvCgRifTTmY-3asAvfWUHTmG5l2pr14HTI6Y2B7MSX_BnOWPNuVWX8sX0jJG8ijKE';
 
 
@@ -76,6 +77,9 @@ $(document).ready(function(){
   // ejecutar el sidenav para dispostivos mobiles
   $('.sidenav').sidenav();
 
+  $('input#input_text, textarea#textarea2').characterCounter();
+ 
+
   // envia un evento post para comprobar si el usuario tiene productos en el carrito
   const URI ='/links/inicio';
   $.ajax({
@@ -97,6 +101,88 @@ $(document).ready(function(){
   
   
 });
+
+function countChars(obj){
+  var maxLength = 120;
+  var strLength = obj.value.length;
+  var charRemain = (maxLength - strLength);
+  
+  if(charRemain < 0){
+      document.getElementById("charNum").innerHTML = '<span style="color: red;">Excediste los '+maxLength+' caracteres permitidos</span>';
+      document.getElementById("checkout__notes__continue").disabled = true;
+  }else{
+      document.getElementById("charNum").innerHTML = charRemain+' caracteres disponibles';
+      document.getElementById("checkout__notes__continue").disabled = false;
+  }
+}
+
+// select category
+function category(id) {
+  if(id=="restaurante"){
+    document.getElementById('img-restautante').classList.add('jMHddQ')
+    
+    const URI ='/';
+    let category=id;
+    $.ajax({
+      url: URI,
+      method: 'POST',
+      data: {
+        category
+      },
+      success: function(res) {    
+        if(res){
+        $('#cont-comp').hide();   
+         console.log(res)
+         console.log(res[0])
+         console.log(res[0].social_reason)
+         console.log(res.social_reason)
+         for (x of res) {
+          console.log(x.social_reason);
+         
+        }
+        }
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+  }
+  if(id=="kiosco"){
+    document.getElementById('img-restautante').classList.add('jMHddQ')
+    
+    const URI ='/';
+    let category=id;
+    $.ajax({
+      url: URI,
+      method: 'POST',
+      data: {
+        category
+      },
+      success: function(res) {       
+        if(res){
+          $('#cont-comp').hide();    
+        const cant = res.length;
+        if(cant>0){
+          $('#busqueda').html("mostrar los locales con categoria "+category);
+        }else{
+          $('#busqueda').html("no hay locales con categoria "+category);
+        }
+        }else{
+          alert("no hay locales")
+        }
+        
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    });
+  }
+  
+  
+  
+  
+}
+
 // -----------------------  validations forms -------------------------
 
 // form signUp
@@ -178,13 +264,13 @@ const bntCart = document.getElementById(id);
         },
         success: function(res) {       
           if(res){
-            toastr["success"]("Producto agregado al carrito", "EXITO")
+            toastr["success"]("añadido al carrito", "Hecho")
             toastr.options = {
-              "closeButton": true,
+              "closeButton": false,
               "debug": false,
               "newestOnTop": false,
               "progressBar": false,
-              "positionClass": "toast-bottom-right",
+              "positionClass": "toast-top-left",
               "preventDuplicates": false,
               "onclick": null,
               "showDuration": "300",
@@ -203,10 +289,10 @@ const bntCart = document.getElementById(id);
           console.log(err);
           toastr["error"]("Al parecer ha ocurrido un error", "Ups");
         }
-    });
-    bntCart.classList.remove('btn-primary');
-    bntCart.classList.add('btn-grey');
-    bntCart.innerHTML ='<i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Quitar del carrito';
+    });   
+    bntCart.classList.remove('bttnapc');
+    bntCart.classList.add('bttnqpc'); 
+    bntCart.innerHTML ='Quitar<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 0 24 24" width="24px" fill="#fff"><path d="M0 0h24v24H0z" fill="none"/><path d="M22.73 22.73L2.77 2.77 2 2l-.73-.73L0 2.54l4.39 4.39 2.21 4.66-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h7.46l1.38 1.38c-.5.36-.83.95-.83 1.62 0 1.1.89 2 1.99 2 .67 0 1.26-.33 1.62-.84L21.46 24l1.27-1.27zM7.42 15c-.14 0-.25-.11-.25-.25l.03-.12.9-1.63h2.36l2 2H7.42zm8.13-2c.75 0 1.41-.41 1.75-1.03l3.58-6.49c.08-.14.12-.31.12-.48 0-.55-.45-1-1-1H6.54l9.01 9zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2z"/></svg>'
     bntCart.value = "quit";    
     return;
   }else{
@@ -220,37 +306,79 @@ const bntCart = document.getElementById(id);
       },
       success: function(res) {
        if(res){
-        toastr["info"]("Producto quitado del carrito", "EXITO")
-
+        toastr["warning"]("eliminado del carrito", "Hecho")
         toastr.options = {
-          "closeButton": true,
+          "closeButton": false,
           "debug": false,
           "newestOnTop": false,
           "progressBar": false,
-          "positionClass": "toast-bottom-right",
+          "positionClass": "toast-top-center",
           "preventDuplicates": false,
           "onclick": null,
-          "showDuration": "300",
+          "showDuration": "100",
           "hideDuration": "1000",
-          "timeOut": "5000",
+          "timeOut": "2000",
           "extendedTimeOut": "1000",
           "showEasing": "swing",
           "hideEasing": "linear",
           "showMethod": "fadeIn",
           "hideMethod": "fadeOut"
         }
-       }
+
+      }
       },
       error: function (err) {
         console.log(err);
       }
     });
-    bntCart.classList.remove('btn-grey');
-    bntCart.classList.add('btn-primary');
-    bntCart.innerHTML ='<i class="fas fa-cart-plus mr-2" aria-hidden="true"></i>Añadir al carrito';
+    bntCart.classList.remove('bttnqpc');
+    bntCart.classList.add('bttnapc');
+    bntCart.innerHTML ='Añadir<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#fff"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none"/><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>';
     bntCart.value = "add";
     return; 
   }
+  
+}
+function quit(id){
+const bntCart = document.getElementById(id);
+const div = document.getElementsByClassName(id);
+  let product_id=id;
+  const URI = '/links/quitCart';
+  $.ajax({
+    url: URI,
+    method: 'POST',
+    data: {
+      product_id
+    },
+    success: function(res) {
+      if(res){
+      toastr["warning"]("eliminado del carrito", "Hecho")
+      toastr.options = {
+        "closeButton": false,
+        "debug": false,
+        "newestOnTop": false,
+        "progressBar": false,
+        "positionClass": "toast-top-center",
+        "preventDuplicates": false,
+        "onclick": null,
+        "showDuration": "100",
+        "hideDuration": "1000",
+        "timeOut": "2000",
+        "extendedTimeOut": "1000",
+        "showEasing": "swing",
+        "hideEasing": "linear",
+        "showMethod": "fadeIn",
+        "hideMethod": "fadeOut"
+      }
+      div.style.display="none";
+    }
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  });
+  return; 
+  
   
 }
 
