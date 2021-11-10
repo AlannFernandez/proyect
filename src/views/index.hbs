@@ -7,56 +7,56 @@
   
   <div id="items_vertical" class="sc-72orc4-2 o77m1p-2 kocZT">
   
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate" id="restaurante" onclick="category(this.id);">
-      <div class="sc-3hi97f-0 dDVVFO">        
-        <img src="/img/icons/restaurant.png" id="img-restautante"class="sc-1ve4mu2-0 jMHddQ">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" category="restaurante" >
+      <div class="sc-3hi97f-0 dDVVFO ">        
+        <img src="/img/icons/restaurant.png" class="sc-1ve4mu2-0 jMHddQ img-bg">
         <div class="tl2hnw-0 eRyRDT">Restaurantes</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate"  id="mercado" onclick="category(this.id);">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item"  category="mercado">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/market.png" id="img-mercado" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Mercados</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate"  id="bebida" onclick="category(this.id);">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item"  id="bebida" category="bebida">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/drinks.png" id="img-bebida" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Bebidas</div>      
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate" id="kiosco" onclick="category(this.id);">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" id="kiosco" category="kiosco">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/kioscs.png" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Kioscos</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" category="helado">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/iceCream.png?quality=100&amp;width=100" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Helados</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" category="farmacia">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/pharmacy.png" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Farmacias</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" category="marketplace">
       <div class="sc-3hi97f-0 dDVVFO">        
         <img src="/img/icons/marketplace.png?quality=100&amp;width=100" class="sc-1ve4mu2-0 bIcVTV">
         <div class="tl2hnw-0 eRyRDT">Marketplace</div>
       </div>
     </div>
 
-    <div class="sc-72orc4-1 o77m1p-1 elnwbj log-cate">
+    <div class="sc-72orc4-1 o77m1p-1 elnwbj category_item" category="mascota">
         <div class="sc-3hi97f-0 dDVVFO">          
           <img src="/img/icons/pet.png?quality=100&amp;width=100" class="sc-1ve4mu2-0 bIcVTV">
           <div class="tl2hnw-0 eRyRDT">Mascotas</div>
@@ -76,7 +76,7 @@
   <div id="cont-comp">
     {{#each companies}}
     
-      <div id="companies">
+      <div class="company-category" category={{category}}>
         <a href="/links/shops/{{id}}">
           <div id="shop_card_result" direction="row" class="sc-1uudfj-0 sc-1oitosp-0 psh1b1-0 kgIKhH">
             <div class="psh1b1-4 cdBZHY">

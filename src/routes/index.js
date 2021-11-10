@@ -9,10 +9,4 @@ router.get('/', async (req, res) => {
 });
 
 
-router.post('/', async(req, res)=>{
-    const {category}=req.body
-    const search = await pool.query('SELECT social_reason FROM companys where active = 1 AND category =? ORDER by sponsored desc ',[category]);        
-    console.log(search)
-    res.json(search);
-})
 module.exports = router;    

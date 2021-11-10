@@ -88,7 +88,11 @@ body{
 .jMHddQ {
   border-radius: 50%;
   width: 50px;
-  border: 1px solid rgb(16, 4, 35);
+  
+}
+.item-active{
+  background-color:red;
+
 }
 .bIcVTV {
   border-radius: 50%;
@@ -274,9 +278,8 @@ body{
 
 .faSoii {
   padding: 20px 16px;
-  background-color: white;
   height: 100%;
-  max-height: 587px;
+  margin-top: 30%;
 }
 .bGxjIj {
   -webkit-box-align: center;
@@ -289,7 +292,7 @@ body{
   height: 80px;
   margin: 0px auto;
   text-align: center;
-  width: 80px;
+  width: 140px;
 }
 
 .brtth {
@@ -305,6 +308,8 @@ body{
   margin-top: 40px;
   max-width: 343px;
   width: 100%;
+  margin-left:auto;
+  margin-right:auto;
 }
 .jqhmHx.wide {
   width: 100%;
@@ -586,8 +591,7 @@ body{
   padding: 12px;
   margin: 12px 16px;
   border-radius: 6px;
-  background: rgb(255, 255, 255);
-  box-shadow: rgb(181 129 108 / 80%) 0px 8px 34px -25px;
+  
 }
 .hRaDoV {
   -webkit-box-flex: 1;
@@ -2338,6 +2342,21 @@ button, input, optgroup, select, textarea {
   display: flex;
   -webkit-box-align: center;
   align-items: center;
+}
+
+/* svg */
+.svg-comp{
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  
+}
+
+/*  */
+.add-add{
+  background-color: #c0baba;
+  border-radius:50%;
 }
 @media only screen and (max-width: 800px) {
   

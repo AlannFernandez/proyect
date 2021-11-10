@@ -1,6 +1,102 @@
 document.addEventListener('DOMContentLoaded', function() {
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems);
+  
+
+
+  $('.category_item[category="restaurante"] .dDVVFO .img-bg').addClass('item-active');
+
+  // select category
+  $('.category_item').click(function(){
+    var catProduct = $(this).attr('category');
+		console.log(catProduct);
+
+    // agreagando borde
+    $('.category_item').removeClass('jMHddQ');
+		$(this).addClass('');
+
+    // OCULTANDO PRODUCTOS =========================
+		$('.company-category').css('transform', 'scale(0)');
+		function hideProduct(){
+			$('.company-category').hide();
+		} setTimeout(hideProduct,400);
+
+    // MOSTRANDO PRODUCTOS =========================
+		function showProduct(){
+			const sc = $('.company-category[category="'+catProduct+'"]').show();
+      if (sc.length<1){      
+        $('#busqueda').html('<p>Ups! al paracer no hay locales disponibles </p>')
+        
+      }else{
+        
+        $('.company-category[category="'+catProduct+'"]').css('transform', 'scale(1)');
+        
+      }
+		} setTimeout(showProduct,400);
+  });
+
+
+  // carrito delete
+  $('.quit-cart').click(function(){
+    var prod = $(this).attr('id');
+		console.log(prod);
+
+    // se envia el id del producto a eliminar y se envia por ajax
+    product_id = prod;
+
+    const URI = '/links/quitCart';
+
+    $.ajax({
+      url: URI,
+      method: 'POST',
+      data: {
+        product_id
+      },
+      success: function(res) {
+        if(res){
+
+          toastr["warning"]("eliminado del carrito", "Hecho")
+          toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "100",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          }
+
+        }
+
+      },
+      error: function(error){
+
+      }
+
+    });
+
+
+    // se oculta la etiqueta del producto
+    $('.'+prod+'').hide();
+  });
+
+  // aumentar cantidad del item
+  $('.plus-cart').click(function (){
+    var prod = $(this).attr('id');
+    console.log("aumentar "+prod )
+    
+  })
+
+
+
 });
 
 
@@ -77,26 +173,9 @@ $(document).ready(function(){
   // ejecutar el sidenav para dispostivos mobiles
   $('.sidenav').sidenav();
 
-  $('input#input_text, textarea#textarea2').characterCounter();
  
 
-  // envia un evento post para comprobar si el usuario tiene productos en el carrito
-  const URI ='/links/inicio';
-  $.ajax({
-    url: URI,
-    method: 'POST',
-    data: {
-    },
-    success: function(res) {       
-      if(res.length>0){               
-        let bdcart = document.querySelector('#badge-cart');
-        bdcart.style.display = "block";        
-      }
-    },
-    error: function (err) {
-      console.log(err);
-    }
-  });
+  
 
   
   
@@ -116,72 +195,7 @@ function countChars(obj){
   }
 }
 
-// select category
-function category(id) {
-  if(id=="restaurante"){
-    document.getElementById('img-restautante').classList.add('jMHddQ')
-    
-    const URI ='/';
-    let category=id;
-    $.ajax({
-      url: URI,
-      method: 'POST',
-      data: {
-        category
-      },
-      success: function(res) {    
-        if(res){
-        $('#cont-comp').hide();   
-         console.log(res)
-         console.log(res[0])
-         console.log(res[0].social_reason)
-         console.log(res.social_reason)
-         for (x of res) {
-          console.log(x.social_reason);
-         
-        }
-        }
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    });
-  }
-  if(id=="kiosco"){
-    document.getElementById('img-restautante').classList.add('jMHddQ')
-    
-    const URI ='/';
-    let category=id;
-    $.ajax({
-      url: URI,
-      method: 'POST',
-      data: {
-        category
-      },
-      success: function(res) {       
-        if(res){
-          $('#cont-comp').hide();    
-        const cant = res.length;
-        if(cant>0){
-          $('#busqueda').html("mostrar los locales con categoria "+category);
-        }else{
-          $('#busqueda').html("no hay locales con categoria "+category);
-        }
-        }else{
-          alert("no hay locales")
-        }
-        
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    });
-  }
-  
-  
-  
-  
-}
+
 
 // -----------------------  validations forms -------------------------
 
@@ -305,27 +319,27 @@ const bntCart = document.getElementById(id);
         product_id
       },
       success: function(res) {
-       if(res){
-        toastr["warning"]("eliminado del carrito", "Hecho")
-        toastr.options = {
-          "closeButton": false,
-          "debug": false,
-          "newestOnTop": false,
-          "progressBar": false,
-          "positionClass": "toast-top-center",
-          "preventDuplicates": false,
-          "onclick": null,
-          "showDuration": "100",
-          "hideDuration": "1000",
-          "timeOut": "2000",
-          "extendedTimeOut": "1000",
-          "showEasing": "swing",
-          "hideEasing": "linear",
-          "showMethod": "fadeIn",
-          "hideMethod": "fadeOut"
-        }
+        if(res){
+          toastr["warning"]("eliminado del carrito", "Hecho")
+          toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-center",
+            "preventDuplicates": false,
+            "onclick": null,
+            "showDuration": "100",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+          }
 
-      }
+        }
       },
       error: function (err) {
         console.log(err);

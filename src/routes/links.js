@@ -115,16 +115,53 @@ router.post('/addCart', isLoggedIn, async(req, res) => {
 // delete item from cart
 router.post('/quitCart', isLoggedIn, async (req, res)=>{
     const {product_id} = req.body;    
-    await pool.query('DELETE FROM users_cart WHERE user_id = ? AND product_id = ?',[req.user.id, product_id]);
+    console.log(product_id)
+    console.log(req.user.id)
+    console.log("se envio una peticion para eliminar ese producto")
+     await pool.query('DELETE FROM users_cart WHERE user_id = ? AND product_id = ?',[req.user.id, product_id]);
     res.json('success');
 });
+
+
+router.post('/compra', isLoggedIn, async (req, res)=>{    
+    console.log(req.body)  
+    console.log("usuario "+req.user.id)
+    const{company}=req.body ;
+    console.log("compania "+ company[0]);
+    const {total}= req.body;
+    console.log("importe "+ total);
+    // const order = {
+    //     user_id,
+    //     cp,
+    //     province,
+    //     locality,
+    //     district,
+    //     street,
+    //     numberST,
+    //     departament,
+    //     street1,
+    //     street2,
+    //     extraReferences,
+    //     address,
+    //     user_id: req.user.id
+    // };    
+    // await pool.query('INSERT INTO addresses set ?', [order]);
+    
+});
+
+
 
 // checkout
 router.get('/checkout', isLoggedIn, async (req, res)=>{
     const id_compra= uuidv4();
     console.log(id_compra)
+
+    console.log(req.body)
     const userDir = await pool.query("SELECT * FROM addresses  WHERE user_id = ?",[req.user.id]);     
-    res.render('links/checkout',{direccion:userDir[0]});
+    const productos = await pool.query('SELECT * FROM users_cart WHERE user_id = ?', [req.user.id])
+    console.log(userDir)
+    console.log(productos)
+     res.render('links/checkout',{direccion:userDir[0]});
 });
 router.get('/checkout/notes', isLoggedIn, async (req, res)=>{
     res.render('links/notes');
@@ -150,7 +187,7 @@ mercadopago.configure({
     access_token: 'APP_USR-4037073938063396-102918-9548b26cf609d150c11074cae50e2554-1009171182'
 });
 
-router.post('/checkout', (req, res) => {
+router.post('/checkout1', (req, res) => {
     // Crea un objeto de preferencia
     console.log(req.body);
     let preference = {
@@ -203,8 +240,8 @@ router.get('/shops/:id', async (req, res) => {
     const { id } = req.params;
     const nombre = await pool.query('SELECT * FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
     const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
-    
-    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ORDER by category', [id]);    
+    const categorias = await pool.query('SELECT * FROM categories_companies WHERE id_company = ?',[id]);
+    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ', [id]);    
     res.render('links/shops',{ productos, tienda:nombre[0], ubi: direccion[0]});
 });
 

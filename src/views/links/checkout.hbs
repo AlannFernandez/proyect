@@ -4,9 +4,8 @@
         <div class="sc-11o6dv8-0 cqVnva">
             <div>
                 <div class="sc-17r3t6i-0 ehQKJn">
-                    <picture>
-                    <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;webp=1&amp;dpi=1.5 1.5x">
-                    <img src="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 bHbZgR ls-is-cached lazyloaded" alt="Wing It! Fried Chicken - Microcentro" data-src="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50, https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50, https://images.deliveryhero.io/image/pedidosya/restaurants/wing-it-centro.jpg?quality=90&amp;width=50&amp;dpi=1.5 1.5x">
+                    <picture>                    
+                    <img src="/img/logo.png" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy lazyloaded" >
                     </picture>
                     <div class="wpgov5-0 kbnKVd">
                         <label class="sc-19lpo4o-0 hUFbBn">Wing It! Fried Chicken - Microcentro</label>
@@ -25,7 +24,11 @@
                 <div class="efbtbj-0 hTWpRO">
                     <div class="subtotal checkout format">
                         <span class="left">Subtotal</span>
-                        <span class="teqjqu-0 kTsFWn right">$249</span>
+                        {{#if total}}
+                        <span class="teqjqu-0 kTsFWn right">${{total}}</span>
+                        {{else}}
+                            no hay precio
+                        {{/if}}
                     </div>
                 </div>
                 <div class="efbtbj-0 hTWpRO">
