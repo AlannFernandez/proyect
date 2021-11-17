@@ -130,22 +130,6 @@ router.post('/compra', isLoggedIn, async (req, res)=>{
     console.log("compania "+ company[0]);
     const {total}= req.body;
     console.log("importe "+ total);
-    // const order = {
-    //     user_id,
-    //     cp,
-    //     province,
-    //     locality,
-    //     district,
-    //     street,
-    //     numberST,
-    //     departament,
-    //     street1,
-    //     street2,
-    //     extraReferences,
-    //     address,
-    //     user_id: req.user.id
-    // };    
-    // await pool.query('INSERT INTO addresses set ?', [order]);
     
 });
 
@@ -215,7 +199,7 @@ router.post('/checkout1', (req, res) => {
 //get items from cart user
 router.get('/cart', isLoggedIn, async(req, res) =>{
     const product = await pool.query("SELECT * FROM links INNER JOIN users_cart  ON links.id = users_cart.product_id  WHERE users_cart.user_id = ?",[req.user.id]);            
-    console.log(product)
+    console.log(product)    
     res.render('links/cart',{product});   
 })
 

@@ -21,7 +21,11 @@ router.get('/signup', (req, res) => {
   res.render('auth/signup');
 });
 router.get('/ingreso', (req, res) => {
-  res.render('auth/ingr eso');
+  res.render('auth/ingreso');
+});
+
+router.get('/ingreso', isLoggedIn, async (req, res)=>{
+  console.log("ya está logeado")
 });
 
 router.post('/signup', passport.authenticate('local.signup', {

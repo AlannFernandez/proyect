@@ -1,11 +1,16 @@
+
 document.addEventListener('DOMContentLoaded', function() {
+  $('.preloader').fadeOut('slow');
+  
+
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems);
   
 
 
   $('.category_item[category="restaurante"] .dDVVFO .img-bg').addClass('item-active');
-
+  $('.company-category').hide();
+  $('.company-category[category="restaurante"]').show();
   // select category
   $('.category_item').click(function(){
     var catProduct = $(this).attr('category');
@@ -95,10 +100,27 @@ document.addEventListener('DOMContentLoaded', function() {
     
   })
 
+  $('.add-add').click(function(){
+    console.log("ingresar codigo para geolocalizacíon")
+  })
+  $('.add-add1').click(function(){
+    $(location).attr('href','/links/address');
+  })
 
 
 });
 
+const sign_in_btn = document.querySelector("#sign-in-btn");
+const sign_up_btn = document.querySelector("#sign-up-btn");
+const container = document.querySelector(".container-auth");
+
+sign_up_btn.addEventListener("click", () => {
+  container.classList.add("sign-up-mode");
+});
+
+sign_in_btn.addEventListener("click", () => {
+  container.classList.remove("sign-up-mode");
+});
 
 
 const PUBLIC_VAPID_KEY = 'BM4IVJoZisF0FAc_Bx0VDnRvCgRifTTmY-3asAvfWUHTmG5l2pr14HTI6Y2B7MSX_BnOWPNuVWX8sX0jJG8ijKE';
