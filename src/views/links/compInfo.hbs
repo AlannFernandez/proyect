@@ -1,119 +1,139 @@
-<div class="sc-19snn6r-0 fGcLfo">
-    <div class="hezu9a-0 fiUpIz">
-       
-        <div class="flex-x9ump0-0 bfPZDC">
-            <div class="sc-1y514d4-0 erVudH">
-                <div class="sc-54vgxs-0 eCPgON">
-                    <picture>
-                        <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1&amp;dpi=1.5 1.5x">
-                        <img src="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy lazyloaded" alt="Grido Congelados - 3920 - Bahia Blanca Vii" data-src="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;dpi=1.5 1.5x">
-                    </picture>
+{{#if shop}}
+    <div class="sc-19snn6r-0 fGcLfo">
+        <div class="hezu9a-0 fiUpIz">
+        <style>
+            #map { height: 180px; }
+        </style>
+        {{#if direccion}}
+        <div id="map"></div>  
+        <input type="hidden" id="lat" name="lat" value="{{direccion.lat}}">  
+        <input type="hidden" id="lng" name="lng" value="{{direccion.lng}}"> 
+        {{/if}} 
+            <div class="flex-x9ump0-0 bfPZDC">
+                <div class="sc-1y514d4-0 erVudH">
+                    <div class="sc-54vgxs-0 eCPgON">
+                        <picture>
+                            <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;webp=1&amp;dpi=1.5 1.5x">
+                            <img src="" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy lazyloaded" alt="Grido Congelados - 3920 - Bahia Blanca Vii" data-src="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100" data-srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100, https://images.deliveryhero.io/image/pedidosya/restaurants/grido-frizzio-logo-01.jpg?quality=70&amp;width=100&amp;dpi=1.5 1.5x">
+                        </picture>
+                    </div>
+                    
                 </div>
                 
+                <div class="sc-1y514d4-1 kwJDEZ">
+                    <div class="sc-1y514d4-3 bAuKIP">
+                        <div class="qmfz43-1 fhaIlN qmfz43-2 brOIjD">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="#b8b4bc" viewBox="0 0 16 16" style="margin: 4px 2px 4px 0px;"><path d="M5.483 5.186l-4.028.331-.117.016C.499 5.693.192 6.779.874 7.349l3.033 2.534-.909 3.756-.02.11c-.115.836.795 1.473 1.552 1.031L8 12.758l3.47 2.022.1.052c.769.349 1.639-.34 1.433-1.193l-.91-3.756 3.035-2.534.086-.081c.593-.614.218-1.679-.668-1.751l-4.03-.331-1.565-3.565c-.363-.828-1.538-.828-1.901 0L5.483 5.186z"></path>
+                            </svg>
+                            <span color="#b8b4bc" class="sc-1ox3klc-0 qmfz43-0 ylFmY qmfz43-2 brOIjD">{{shop.points}}</span>
+                        </div>
+                        {{shop.social_reason}}
+                    </div>
+                    
+                    {{#if shop.makes_delivery}}
+                        <div class="sc-1y514d4-2 iYwMfS">
+                            <div class="sc-1w30n3a-0 bcAqGh">
+                                <span class="u8k7hw-0 cXmYVx sc-1b3trtr-0 fWEsjc">Entre 30' y 45'</span>
+                                <span class="sc-1w30n3a-1 bIXfAm">·</span>
+                                <span>${{shop.price_delivery}}</span>
+                            </div>
+                        </div>
+                        {{else}}
+                        <div class="sc-1y514d4-2 iYwMfS">
+                            <div class="sc-1w30n3a-0 bcAqGh">
+                                <span class="u8k7hw-0 cXmYVx sc-1b3trtr-0 fWEsjc">Entre 30' y 45'</span>
+                                <span class="sc-1w30n3a-1 bIXfAm">·</span>
+                                <span>envios Meraki</span>
+                            </div>
+                        </div>
+                    {{/if}}
+
+                </div>
+
             </div>
             
-            <div class="sc-1y514d4-1 kwJDEZ">
-                <div class="sc-1y514d4-3 bAuKIP">
-                    <div class="qmfz43-1 fhaIlN qmfz43-2 brOIjD">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" fill="#b8b4bc" viewBox="0 0 16 16" style="margin: 4px 2px 4px 0px;"><path d="M5.483 5.186l-4.028.331-.117.016C.499 5.693.192 6.779.874 7.349l3.033 2.534-.909 3.756-.02.11c-.115.836.795 1.473 1.552 1.031L8 12.758l3.47 2.022.1.052c.769.349 1.639-.34 1.433-1.193l-.91-3.756 3.035-2.534.086-.081c.593-.614.218-1.679-.668-1.751l-4.03-.331-1.565-3.565c-.363-.828-1.538-.828-1.901 0L5.483 5.186z"></path>
-                        </svg>
-                        <span color="#b8b4bc" class="sc-1ox3klc-0 qmfz43-0 ylFmY qmfz43-2 brOIjD">0.0</span>
+            <div class="o7mkbd-1 fNLzPV">
+                <div class="sc-5f2boq-0 hfNHml">Formas de pago</div>
+                <div class="flex-x9ump0-0 o7mkbd-0 gkQoZS">
+                    {{#if shop.online_payments}}
+                    <div class="sc-11u87x6-0 cvKhiP">Online</div>
+            
+                    <div class="flex-x9ump0-0 sc-1fkkeug-0 dTNBTI">
+                        <img src="/img/methods/texto.jfif" class="basr2n-0 dKcZDH">
                     </div>
-
+                    {{/if}}
+                    <div class="sc-11u87x6-0 cvKhiP">En la entrega</div>
+                        <img src="/img/methods/efectivo.png" class="basr2n-0 dKcZDH">
+                    </div>
                 </div>
                 
-                <div class="sc-1y514d4-2 iYwMfS">
-                    <div class="sc-1w30n3a-0 bcAqGh">
-                        <span class="u8k7hw-0 cXmYVx sc-1b3trtr-0 fWEsjc">Entre 30' y 45'</span>
-                        <span class="sc-1w30n3a-1 bIXfAm">·</span>
-                        <span>Envío gratis</span>
+            <div class="aqbanh-0 eMxKbt">
+                <div class="sc-5f2boq-0 hfNHml">Horarios</div>
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Domingo</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
                     </div>
                 </div>
-
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Lunes</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Martes</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Miércoles</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Jueves</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="aqbanh-2 daodpM">
+                    <div class="day_name">Viernes</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="aqbanh-2 daodpM selected_day">
+                    <div class="day_name">Sábado</div>
+                    <div class="aqbanh-1 hzQxMy">
+                        <span class="shift first">
+                            <span>12:00 a 23:30 hs</span>
+                        </span>
+                    </div>
+                </div>
             </div>
 
         </div>
-        
-        <div class="o7mkbd-1 fNLzPV">
-            <div class="sc-5f2boq-0 hfNHml">Formas de pago</div>
-            <div class="flex-x9ump0-0 o7mkbd-0 gkQoZS">
-                <div class="sc-11u87x6-0 cvKhiP">Online</div>
-        
-                <div class="flex-x9ump0-0 sc-1fkkeug-0 dTNBTI">
-                    <img src="/img/methods/texto.jfif" class="basr2n-0 dKcZDH">
-                </div>
-        
-                <div class="sc-11u87x6-0 cvKhiP">En la entrega</div>
-                    <img src="/img/methods/efectivo.png" class="basr2n-0 dKcZDH">
-                </div>
-            </div>
-            
-        <div class="aqbanh-0 eMxKbt">
-            <div class="sc-5f2boq-0 hfNHml">Horarios</div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Domingo</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Lunes</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Martes</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Miércoles</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Jueves</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM">
-                <div class="day_name">Viernes</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-            
-            <div class="aqbanh-2 daodpM selected_day">
-                <div class="day_name">Sábado</div>
-                <div class="aqbanh-1 hzQxMy">
-                    <span class="shift first">
-                        <span>12:00 a 23:30 hs</span>
-                    </span>
-                </div>
-            </div>
-        </div>
-
     </div>
-</div>
+{{/if}}

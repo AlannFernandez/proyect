@@ -21,7 +21,7 @@
 
               <div class="sc-1m83edm-1 cIhxcT">
                 <div>
-                  <a href="/links/info/{{ubi.user_id}}">
+                  <a href="/links/info/{{tienda.id}}">
                     <div class="sc-1m83edm-3 GPAbx">
                       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="#2b1a46" viewBox="0 0 16 16"><path d="M8 .5a7.5 7.5 0 110 15 7.5 7.5 0 010-15zm0 1a6.5 6.5 0 100 13 6.5 6.5 0 000-13zm.064 5.257a.5.5 0 01.492.41l.008.09v3.5H9.62a.5.5 0 01.492.41l.008.09a.5.5 0 01-.41.492l-.09.008H8.064a.499.499 0 01-.491-.41l-.009-.09v-3.5H6.82a.5.5 0 01-.492-.41l-.008-.09a.5.5 0 01.41-.492l.09-.008h1.244zM7.711 4a.858.858 0 110 1.715.858.858 0 010-1.715z"></path>
                       </svg>
@@ -65,16 +65,29 @@
   </div>
   {{!-- categories  --}}
   
- 
+    {{#if categorias}}
+      {{#each categorias}}
+        <div id="{{category}}">{{category}}
+          <div class="full_width">    
+            <div class="yxaxac-0 iuxFoD">      
+              <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves -section">
+              </div>
+            </div>
+          </div>
+        </div>
+      {{/each}}      
+    {{/if}}
 
 
   {{!-- card product --}}
   <div class="full_width">
     
     <div class="yxaxac-0 iuxFoD">
-      <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves-section3493304">
+      
+      <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves -section">
           {{#each productos}}
-          <div id="infocard" direction="column" class="sc-1uudfj-0 sc-10rx79f-0 lmGvas">
+
+          <div id="infocard" category="{{category}}" direction="column" class="sc-1uudfj-0 sc-10rx79f-0 lmGvas">
             <div class="sc-7kom5h-0 fRQOGO">
               <div class="sc-19kh4fu-0 hqyyDh">
                 <picture>
@@ -141,6 +154,8 @@
     
   </div>
   {{else}}
-  no hay productos
+  <div>
+    <img src="/img/icons/undraw_building_blocks_n-0-nc.svg" alt="">
+  </div>
   {{/if}}
 </div>

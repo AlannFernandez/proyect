@@ -220,13 +220,15 @@ router.post('/search', async(req, res)=>{
 });
 
 // view shop
-router.get('/shops/:id', async (req, res) => {
-    const { id } = req.params;
-    const nombre = await pool.query('SELECT * FROM companys INNER JOIN links ON companys.id = ? LIMIT 1', [id]);
-    const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id]);    
-    const categorias = await pool.query('SELECT * FROM categories_companies WHERE id_company = ?',[id]);
-    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ', [id]);    
-    res.render('links/shops',{ productos, tienda:nombre[0], ubi: direccion[0]});
+router.get('/shops/:id_s', async (req, res) => {
+    const { id_s } = req.params;
+    const id_shop = {id_s}
+    const nombre = await pool.query('SELECT id,cuit,social_reason,category,makes_delivery,price_delivery,sponsored,online_payments,img_profile,points FROM companys where id =?', [id_s]);
+    const direccion = await pool.query('SELECT * FROM addresses WHERE user_id = ? ', [id_s]);    
+    const categorias = await pool.query('SELECT DISTINCT category FROM links WHERE user_id = ?',[id_s]);
+    const productos = await pool.query('SELECT * FROM links WHERE user_id = ? ', [id_s]); 
+    console.log(nombre)
+    res.render('links/shops',{id_shop, categorias, productos, tienda:nombre[0], ubi: direccion[0]});
 });
 
 // all shops
@@ -237,13 +239,12 @@ router.get('/companies', async (req, res) => {
 
 
 router.get('/info/:id', async (req, res) => {    
-    
-    res.render('links/compInfo');
+    const {id}= req.params;
+    const nombre = await pool.query('SELECT id,social_reason,category,makes_delivery,price_delivery,sponsored,online_payments,img_profile,points FROM companys where id =?', [id]);
+    const add = await pool.query('SELECT * FROM addresses WHERE user_id =?',[id]);
+    res.render('links/compInfo',{shop:nombre[0], direccion:add[0]});
 });
-router.get('/mapa', async (req, res) => {    
-    
-    res.render('links/map');
-});
+
 
 //view products 
 router.get('/view/:id', async (req, res) => {

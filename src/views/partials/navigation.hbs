@@ -17,12 +17,17 @@
     <li><a href="/links/purchases"><i class="fi fi-rs-receipt black-text"></i>Mis pedidos</a></li>
     <li><a href="/links/favorites"><i class="fi fi-rs-heart black-text"></i>Mis favoritos</a></li>
     <li><a href="/profile"><i class="fi fi-rs-user black-text"></i>Mi cuenta</a></li>
-    <li><a href="#!"><i class="fi fi-rs-ticket black-text"></i>Mis cupones</a></li>
+    {{#if delivery}}
+    <li><a href="#!"><i class="fi fi-rs-box-alt black-text"></i>Entregas</a></li>
+    {{/if}}
+    {{!-- {{#if company}} --}}
+    <li><a href="/links/dashboard"><i class="fi fi-rs-stats black-text"></i>Metricas</a></li>
+    {{!-- {{/if}} --}}
     <li class="last-item"><a href="/logout"><i class="fi fi-rs-sign-in black-text"></i>Cerrar</a></li>
     {{else}}
         <li class="msg-home">
             <div class="user-view">      
-            <a href="#user"><img class="circle img-home" src="../img/logo.png" alt="meraki"> </a>        
+            <a href="#user"><img class="circle img-home" src="/img/logo.png" alt="meraki"> </a>        
             <a href="#msg"><span class=" black-text text-home">¡Qué bueno verte aquí!</span></a>
             </div>
         </li>

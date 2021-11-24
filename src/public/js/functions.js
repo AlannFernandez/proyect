@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
   $('.preloader').fadeOut('slow');
   
 
+
   var elems = document.querySelectorAll('.sidenav');
   var instances = M.Sidenav.init(elems);
   
@@ -30,10 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
 		function showProduct(){
 			const sc = $('.company-category[category="'+catProduct+'"]').show();
       if (sc.length<1){      
-        $('#busqueda').html('<p>Ups! al paracer no hay locales disponibles </p>')
+        $('#busqueda').html('<img src="/img/icons/undraw_house_searching_re_stk8.svg" alt="emptys companies" srcset="">')
         
       }else{
-        
+        $('.empty').hide();
         $('.company-category[category="'+catProduct+'"]').css('transform', 'scale(1)');
         
       }
@@ -106,8 +107,26 @@ document.addEventListener('DOMContentLoaded', function() {
   $('.add-add1').click(function(){
     $(location).attr('href','/links/address');
   })
+  
+  // ocultar productos vista shops
+ 
 
+  // carga de mapa comercios
+  $('#map').ready(function(){
+    const lat = $('#lat').val();
+    const lng = $('#lng').val();
+    
+    var mymap = L.map('map',{zoomControl:false}).setView([-28.05815970583552,-56.01599463603798], 15 );
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
+    }).addTo(mymap);
+    // add marker 
+    L.marker([lat,lng]).addTo(mymap)
+    .bindPopup('Estamos aquí')
+    .openPopup();
+
+  })
+ 
 });
 
 const sign_in_btn = document.querySelector("#sign-in-btn");
@@ -123,72 +142,11 @@ sign_in_btn.addEventListener("click", () => {
 });
 
 
-const PUBLIC_VAPID_KEY = 'BM4IVJoZisF0FAc_Bx0VDnRvCgRifTTmY-3asAvfWUHTmG5l2pr14HTI6Y2B7MSX_BnOWPNuVWX8sX0jJG8ijKE';
-
-
-const subscription = async () => {
-  // Service Worker
-  console.log("Registering a Service worker");
-  const register = await navigator.serviceWorker.register("/sw.js", {
-    scope: "/"
-  });
-  console.log("New Service Worker");
-
-  // Listen Push Notifications
-  console.log("Listening Push Notifications");
-  const subscription = await register.pushManager.subscribe({
-    userVisibleOnly: true,
-    applicationServerKey: urlBase64ToUint8Array(PUBLIC_VAPID_KEY)
-  });
-
-  console.log(subscription);
-
-  // Send Notification
-  await fetch("/push", {
-    method: "POST",
-    body: JSON.stringify(subscription),
-    headers: {
-      "Content-Type": "application/json"
-    }
-  });
-  console.log("Subscribed!");
-};
-
-
-function urlBase64ToUint8Array(base64String) {
-  const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
-  const base64 = (base64String + padding).replace(/-/g, "+").replace(/_/g, "/");
-
-  const rawData = window.atob(base64);
-  const outputArray = new Uint8Array(rawData.length);
-
-  for (let i = 0; i < rawData.length; ++i) {
-    outputArray[i] = rawData.charCodeAt(i);
-  }
-  return outputArray;
-}
 
 
 
 
-const form = document.querySelector('#myform');
-const message = document.querySelector('#message');
-form.addEventListener('submit', (e) => {
-  e.preventDefault();
-  fetch('/links/pedido', {
-    method: 'POST',
-    body: JSON.stringify({message: message.value}),
-    headers: {
-      'Content-Type': 'application/json'
-    }
-  });
-  form.reset();
-});
 
-// Service Worker Support
-if ("serviceWorker" in navigator) {
-  subscription().catch(err => console.log(err));
-}
 
 
 $(document).ready(function(){

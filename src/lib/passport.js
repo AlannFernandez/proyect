@@ -17,7 +17,8 @@ passport.use('local.signin', new LocalStrategy({
     if (validPassword) {      
       done(null, user, req);   
     } else {
-      done(null, false, req.flash('message', 'Contraseña incorrecta'));
+      done(null, false, req.flash('message', 'Contraseña incorrecta'));       
+
     }
   } else {
     return done(null, false, req.flash('message', 'Este usuario no existe.'));
@@ -52,7 +53,7 @@ passport.use('local.signup', new LocalStrategy({
 }, async (req, name, password, done) => {
 
   const { lastname,dni,email } = req.body;
-  let id_rol=1,
+  let id_rol=0,
     newUser = {  
     id_rol,
     lastname,

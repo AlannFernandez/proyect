@@ -44,12 +44,12 @@ router.post('/signin', (req, res, next) => {
   req.check('password', 'ingresá una contraseña').notEmpty();
   const errors = req.validationErrors();
   if (errors.length > 0) {
-    req.flash('message', errors[0].msg);
-    res.redirect('/signin');
+    req.flash('message', errors[0].msg);         
+    res.redirect('/ingreso');
   }
   passport.authenticate('local.signin', {
     successRedirect: '/',
-    failureRedirect: '/signin',
+    failureRedirect: '/ingreso',
     failureFlash: true
   })(req, res, next);
 });
