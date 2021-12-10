@@ -86,7 +86,11 @@ hola admin
               <div class="sc-1n4iwls-0 ixHseR">
                 <div class="sc-54vgxs-0 eCPgON">
                   <picture><source type="image/webp" data-srcset="../img/logo.png">
+                  {{#if img_profile}}
+                  <img src="../uploads/{{img_profile}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy ls-is-cached lazyloaded" alt="{{social_reason}} ">
+                  {{else}}
                   <img src="../img/logo.png" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy ls-is-cached lazyloaded" alt="{{social_reason}} ">
+                  {{/if}}
                   </picture>
                 </div>
               </div>

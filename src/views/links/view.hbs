@@ -1,117 +1,4 @@
-<div class="desktop">
-  <div class="container my-5 py-5 z-depth-1">
-
-
-    <!--Section: Content-->
-    <section class="text-center">
-
-      <!-- Section heading -->
-      <h3 class="font-weight-bold mb-5"><a href="/links/shops/{{link.user_id}}">Nombre de la tienda</a></h3>
-
-      <div class="row">
-        <div class="col-lg-6">
-
-          <!--Carousel Wrapper-->
-          <div id="carousel-thumb1" class="carousel slide carousel-fade carousel-thumbnails mb-5 pb-4" data-ride="carousel">
-
-            <!--Slides-->
-            <div class="carousel-inner text-center text-md-left" role="listbox">
-              <div class="carousel-item active">
-                <img src="/uploads/{{link.img}}"
-                  alt="First slide" class="img-fluid">
-              </div>            
-            </div>
-            <!--/.Slides-->
-
-            <!--Thumbnails-->
-            <a class="carousel-control-prev" href="#carousel-thumb1" role="button" data-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="sr-only">Previous</span>
-            </a>
-            <a class="carousel-control-next" href="#carousel-thumb1" role="button" data-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="sr-only">Next</span>
-            </a>
-            <!--/.Thumbnails-->
-
-          </div>
-        
-          
-        </div>
-
-        <div class="col-lg-5 text-center text-md-left">
-
-          <h2 class="h2-responsive text-center text-md-left product-name font-weight-bold dark-grey-text mb-1 ml-xl-0 ml-4">{{link.title}}</h2>
-          <span class="badge badge-danger product mb-4 ml-xl-0 ml-4">cerrado</span>
-          {{!-- <span class="badge badge-success product mb-4 ml-2">SALE</span> --}}
-
-          <h3 class="h3-responsive text-center text-md-left mb-5 ml-xl-0 ml-4">
-            <span class="red-text font-weight-bold">
-              <strong>${{link.price}}</strong>
-            </span>
-            <span class="grey-text">
-              <small>
-                <s></s>
-              </small>
-            </span>
-          </h3>
-
-          <div class="font-weight-normal">
-            
-            <p class="ml-xl-0 ml-4"><strong>Descripción: </strong>{{link.description}}</p>          
-            <p class="ml-xl-0 ml-4">
-              <strong>Formato de venta: </strong></p>
-            <p class="ml-xl-0 ml-4">  
-              <strong>Stock: </strong>Disponible</p>
-            </p>          
-            <p class="ml-xl-0 ml-4">
-              <strong>Disponibilidad: </strong></p>
-            <p class="ml-xl-0 ml-4">
-              <strong>Elaboración: </strong><i class="far fa-clock"></i> 20 Minutos </p>
-            
-            <div class="mt-5">
-              <p class="grey-text">Cantidad</p>            
-              <div class="stepper">
-                <!-- Minus button -->
-                <button class="stepper__button"><i class="fas fa-minus"></i></button>
-
-                <!-- Input container -->
-                <div class="stepper__content">
-                    <input type="text" class="stepper__input" />
-                </div>
-
-                <!-- Plus button -->
-                <button class="stepper__button"><i class="fas fa-plus"></i></button>
-              </div>
-              {{#if user}}
-              <div class="row mt-3 mb-4">
-                <div class="col-md-12 text-center text-md-left text-md-right">
-                  <button class="btn btn-primary btn-rounded">
-                    <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
-                </div>
-              </div>
-              {{else}}
-              <div class="row mt-3 mb-4">
-                <div class="col-md-12 text-center text-md-left text-md-right">
-                  <button disabled class="btn btn-primary btn-rounded">
-                    <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> Añadir al carrito</button>
-                </div>
-              </div>
-              {{/if}}
-            </div>
-
-          </div>
-
-        </div>
-      </div>
-
-    </section>
-    <!--Section: Content-->
-
-
-  </div>
-</div>
-
+{{#if link}}
 <div class="mobile">
   <div class="flex-x9ump0-0 sc-1fpz7sq-0 gnKdUo">
     <div opacity="1" class="sc-1ueiixb-0 bWaZhC">
@@ -127,9 +14,9 @@
         <div class="hp94dw-0 iUdgAV">
 
         </div>
-        <picture>
-          <source type="image/webp" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;webp=1&amp;dpi=1.5 1.5x"><img src="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 bHbZgR header_image ls-is-cached lazyloaded" alt="header" data-src="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375" data-srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;dpi=1.5 1.5x" srcset="https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375, https://images.deliveryhero.io/image/pedidosya/products/fe506e66-f59c-4b2a-876d-16b8eb50131d.jpg?quality=90&amp;width=375&amp;dpi=1.5 1.5x">
-        </picture>
+        
+        <div class="cont-im"><img class="prdimgn" src="/uploads/{{link.img}}"></div>
+        
       </div>
       
       <div class="nae5lz-0 ccTROh">
@@ -138,11 +25,11 @@
       
       <div class="sc-4v0xea-0 hgnJzs">
         <div class="sc-4v0xea-4 bZlgWJ">
-          <h3 class="sc-85ihu9-0 kKFWvo title_component">Papas Fritas</h3>
+          <h3 class="sc-85ihu9-0 kKFWvo title_component">{{link.title}}</h3>
         </div>
         
         <span class="sc-68i9x5-0 ekcLNF sc-4v0xea-2 hJUVPh">
-          <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">$249</span>
+          <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">${{link.price}}</span>
         </span>
       </div>
       
@@ -250,3 +137,4 @@
   </div>
 
 </div>
+{{/if}}

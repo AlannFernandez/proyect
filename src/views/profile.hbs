@@ -1,8 +1,36 @@
-
 <input type="hidden" name="user" value="{{user.id}}">
 <div class="main-container profile">
     <h1 style="font-size:20px; font-weight:700;" class="my-5">Mis datos</h1>
 {{!--account data--}}
+    <div class="user_profile"> 
+        {{#if user.img}}
+        
+        <a href="#user"  class="modal-trigger"><img class=" img_profile" src="/uploads/{{user.img}}" alt="usuario foto"> </a>                
+        <div id="user" class="modal">
+            <div class="modal-content">
+                <div id="list"></div>
+                <form action="/links/userPhoto" method="post" enctype="multipart/form-data">
+                    <input type="file" class="hip" name="image" id="files" accept="image/*" onChange="img_pathUrl(this);">
+                    <label class="bDWbfv" id="lblfl" for="files"><i class="fi fi-rs-picture"></i> Elegir foto</label>
+                    <img src="" id="img_url" alt="your image">
+                    <button class="bDWbfv" type="submit" id="profile_img">Guardar</button>
+                </form> 
+            </div>            
+        </div>
+        {{else}}
+        <a href="#user"  class="modal-trigger"><img class=" img_profile" src="https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?fit=300%2C300" alt="usuario foto"> </a>                
+        <div id="user" class="modal">
+            <div class="modal-content">
+                <div id="list"></div>
+                <form action="/links/userPhoto" method="post" enctype="multipart/form-data">
+                    <input type="file" name="image" id="files">
+                    <button type="submit" >Guardar</button>
+                </form> 
+            </div>            
+        </div>
+        {{/if}}
+    </div>
+
     <div class="section d-flex mb-3">
         <div class="section__title" style="width:60%; line-height:1.25;">
             <h2 class="subtitle "style="font-size:18px; font-weight:700;">Datos de la cuenta</h2>
@@ -50,54 +78,32 @@
             <div class="col-sm my-3">Nombre y apellido</div>
             <div class="col-sm my-3">{{user.name}} {{user.lastname}}</div>
             <div class="col-sm my-3 text-right">
-                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-1" title="Dismissible popover"
-                data-content="And here's some amazing content. It's very engaging. Right?">
+                <a tabindex="0" href="#infoname" class="modal-trigger">
                 <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
                     <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                 </svg>
                 </a>
-                <!-- Modal: modalPoll -->
-                <div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-                    aria-hidden="true" data-backdrop="false">
-                    <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
-                        <div class="modal-content">
-                        <!--Header-->
-                        <div class="modal-header">
-                            <p class="heading lead">Corregir mi nombre y/o apellido</p>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true" class="white-text">×</span>
-                            </button>
-                        </div>
-
-                        <!--Body-->
-                        <div class="modal-body">
-                            <div class="text-center">
+                <!-- Modal name & lastname -->
+                <div id="infoname" class="modal">
+                    <div class="modal-content">
+                        <div class="center">
                             <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                        </div>
+
+                        <hr>                                                
+                        <div class="text-center">
+                            <div class="text-left">
+                            Si es por un error ortográfico en tu nombre o apellido, o si te registraste con tu DNI verdadero y un nombre de fantasía, y querés cambiarlo al real, <a href="#"> podés corregirlo</a>. Vas a necesitar fotos del frente y del dorso de tu DNI para validar el cambio.
                             </div>
-
-                            <hr>                                                
-                            <div class="text-center">
-                                <div class="text-left">
-                               Si es por un error ortográfico en tu nombre o apellido, o si te registraste con tu DNI verdadero y un nombre de fantasía, y querés cambiarlo al real, <a href="#"> podés corregirlo</a>. Vas a necesitar fotos del frente y del dorso de tu DNI para validar el cambio.
-                                </div>
-
-
-
-                                <div class="text-left mt-5" >
-                                   Si lo que querés es tener tu cuenta a nombre de otra persona o empresa, entonces tenés que <a href="#"> cambiar la titularidad de tu cuenta</a>.
-                                </div>
-                            </div>                        
-
-                        </div>
-
-                        <!--Footer-->
-                        <div class="modal-footer justify-content-center">                        
-                            <a type="button" class="btn btn-outline-primary waves-effect" data-dismiss="modal">Cerrar</a>
-                        </div>
-                        </div>
+                            <div class="text-left mt-5" >
+                                Si lo que querés es tener tu cuenta a nombre de otra persona o empresa, entonces tenés que <a href="#"> cambiar la titularidad de tu cuenta</a>.
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
                     </div>
                 </div>
-                <!-- Modal: modalPoll -->
             </div>
         </div>
         
@@ -105,48 +111,116 @@
             <div class="col-sm my-3">Documento</div>
             <div class="col-sm my-3">{{user.dni}}</div>
             <div class="col-sm my-3 text-right">
-                <a tabindex="0"  role="button" data-toggle="modal" data-target="#modalPoll-2" title="Dismissible popover"
-                data-content="And here's some amazing content. It's very engaging. Right?">
+
+                <a tabindex="0" href="#infodni" class="modal-trigger">
                 <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
                     <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                 </svg>
                 </a>                
-                               
+                <!-- Modal dni -->
+                <div id="infodni" class="modal">
+                    <div class="modal-content">
+                        <div class="center">
+                            <i class="far fa-file-alt fa-4x mb-3 animated rotateIn"></i>                                               
+                        </div>
+
+                        <hr>                                                
+                        <div class="text-center">
+                            <div class="text-left">
+                            Si es por un error de tipeo en tu DNI, o si te registraste con un DNI de fantasía, y querés cambiarlo al real, <a href="#"> podés corregirlo</a>. Vas a necesitar fotos del frente y del dorso de tu DNI para validar el cambio.
+                            </div>
+                            <div class="text-left mt-5" >
+                                Si lo que querés es tener tu cuenta a nombre de otra persona o empresa, entonces tenés que <a href="#"> cambiar la titularidad de tu cuenta</a>.
+                            </div>
+                        </div>    
+                    </div>
+                    <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Aceptar</a>
+                    </div>
+                </div>              
             </div>
         </div>
         <div class="row__value">
             <div class="col-sm my-3">Teléfono</div>
             <div class="col-sm my-3" id="userTel">{{user.telephone}}</div>
             <div class="col-sm my-3 pr-0">
-                   <a class="nav-link text-right" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg">
-                        <g fill="#000000cc" fill-rule="evenodd">
-                            <path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path>
-                            <ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse>
-                        </g>
+                <a tabindex="0" href="#infotel" class="modal-trigger">
+                    <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                        <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                     </svg>
-                    </a>
-                    
-                
+                </a>                       
+                <!-- Modal tel -->
+                <div id="infotel" class="modal">
+                    <div class="modal-content">
+                        <form action="/links/UpdateTel" method="post">
+                            <label for="telephone">Telefono</label>
+                            <input placeholder="Telefono" name="telephone" value="{{user.telephone}}" id="telephone" type="text" class="validate">
+                            <button  class="bDWbfv"type="submit">Guardar</button>
+                        </form>
+                    </div>                    
+                </div>                                                 
             </div>
         </div>
 
         <div class="row__value" id="alt-phone">
             <div class="col-sm my-3">Teléfono Alternativo</div>
-            <div class="col-sm my-3"></div>
-            <div class="modal fade" id="modalContactForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                
+            
+            {{#if user.altphone}}
+            <div class="col-sm my-3" id="userTel">{{user.altphone}}</div>
+            <div class="col-sm my-3 pr-0">
+                <a tabindex="0" href="#infoaltphone" class="modal-trigger">
+                    <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                        <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                    </svg>
+                </a>                       
+                <!-- Modal tel -->
+                <div id="infoaltphone" class="modal">
+                    <div class="modal-content">
+                        <form action="/links/UpdateAltPhone" method="post">
+                            <label for="altPhone">Telefono Alternativo</label>
+                            <input  name="altphone" value="{{user.altphone}}" id="altPhone" type="text" class="validate">                            
+                            <button class="bDWbfv" type="submit">Guardar</button>
+                        </form>
+                        
+                    </div>   
+                                  
+                </div>                                                 
             </div>
-
+               
+            {{else}}
             <div class="text-center">
-            <a href="" data-toggle="modal" data-target="#modalContactForm">
-                <div class="col-sm my-3 text-right">
-                    Agregar
-                </div>
+                <a tabindex="0" href="#altPhone" class="modal-trigger">
+                    <div class="col-sm my-3 text-right">
+                        Agregar
+                    </div>
                 </a>
-            </div>  
+                <!-- Modal tel -->
+                <div id="altPhone" class="modal">
+                    <div class="modal-content">
+                        <form action="/links/addAltPhone" method="post">
+                            <label for="AltPhone">Telefono Alternativo</label>
+                            <input placeholder="Telefono" name="altPhone"  id="AltPhone" type="text">
+                            <button class="bDWbfv" type="submit">Guardar</button>
+                        </form>
+                    </div>                    
+                </div> 
+            </div>
+            {{/if}}  
         </div>
+        {{#if user.altphone}}
+        <div class="row__value">
+            <div class="col-sm my-3">
+            <a href="links/deleteAltPhone">Eliminar teléfono alternativo</a>
+            </div>
+            
+            <div class="col-sm my-3 text-right">
+                
+                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                </svg>
+            </div>
+        </div>
+        {{/if}}
     </div>
 {{!-- addresses --}}
     <div class="section d-flex mb-3">

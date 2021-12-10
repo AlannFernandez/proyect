@@ -3,8 +3,12 @@
     <ul id="slide-out" class="sidenav">
     {{#if user}}
     <li>
-        <div class="user-view">      
+        <div class="user-view"> 
+        {{#if user.img}}     
+        <a href="#user"><img class="circle img-home" src="/uploads/{{user.img}}" alt="usuario foto"> </a>
+        {{else}}
         <a href="#user"><img class="circle img-home" src="https://i0.wp.com/www.repol.copl.ulaval.ca/wp-content/uploads/2019/01/default-user-icon.jpg?fit=300%2C300" alt="usuario foto"> </a>
+        {{/if}}
         <a href="#name"><span class="black-text name">{{user.name}}</span></a>
         {{#if dir}}
         <a href="#adress"><span class="black-text adress">direccion del usuario</span></a>
@@ -17,17 +21,17 @@
     <li><a href="/links/purchases"><i class="fi fi-rs-receipt black-text"></i>Mis pedidos</a></li>
     <li><a href="/links/favorites"><i class="fi fi-rs-heart black-text"></i>Mis favoritos</a></li>
     <li><a href="/profile"><i class="fi fi-rs-user black-text"></i>Mi cuenta</a></li>
-    {{#if delivery}}
+    {{#if user.delivery}}
     <li><a href="#!"><i class="fi fi-rs-box-alt black-text"></i>Entregas</a></li>
     {{/if}}
-    {{!-- {{#if company}} --}}
-    <li><a href="/links/dashboard"><i class="fi fi-rs-stats black-text"></i>Metricas</a></li>
-    {{!-- {{/if}} --}}
+    {{#if user.company}} 
+    <li><a href="/links/dashboard"><i class="fi fi-rs-shop black-text"></i>Mi negocio</a></li>
+    {{/if}}
     <li class="last-item"><a href="/logout"><i class="fi fi-rs-sign-in black-text"></i>Cerrar</a></li>
     {{else}}
         <li class="msg-home">
             <div class="user-view">      
-            <a href="#user"><img class="circle img-home" src="/img/logo.png" alt="meraki"> </a>        
+            <a href="#user"><img class="circle img-home" src="/img/logo.png " alt="meraki"> </a>        
             <a href="#msg"><span class=" black-text text-home">¡Qué bueno verte aquí!</span></a>
             </div>
         </li>

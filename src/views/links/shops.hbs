@@ -67,10 +67,14 @@
   
     {{#if categorias}}
       {{#each categorias}}
-        <div id="{{category}}">{{category}}
+        <div class="category-shops {{category}}"name="{{category}}">
+            <div class="sc-1vcje4d-0 hOxaVc">                
+              <div class="sc-11u87x6-0 cvKhiP">{{category}}</div>                                
+            </div>
+          
           <div class="full_width">    
             <div class="yxaxac-0 iuxFoD">      
-              <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves -section">
+              <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr catego" id="swiper__element_shelves section" name="{{category}}">
               </div>
             </div>
           </div>
@@ -86,65 +90,180 @@
       
       <div class="cggoy4-0 iFGKVa wioz0i-0 d2ly8b-0 infEZr" id="swiper__element_shelves -section">
           {{#each productos}}
-
           <div id="infocard" category="{{category}}" direction="column" class="sc-1uudfj-0 sc-10rx79f-0 lmGvas">
-            <div class="sc-7kom5h-0 fRQOGO">
-              <div class="sc-19kh4fu-0 hqyyDh">
-                <picture>
-                  {{!-- <img src="/img/favicon/logo.png" alt="img prueba"> --}}
-                  <img src="/../uploads/{{img}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-19kh4fu-1 ghgZpN ls-is-cached lazyloaded" alt="{{title}}" >
-                  
-                </picture>
+              <div class="sc-7kom5h-0 fRQOGO">
+                <div class="sc-19kh4fu-0 hqyyDh">
+                  <a class="modal-trigger" href="#infocard{{id}}">
+                    <picture>
+                      {{!-- <img src="/img/favicon/logo.png" alt="img prueba"> --}}
+                      <img src="/../uploads/{{img}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-19kh4fu-1 ghgZpN ls-is-cached lazyloaded" alt="{{title}}" >
+                      
+                    </picture>
+                  </a>
+                </div>
+                
+                <div class="sc-1pnv15w-0 YwRaS">
+                </div>
               </div>
               
-              <div class="sc-1pnv15w-0 YwRaS">
-              </div>
-            </div>
-            
-            <div>
-              <div class="sc-5gm38m-0 jdWDGL one-click-element">
-                {{#if discount}}
-                <div class="sc-1gtngjx-0 fTsiLt" >
-                  <div class="DiscountInfo-sc-1pv6v3q jYLMiH">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#007aff" fill-rule="evenodd" d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-11.757-.757c-.781.78-2.048.78-2.829 0a2.003 2.003 0 010-2.829 2.003 2.003 0 012.829 0c.78.781.78 2.048 0 2.829zm-.707-.707c-.391.39-1.024.39-1.415 0a1.002 1.002 0 010-1.415c.39-.39 1.024-.39 1.415 0 .39.39.39 1.024 0 1.415zm5.656 5.656a2 2 0 11-2.828-2.828 2 2 0 012.828 2.828zm-.707-.707a1 1 0 11-1.414-1.416 1 1 0 011.414 1.416zm.354-7.424a.5.5 0 01.707.707l-7.778 7.778a.5.5 0 01-.707-.707l7.778-7.778z" clip-rule="evenodd"></path></svg>
-                    <span color="secondary4100" data-testid="typography" class="sc-bdVaJa fkiyoO DiscountValue-sc-c3ix1r eOBnGw">-{{discount}}%</span>                  
-                  </div>
-                </div>
-                {{/if}}
-              </div>
-            </div>
-            
-            <div class="sc-11j7acj-0 egWzFC">
-                <div>
-                    <div class="sc-1yeh8k-0 gmmKyp">
-                        <span class="sc-1ozo3ha-0 kkuzRX">
-                          {{title}}                                                    
-                        </span>
-                    </div>
-                </div>
-                <span class="sc-1qr090j-0 eiPaRy">
-
-                  <div id="price" class="oel5gd-0 fRdyRp">
+              <div>
+                <div class="sc-5gm38m-0 jdWDGL one-click-element">
                   {{#if discount}}
-                   
-                  <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">${{price}}</span>
-                    
-                  <span color="graya100" data-testid="typography" class="sc-bdVaJa exHXJW ProductValue-sc-hf5t3s ProductRealValue-sc-6uts84 cVIMBu">${{price}},00</span>
-                  {{else}}
-                    <span class="sc-68i9x5-0 ekcLNF">
-                      <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">
-                        ${{price}}
-                      </span>
-                    </span>
-                  {{/if}}  
+                  <div class="sc-1gtngjx-0 fTsiLt" >
+                    <div class="DiscountInfo-sc-1pv6v3q jYLMiH">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="#007aff" fill-rule="evenodd" d="M23 12l-2.44-2.79.34-3.69-3.61-.82-1.89-3.2L12 2.96 8.6 1.5 6.71 4.69 3.1 5.5l.34 3.7L1 12l2.44 2.79-.34 3.7 3.61.82L8.6 22.5l3.4-1.47 3.4 1.46 1.89-3.19 3.61-.82-.34-3.69L23 12zm-11.757-.757c-.781.78-2.048.78-2.829 0a2.003 2.003 0 010-2.829 2.003 2.003 0 012.829 0c.78.781.78 2.048 0 2.829zm-.707-.707c-.391.39-1.024.39-1.415 0a1.002 1.002 0 010-1.415c.39-.39 1.024-.39 1.415 0 .39.39.39 1.024 0 1.415zm5.656 5.656a2 2 0 11-2.828-2.828 2 2 0 012.828 2.828zm-.707-.707a1 1 0 11-1.414-1.416 1 1 0 011.414 1.416zm.354-7.424a.5.5 0 01.707.707l-7.778 7.778a.5.5 0 01-.707-.707l7.778-7.778z" clip-rule="evenodd"></path></svg>
+                      <span color="secondary4100" data-testid="typography" class="sc-bdVaJa fkiyoO DiscountValue-sc-c3ix1r eOBnGw">-{{discount}}%</span>                  
+                    </div>
                   </div>
+                  {{/if}}
+                </div>
+              </div>
+              
+              <div class="sc-11j7acj-0 egWzFC">
+                  <div>
+                      <div class="sc-1yeh8k-0 gmmKyp">
+                          <span class="sc-1ozo3ha-0 kkuzRX">
+                            {{title}}                                                    
+                          </span>
+                      </div>
+                  </div>
+                  <span class="sc-1qr090j-0 eiPaRy">
 
-                </span>
+                    <div id="price" class="oel5gd-0 fRdyRp">
+                    {{#if discount}}
+                    
+                    <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">${{price}}</span>
+                      
+                    <span color="graya100" data-testid="typography" class="sc-bdVaJa exHXJW ProductValue-sc-hf5t3s ProductRealValue-sc-6uts84 cVIMBu">${{price}},00</span>
+                    {{else}}
+                      <span class="sc-68i9x5-0 ekcLNF">
+                        <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">
+                          ${{price}}
+                        </span>
+                      </span>
+                    {{/if}}  
+                    </div>
+
+                  </span>
+              </div>
+              {{#if user}}
+                <button class="white-text bttnapc" value="add" id="{{id}}" onclick="add(this.id);">
+                  Añadir<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#fff"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none"/><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>
+                </button>
+              {{/if}}
+          </div>
+          <div id="infocard{{id}}" class="modal">
+            <div class="modal-content inpmdl">
+              {{!--  --}}
+              <div class="flex-x9ump0-0 sc-1fpz7sq-0 gnKdUo">
+                <div opacity="1" class="sc-1ueiixb-0 bWaZhC">
+                  <div class="sc-1azcpr8-0 dSqDeq full_width">
+                    <div class="wcdsjj-0 jXTGAd modal-close">
+                      <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2b1a46" viewBox="0 0 16 16">
+                        <g fill-rule="evenodd">
+                          <circle fill="#EAE3E3" cx="8" cy="8" r="8"></circle>
+                          <path d="M5.849 5.096l.075.062L8 7.235l2.076-2.077a.541.541 0 01.828.69l-.062.076L8.765 8l2.077 2.076a.541.541 0 01-.69.828l-.076-.062L8 8.765l-2.076 2.077a.541.541 0 01-.828-.69l.062-.076L7.235 8 5.158 5.924a.541.541 0 01.69-.828z"></path>
+                        </g>
+                      </svg>
+                    </div>
+                    <div class="hp94dw-0 iUdgAV">
+
+                    </div>
+                    
+                    <div class="cont-im"><img class="prdimgn" src="/uploads/{{img}}"></div>
+                    
+                  </div>
+                  
+                  <div class="nae5lz-0 ccTROh">
+
+                  </div>
+                  
+                  <div class="sc-4v0xea-0 hgnJzs">
+                    <div class="sc-4v0xea-4 bZlgWJ">
+                      <h3 class="sc-85ihu9-0 kKFWvo title_component">{{title}}</h3>
+                    </div>
+                    <div>
+                      {{description}}
+                    </div>
+                    <span class="sc-68i9x5-0 ekcLNF sc-4v0xea-2 hJUVPh">
+                      <span class="teqjqu-0 kTsFWn coreb3-0 kaAveC">${{price}}</span>
+                    </span>
+                  </div>
+                  
+                </div>
+                
+                <div opacity="0" class="sc-1ueiixb-1 jSacSH">
+                  <div id="fixed_header" class="rixve5-5 fitCJw">
+                    <div class="rixve5-4 kNafWj">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="#2b1a46" viewBox="0 0 16 16" class="rixve5-3 gNNNJ">
+                        <path d="M28.927-238.385c0 50.863-42.919 92.243-95.679 92.243H-330.75l-119.21 385.144h-29.11l-.934-.292 128.044-413.648h285.208c36.891 0 66.905-28.465 66.905-63.447zm133.068 0c0 59.718-23.822 115.852-67.086 158.042C51.739-38.236-5.631-15.047-66.634-15.047H-236.85L-316.067 239h-30.193l88.197-282.844h191.429c53.435 0 103.648-20.282 141.403-57.103 37.657-36.732 58.4-85.543 58.4-137.44zM95.99-238c.01.247.01.499.01.756 0 42.601-16.96 82.644-47.768 112.731-30.705 30.008-71.51 46.53-114.894 46.53H-284.76L-382.893 239H-413l107.044-345.757h239.294c73.836 0 133.908-58.54 133.908-130.487 0-.257-.005-.509-.01-.756zM6.084 8l4.458 4.458a.625.625 0 01-.884.884l-4.9-4.9a.625.625 0 010-.884l4.9-4.9a.625.625 0 01.884.884L6.084 8z"></path>
+                      </svg>
+                      
+                    </div>
+                  </div>
+                
+                </div>
+                
+                <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                  <div class="d11zps-2 dgDVVW">
+                    <span class="d11zps-1 jCEUsl">Unidades</span>
+                  </div>
+                  
+                    <div class="vhiqdd-0 bHzmQc">
+                      <div class="a6s04m-0 koFxum">
+                        <span class="sc-1vo6r1k-0 hxSGkb">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#2b1a46" viewBox="0 0 16 16">
+                            <path d="M3 9h10a1 1 0 000-2H3a1 1 0 000 2z"></path>
+                          </svg>
+                        </span>
+                        
+                        <span class="nwydec-0 WYSEu">1</span>
+                        <span class="sc-1vo6r1k-0 hxSGkb">
+                          <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="#2b1a46" viewBox="0 0 16 16">
+                            <path d="M7 7V3c0-1.333 2-1.333 2 0v4h4a1 1 0 010 2H9v4c0 1.333-2 1.333-2 0V9H3a1 1 0 010-2h4z"></path>
+                          </svg>
+                        </span>
+
+                      </div>
+
+                    </div>
+
+                </div>
+                
+                <div class="sc-1lfe7mo-0 kzytvw">
+                  <div class="xcrn65-0 dOElNm sc-1bt0piu-0 sc-1lfe7mo-1 iwmvnm">
+                    <span class="sc-1rcjn1n-0 ktEUQh">
+                      <h3 class="g8fctk-0 clWljy">¿Querés aclarar algo?</h3>
+                    </span>
+                  </div>
+                  
+                  <div direction="column" class="sc-1uudfj-0 iiTDbT">
+                    <div class="ptwdv1-0 dfDAtG">
+                      <div class="axxvqp-0 heZlBN wnl44z-0 fQOrqs">
+                        <label for="product_config_clarification" class="sc-1hs0vh7-0 jDvTIY">Notas al producto</label>
+                        <textarea type="text" autocomplete="off" id="product_config_clarification" rows="1" data-hj-allow="false" class="sc-1ysv6qi-0 QswoJ"></textarea>
+                        
+                        <div class="qis1gi-0 hQKEAC">
+
+                        </div>
+                        <p class="kzfj6u-0 gUjbom"></p>
+                      </div>
+                      
+                      <div class="sc-146g071-0 jJGlkz">0/250</div>
+                      
+                    </div>
+
+                  </div>
+                </div> 
+                
+                  <button class="white-text bttnapc" value="add" id="{{id}}" onclick="add(this.id);">
+                    Añadir<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#fff"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none"/><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>
+                  </button>    
+                                                                                                                      
+              </div>
+              {{!--  --}}
             </div>
             
-            <button class="white-text bttnapc" value="add" id="{{id}}" onclick="add(this.id);">
-              Añadir<svg xmlns="http://www.w3.org/2000/svg" height="20px" viewBox="0 0 24 24" width="20px" fill="#fff"><path d="M0 0h24v24H0zm18.31 6l-2.76 5z" fill="none"/><path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/></svg>
-            </button>
           </div>
           {{/each}}
           <div class="sc-15krnmr-0 bVtfTt"></div>

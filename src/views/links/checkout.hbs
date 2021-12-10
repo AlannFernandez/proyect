@@ -1,19 +1,20 @@
 <div class="mobile">
-<form action="/links/checkout" method="post">
+<form action="/links/compra" method="post" class="facnchk">
     <div class="sc-11awyvm-0 sc-1obgk5z-0 giGAqG">
         <div class="sc-11o6dv8-0 cqVnva">
             <div>
                 <div class="sc-17r3t6i-0 ehQKJn">
                     <picture>                    
-                    <img src="/img/logo.png" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy lazyloaded" >
+                    <img src="/uploads/{{company.img_profile}}" class="sc-11h6bs4-0 byKNUF sc-16krbne-0 sc-54vgxs-1 dyVoQy lazyloaded" >
                     </picture>
                     <div class="wpgov5-0 kbnKVd">
-                        <label class="sc-19lpo4o-0 hUFbBn">Wing It! Fried Chicken - Microcentro</label>
+                        <label class="sc-19lpo4o-0 hUFbBn">{{company.social_reason}} - {{dirCompany.street}} {{dirCompany.numberST  }}</label>
                         <div>
                             <span>19 - 34 min · </span>
-                            <span>Envío $129 · </span>
+                            <span>Envío ${{company.price_delivery}} · </span>
                             <span>Sin mínimo</span>
                         </div>
+                        <input type="hidden" name="id_comapany" value="{{company.id_user}}">
                     </div>
                 </div>
 
@@ -34,7 +35,7 @@
                 <div class="efbtbj-0 hTWpRO">
                     <div class="modifier checkout format">
                         <span class="left">Envío</span>
-                        <span class="teqjqu-0 kTsFWn right">$129</span>
+                        <span class="teqjqu-0 kTsFWn right">${{company.price_delivery}}</span>
                     </div>
                 </div>
                 
@@ -44,7 +45,7 @@
                 <div class="total format">
                     <span class="left">Total</span>
                     <span class="teqjqu-0 kTsFWn right">$378</span>
-                    
+                    <input type="hidden" name="total" value="378">
                 </div>
             </div>
         </div>
@@ -63,10 +64,11 @@
                     <div class="jg45ck-0 kqlBao">Dirección</div>
                     <div class="sc-1kvbujb-0 ibQrVs">
 
-                        {{#if direccion}}       
+                        {{#if direccionUsuario}}       
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <div>{{direccion.street}} {{direccion.numberST}}</div>
+                                <input type="hidden" id="user_id_add" name="id_address_user" value="{{direccionUsuario.id}}">
+                                <input class="data-checkout" name="calle"id="address_selected" type="text" readonly value="{{direccionUsuario.street}} {{direccionUsuario.numberST}}">                                
                             </div>
 
                         {{else}}
@@ -82,7 +84,54 @@
                 </div>
                 
                 <div class="pjuly4-0 kVPxIB">
-                    <button type="button" class="sc-1y8jm7q-0 kqqStk" color="secondary">Editar</button>
+                    <button type="button " href="#direction" class="sc-1y8jm7q-0 kqqStk modal-trigger" color="secondary">Editar</button>                    
+                </div>
+
+                <div id="direction" class="modal">
+                        <div class="modal-content">
+                            
+                            <div class="wcdsjj-0 jXTGAdchk modal-close">
+                                <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2b1a46" viewBox="0 0 16 16">
+                                    <g fill-rule="evenodd">
+                                    <circle fill="#EAE3E3" cx="8" cy="8" r="8"></circle>
+                                    <path d="M5.849 5.096l.075.062L8 7.235l2.076-2.077a.541.541 0 01.828.69l-.062.076L8.765 8l2.077 2.076a.541.541 0 01-.69.828l-.076-.062L8 8.765l-2.076 2.077a.541.541 0 01-.828-.69l.062-.076L7.235 8 5.158 5.924a.541.541 0 01.69-.828z"></path>
+                                    </g>
+                                </svg>
+                            </div>
+                            
+                            <div class="iu9qsa-0 kbsJyx">
+                                
+                                <div class="q0aqvc-0 q0aqvc-1 NJcBc">
+                                    <div class="xcrn65-0 dOElNm sc-1bt0piu-0 kbjaPo">
+                                        <span class="sc-1rcjn1n-0 ktEUQh">
+                                            <h3 class="g8fctk-0 clWljy">Mis direcciones</h3>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                {{#if userAddress}}                                    
+                                    {{#each userAddress}} 
+                                        <div direction="column" class="sc-1uudfj-0 iiTDbT">
+                                                <div class="sc-1b3hpd3-0 fJjbNk" >
+                                                    <div class="mg59vo-1 TbqpF"  >
+                                                        <label>
+                                                        <input type="radio" id="{{id}}" name="address_delivery" value="{{street}} {{numberST}}"/>
+                                                        <span></span>
+                                                        </label>
+                                                    </div>
+                                                    
+                                                    <div class="mg59vo-0 cOEVZv">
+                                                        <div class="o9s9w5-0 jCAWyD">                                                                
+                                                            <div class="">{{street}} {{numberST}}</div>                                                            
+                                                        </div>                                                  
+                                                    </div>
+                                                </div>
+                                        </div>
+                                    {{/each}}                            
+                                {{/if}}                                                                                                                                
+                            </div>
+
+                        </div>
                 </div>
                 
             </div>
@@ -90,13 +139,21 @@
             <div class="sc-1mamh2o-0 hjHmLJ">
                 <div class="kvc0d7-0 kRxqIk">
                     <div class="jg45ck-0 kqlBao">Tipo de entrega</div>
+                    {{#if company.makes_delivery}}
                     
+                  
                     <div class="sc-1kvbujb-0 ibQrVs">
                         <div class="sc-1o31e9d-0 dfQCLk">
-                            <div>Delivery</div>
+                            <div>Delivery propio</div>
                         </div>
                     </div>
-
+                    {{else}}
+                    <div class="sc-1kvbujb-0 ibQrVs">
+                        <div class="sc-1o31e9d-0 dfQCLk">
+                            <div>Delivery Meraki</div>
+                        </div>
+                    </div>
+                    {{/if}}
                 </div>
 
             </div>
@@ -104,36 +161,116 @@
             <div class="sc-1mamh2o-0 hjHmLJ">
                 <div class="kvc0d7-0 kRxqIk">
                     <div class="jg45ck-0 kqlBao">Metodo de pago</div>
+
                     <div class="sc-1kvbujb-0 ibQrVs">
+                        <div id="methods_payment" class="modal">
+                            <div class="modal-content">
+
+                                <div class="wcdsjj-0 jXTGAdchk modal-close">
+                                    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2b1a46" viewBox="0 0 16 16">
+                                        <g fill-rule="evenodd">
+                                        <circle fill="#EAE3E3" cx="8" cy="8" r="8"></circle>
+                                        <path d="M5.849 5.096l.075.062L8 7.235l2.076-2.077a.541.541 0 01.828.69l-.062.076L8.765 8l2.077 2.076a.541.541 0 01-.69.828l-.076-.062L8 8.765l-2.076 2.077a.541.541 0 01-.828-.69l.062-.076L7.235 8 5.158 5.924a.541.541 0 01.69-.828z"></path>
+                                        </g>
+                                    </svg>
+                                </div>
+
+                                <div class="iu9qsa-0 kbsJyx">
+                                    <div class="q0aqvc-0 q0aqvc-1 NJcBc">
+                                        <div class="xcrn65-0 dOElNm sc-1bt0piu-0 kbjaPo">
+                                            <span class="sc-1rcjn1n-0 ktEUQh">
+                                                <h3 class="g8fctk-0 clWljy">Online</h3>
+                                            </span>
+                                        </div>
+                                    </div>
                         
-                            <div class="sc-1o31e9d-0 dfQCLk">
-                                <div>Mercado pago</div>
-                            </div>
+                                    <div direction="column" class="sc-1uudfj-0 iiTDbT">
+                                            <div class="sc-1b3hpd3-0 fJjbNk" id="methodone">
+                                                <div class="mg59vo-1 TbqpF" id="method" name="mp">
+                                                    <label>
+                                                    <input type="radio" id="mp" name="method_payment" value="Mercado Pago"/>
+                                                    <span></span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="mg59vo-0 cOEVZv">
+                                                    <div id="offline_method_1" class="o9s9w5-0 jCAWyD">
+                                                        <div class="n1aodw-0 knNvyY">Mercado pago</div>
+                                                    </div>                                                  
+                                                </div>
+                                            </div>
+                                    </div>
+                        
+                                    <div style="margin-bottom: 24px;"></div>
+
+                                    <div>
+                                        <div class="q0aqvc-0 q0aqvc-1 NJcBc">
+                                            <div class="xcrn65-0 dcPtHW sc-1bt0piu-0 kbjaPo">
+                                                <span class="sc-1rcjn1n-0 ktEUQh">
+                                                    <h3 class="g8fctk-0 clWljy">En la entrega</h3>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div direction="column" class="sc-1uudfj-0 iiTDbT">
+                                            <div class="sc-1b3hpd3-0 fJjbNk">
+                                                <div class="mg59vo-1 TbqpF" id="method" name="Efectivo">
+                                                    <label>
+                                                    <input type="radio" id="efec" name="method_payment" checked  value="Efectivo"/>
+                                                    <span></span>
+                                                    </label>
+                                                </div>
+                                                
+                                                <div class="mg59vo-0 cOEVZv">
+                                                    <div id="offline_method_1" class="o9s9w5-0 jCAWyD">
+                                                        <div class="n1aodw-0 knNvyY">Efectivo</div>
+                                                    </div>
+                                                    
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                             </div>
+                        </div>
+
+                        <div class="sc-1o31e9d-0 dfQCLk">
+                            
+                            <input class="data-checkout" id="method_selected" type="text" readonly value="Efectivo">                                                        
+    
+                        </div>
                     
                     </div>
                 </div>
                 
                 <div class="pjuly4-0 kVPxIB">
-                    <button type="button" class="sc-1y8jm7q-0 kqqStk" color="secondary" onclick="location.href='/links/checkout/payment';">Editar</button>
+                    <button type="button" id="select_method_pay" class="sc-1y8jm7q-0 kqqStk modal-trigger" color="secondary" href="#methods_payment">Editar</button>
                 </div>
                 
             </div>
             
             <div class="sc-1mamh2o-0 hjHmLJ">
                 <div class="kvc0d7-0 kRxqIk">
-                    <div class="jg45ck-0 kqlBao">Notas</div>
+                    <div class="jg45ck-0 kqlBao">Notas
+                        <div class="chip">Quitar
+                            <i class="fas fa-times"></i>
+                        </div>
+                    </div> 
+                    
                     <div class="sc-1kvbujb-0 ibQrVs">
 
-                        {{#if direccion}}       
+                        {{#if userAddress}}       
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <div>notas si</div>
+                                <input id="notes_To_Product" class="data-checkout" type="text" readonly value="">                                       
                             </div>
 
                         {{else}}
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <div>notas no</div>
+                                <input class="data-checkout" type="text" readonly value="Primero añade una direccion">      
                             </div>
 
                         {{/if}}
@@ -142,19 +279,68 @@
                     </div>
                 </div>
                 
+               
                 <div class="pjuly4-0 kVPxIB">
-                    <button type="button" class="sc-1y8jm7q-0 kqqStk" color="secondary" onclick="location.href='/links/checkout/notes';">Editar</button>
+                    <button type="button" class="sc-1y8jm7q-0 kqqStk modal-trigger" href="#notes" color="secondary" >Editar</button>
                 </div>
-                
+                <div class="modal" id="notes">
+                    <div class="row">
+                                                                    
+                        {{!--  --}}
+                        <div direction="column" class="sc-1uudfj-0 iiTDbT">
+                            
+                            <div class="wcdsjj-0 jXTGAdchk modal-close">
+                                    <svg width="32" height="32" xmlns="http://www.w3.org/2000/svg" fill="#2b1a46" viewBox="0 0 16 16">
+                                        <g fill-rule="evenodd">
+                                        <circle fill="#EAE3E3" cx="8" cy="8" r="8"></circle>
+                                        <path d="M5.849 5.096l.075.062L8 7.235l2.076-2.077a.541.541 0 01.828.69l-.062.076L8.765 8l2.077 2.076a.541.541 0 01-.69.828l-.076-.062L8 8.765l-2.076 2.077a.541.541 0 01-.828-.69l.062-.076L7.235 8 5.158 5.924a.541.541 0 01.69-.828z"></path>
+                                        </g>
+                                    </svg>
+                            </div>
+                            
+                            <div class="ptwdv1-0 dfDAtG">
+                                <div class="axxvqp-0 heZlBN wnl44z-0 fQOrqs">
+                                    
+                                    <label for="textarea2">Notas </label>
+                                    <textarea name="notesToProduct" autofocus id="textarea2" class="materialize-textarea sc-1ysv6qi-0 QswoJ" data-length="120"></textarea>
+                                    <div class="qis1gi-0 hQKEAC" >
+                                        <p id="msg_notes" class="red-text"></p>
+                                    </div>
+                                    <p class="kzfj6u-0 gUjbom"></p>
+                                </div>                                                                                    
+                            </div>
+
+                        </div>
+                        {{!--  --}}
+                    </div>
+
+                    <div class="modal-footer">
+                     <a href="#!" class="modal-close waves-effect waves-red btn-flat" id="Add_notes">Agregar</a>
+                    </div>
+
+                </div>
+
             </div>
             
         </div>
-            <div >
-                
-                <button type="submit" class="sc-1y8jm7q-0 cPPpUY" id="checkout_continue" color="primary">Pagar</button>
-                
+        <div class="sc-1f25ngo-0 dtrAVT">
+            <button 
+                {{#if userAddress}}  
+                    type="submit" class="sc-1y8jm7q-0 bDWbfv" id="finish_pursache_button" color="primary" 
+                {{else}}
+                    href="#msgDir" class="sc-1y8jm7q-0 bDWbfv modal-trigger" id="finish_pursache_button" color="primary" 
+                {{/if}}>
+                Pagar
+            </button>
+            {{#if userAddress}} 
+            {{else}}
+            <div id="msgDir" class="modal">
+                Antes de continuar añade una direccion
+                <a href="http://">Añadir direccion</a>
             </div>
-        
+            {{/if}}
+
+        </div>
     </div>
 </form>
 </div>
