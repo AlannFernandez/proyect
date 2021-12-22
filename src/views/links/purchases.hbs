@@ -1,6 +1,35 @@
 
 <div class="mobile">
     {{#if purchases}}
+    <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">
+        <div>
+            <img src="/uploads/{{product.img}}" alt="" srcset="" height="50" width="50">
+        </div>
+        <div>
+            {{product.title}}<p class="{{text}}">  {{status}}</p> 
+            {{#if viewDelivery}}        
+            <a href="#" class="blue-text">Seguir envio</a>
+            {{/if}}
+        </div>
+    
+       
+    
+      </div>
+      <div class="collapsible-body">
+        <ul>
+            <li> {{product.description}}</li>
+            <li> <b>P/U :</b>  $ {{product.price}}   <b>Cant :</b> {{purchases.qt}}</li>
+            <li> <b>Envio :</b> $ {{purchases.delivery_price}},00</li>
+            <li> <b>Total :</b> $ {{purchases.import}},00 ({{purchases.method_payment}})</li>
+            <li><p class="blue-text"> A pagar</p></li>
+           
+        </ul>
+      </div>
+    </li>
+    
+    </ul>
     {{else}}
     <div class="sc-1rt4n1p-0 hwkBmQ">
         <div class="sc-11awyvm-0 sc-1qiglmv-0 kzfZXp sc-1f25ngo-1 exTtiN">

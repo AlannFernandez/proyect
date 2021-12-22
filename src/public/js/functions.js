@@ -117,19 +117,78 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // se oculta la etiqueta del producto
-    $('.'+prod+'').hide();
+    $('.ProductContainer[id="'+prod+'"]').remove();
   });
 
   // aumentar cantidad del item
   $('.plus-cart').click(function (){
-    var prod = $(this).attr('id');  
-    console.log("aumentar "+prod ); 
-    $('.'+prod+'')++;
+    var item = $(this).attr('id');
+    var price=$('.Price-unitary[id="'+item+'"]').val();
+    $('.quit-cart[id="'+item+'"]').hide();    
+    $('.minus-cart[id="'+item+'"]').show();
+    var qc=$('.quant-cart[id="'+item+'"]').val();
+    qc++;
+    $('.quant-cart[id="'+item+'"]').val(qc);
+    
+    $('.kcpDNn[id="'+item+'"]').html(qc)
+    
+    var total = price*qc;
+    
+    totalPurchase()
+  })
+  // disminur cantidad del item
+  $('.minus-cart').click(function (){
+    var item = $(this).attr('id');
+    var price=$('.Price-unitary[id="'+item+'"]').val();
+    var qc=$('.quant-cart[id="'+item+'"]').val();
+    if(qc>1){
+      qc--;
+      $('.quant-cart[id="'+item+'"]').val(qc);      
+      $('.kcpDNn[id="'+item+'"]').html(qc);
+      var total = price*qc;
+      totalPurchase();
+      if(qc==1){
+        $('.minus-cart[id="'+item+'"]').hide();
+        $('.quit-cart[id="'+item+'"]').show();
+      }
+    }
     
     
   })
-
   
+  // total purchase
+  function totalPurchase(){
+    var PriceUnitary=$('.Price-unitary').val();
+    var Q=$('.quant-cart').val();
+    var total = PriceUnitary * Q;
+    $('.priceTotalPurchase').val(total);
+  }
+ 
+  $('.priceTotalPurchase').ready(totalPurchase);
+  
+  $('.pricePurchase').ready(function(){
+    // var subTotal=$('.subTotal').val();
+    // var PriceDelivery=$('.priceDelivery').val();
+    totalPur = parseInt($('.subTotal').val()) + parseInt($('.priceDelivery').val());
+    $('.pricePurchase').val(totalPur);
+    $('.spntlprcs').html('$'+totalPur);
+
+  });
+  // add shops favorite
+
+  $('#addFav  ').click(function() {
+    $('#addFav').hide();
+    $('.lkWCDe').append('<svg id="quitFav" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="15" height="15"><path fill="none" d="M0 0H24V24H0z"/><path d="M12.001 4.529c2.349-2.109 5.979-2.039 8.242.228 2.262 2.268 2.34 5.88.236 8.236l-8.48 8.492-8.478-8.492c-2.104-2.356-2.025-5.974.236-8.236 2.265-2.264 5.888-2.34 8.244-.228z" fill="rgba(231,76,60,1)"/></svg>')
+  })
+
+  $('#quitFav').click(function () {
+    $('#quitFav').hide();
+    $('#addFav').show();
+    
+  })
+
+
+
   $('.add-add1').click(function(){
     $(location).attr('href','/links/address');
   })
@@ -138,20 +197,21 @@ document.addEventListener('DOMContentLoaded', function() {
  
 
   // carga de mapa comercios
-  $('#map').ready(function(){
-    const lat = $('#lat').val();
-    const lng = $('#lng').val();
+  // $('#map').ready(function(){
+  //   const lat = $('#lat').val();
+  //   const lng = $('#lng').val();
     
-    var mymap = L.map('map',{zoomControl:false}).setView([-28.05815970583552,-56.01599463603798], 15 );
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  //   var mymap = L.map('map',{zoomControl:false}).setView([-28.05815970583552,-56.01599463603798], 15 );
+  //   L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
-    }).addTo(mymap);
-    // add marker 
-    L.marker([lat,lng]).addTo(mymap)
-    .bindPopup('Estamos aquí')
-    .openPopup();
+  //   }).addTo(mymap);
+  //   // add marker 
+  //   L.marker([lat,lng]).addTo(mymap)
+  //   .bindPopup('Estamos aquí')
+  //   .openPopup();
 
-  })
+  // })
+  
 
   // modals
   $('.modal').modal();
@@ -413,7 +473,143 @@ document.addEventListener('DOMContentLoaded', function() {
     
   });
   
+  $('.dropdown-trigger').dropdown();
+  $('select').formSelect();
+  $('.collapsible').collapsible();
+
+  $("#mkdlvy").click(function() {  
+    if($("#mkdlvy").is(':checked')) {  
+        $('#price_delivey').show();
+    } else {  
+      $('#price_delivey').hide();
+    }  
+  });  
+
+  $('.AttentionDays').click(function(){
+    
+      var day = $(this).attr('id');
+      
   
+  });
+  $('.timepicker').timepicker({twelveHour:false});
+
+  $('.fixed-action-btn').floatingActionButton({
+    direction: 'top',
+    hoverEnabled: false
+  });
+  $('.tabs').tabs();
+  // save locations
+  $('#map').ready(function(){
+                   
+    if(!navigator.geolocation) {
+      alert("tu dispositivo no es compatible con esta funcion");
+    } else {
+      
+      var mymap = L.map('map',{zoomControl:false}).setView([-28.05815970583552,-56.01599463603798], 17 );
+      L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+  
+      }).addTo(mymap);
+      // geolocalizar al usuario cuando haga click en el boton
+      $('#eneable-geo').click(function(){      
+        navigator.geolocation.getCurrentPosition(getPosition,showError);
+      }); 
+      // 
+      // set variables to marker
+      var latitud;
+      var longitud;
+      var marker;
+      
+      // eneable high accuracy to geolocation
+      mymap.locate({enableHighAccuracy: true})
+      
+      // disable zoom dblclick
+      mymap.doubleClickZoom.disable();  
+
+      // function to geolocation user
+      function getPosition(position){
+          
+        var lat = position.coords.latitude
+        var long = position.coords.longitude
+        var accuracy = position.coords.accuracy
+
+        if(marker) {
+          mymap.removeLayer(marker);
+        }    
+
+        marker = L.marker([lat, long]);
+        
+        var featureGroup = L.featureGroup([marker]).addTo(mymap);
+
+        mymap.fitBounds(featureGroup.getBounds());   
+        latitud = position.coords.latitude;
+        longitud = position.coords.longitude;
+      }
+      // types of errors
+      function showError(error){
+        switch(error.code) {
+            case error.PERMISSION_DENIED:
+              alert ( "El usuario denegó el acceso a su ubicación.")
+              break;
+            case error.POSITION_UNAVAILABLE:
+             alert( "La ubicacón no está disponible")
+              break;
+            case error.TIMEOUT:
+              alert( "Se agotó el tiempo de espera.")
+              break;
+            case error.UNKNOWN_ERROR:
+             alert( "Ha ocurrido un error inesperado.")
+              break;
+          }
+      }
+      //add marker click
+      mymap.on('click', e=>{        
+        let latlng = mymap.mouseEventToLatLng(e.originalEvent);
+        if(marker) {
+          mymap.removeLayer(marker);
+        }
+        marker = L.marker([latlng.lat, latlng.lng]);
+
+        var featureGroup = L.featureGroup([marker]).addTo(mymap);
+
+        mymap.fitBounds(featureGroup.getBounds());  
+        latitud = latlng.lat;
+        longitud = latlng.lng;
+      });
+      $('#save-geo').click(function(){      
+          if(!marker){
+            toastr["error"]("Debes ingresar una ubicación antes", "Error")
+            toastr.options = {
+              "closeButton": true,
+              "debug": false,
+              "newestOnTop": false,
+              "progressBar": false,
+              "positionClass": "toast-top-full-width",
+              "preventDuplicates": false,
+              "onclick": null,
+              "showDuration": "300",
+              "hideDuration": "1000",
+              "timeOut": "5000",
+              "extendedTimeOut": "1000",
+              "showEasing": "swing",
+              "hideEasing": "linear",
+              "showMethod": "fadeIn",
+              "hideMethod": "fadeOut"
+            }
+          }else{
+            // modal
+            $('#nameToGeo').click();              
+            //  set values
+            $('#latitud').val(latitud);
+            $('#longitud').val(longitud);
+           
+          }
+      }); 
+      
+    }  
+
+  });
+
+ 
 
 });
 
@@ -440,10 +636,7 @@ sign_in_btn.addEventListener("click", () => {
 
 
 
-
-
-
-
+// ////////////////////////////////////////////////////////////////////////////////////////////////
 $(document).ready(function(){
   // ejecutar el sidenav para dispostivos mobiles
   $('.sidenav').sidenav();

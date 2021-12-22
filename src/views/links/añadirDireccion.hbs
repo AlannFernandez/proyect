@@ -1,0 +1,141 @@
+<div class="mobile">
+    
+
+    <section >
+    <!-- Mask & flexbox options-->
+    <div class="mask d-flex justify-content-center align-items-center">
+      <!-- Content -->
+      <div class="container my-5">
+      <h1 style="font-size:20px; font-weight:700;" class="my-3">Agregá un domicilio </h1>
+        <!--Grid row-->
+        <div class="row d-flex align-items-center justify-content-center">
+          <!--Grid column-->
+          <div class="col">
+            <!--Form-->
+            <form action="address" method="post">
+                <div class="card">
+                    <div class="card-body z-depth- px-10">
+                        {{!-- name and lastname --}}
+                        <div class="form-row ml-3 ">
+                            <div class="md-form mt-6 " style="width:35%;">     
+                                <div class="block ">
+                                    <input type="text" name="nameClient" id="form0" class="form-control">
+                                    <label for="form0">Nombre y apellido</label>
+                                </div>          
+                            </div>
+                        </div>
+                        {{!-- CP --}}
+                        <div class="form-row ml-3 ">
+                            <div class="md-form " style="width:35%;">  
+                                <div class="block ">     
+                                    <input type="text" name="cp" id="form1" class="form-control" value="3342" readonly>
+                                    <label for="form1">Codigo Postal</label>
+                                </div> 
+                            </div>
+                            <div class="md-form m-auto" style="width:35%;">   
+                                <div class="block">
+                                    <input type="text" name="province" id="form2" class="form-control" value="Corrientes" readonly>
+                                    <label for="form2">Provincia</label>
+                                </div>                              
+                            </div>
+                        </div>
+                        {{!-- district --}}
+                        <div class="form-row ml-3">
+                            <div class="md-form" style="width:35%;">   
+                                <div class="block">
+                                    <input type="text" name="locality" id="form3" class="form-control" value="Virasoro" readonly>
+                                    <label for="form3">Localidad</label>                                    
+                                </div>                              
+                            </div>
+
+                            <div class="md-form m-auto" style="width:35%;">    
+                                <div class="block">
+                                    <input type="text" name="district" id="form4" class="form-control">
+                                    <label for="form4">Barrio</label>
+                                </div>            
+                            </div>
+                        </div>
+                        {{!-- street and number --}}
+                        <div class="form-row ml-3" >
+                            <div class="md-form" style="width:35%;">   
+                                <div class="block">
+                                    <input type="text" name="street" id="form5" class="form-control">
+                                    <label for="form5">Calle</label>
+                                </div>                              
+                            </div>
+
+                            <div class="md-form m-auto " style="width:35%;">    
+                                <div class="block">
+                                    <input type="tel" name="numberST" id="form6" class="form-control">
+                                    <label for="form6">Número</label>
+                                </div>                                           
+                            </div>
+                        </div>
+                        {{!-- departament --}}
+                        <div class="form-row ml-3 ">
+                            <div class="md-form" style="width:35%;">  
+                                <div class="block ">     
+                                    <input type="text" name="departament" id="form7" class="form-control">
+                                    <label for="form7">Piso / Departamento (opcional)</label>
+                                </div> 
+                            </div>
+                        </div>
+                         {{!--beetwen streets  --}}
+                        <div class="text-left my-3 ml-3">¿Entre qué calles está? (opcional)</div>
+                        <div class="form-row ml-3" >
+                            <div class="md-form" style="width:35%;">   
+                                <div class="block">
+                                    <input type="text" name="street1" id="form8" class="form-control">
+                                    <label for="form8">Calle 1</label>
+                                </div>                              
+                            </div>
+
+                            <div class="md-form m-auto " style="width:35%;">    
+                                <div class="block">
+                                    <input type="text" name="street2" id="form9" class="form-control">
+                                    <label for="form9">Calle 2</label>
+                                </div>                                           
+                            </div>
+                        </div>
+                        {{!-- Extra REferences --}}
+                        <div class="text-left my-3 ml-3">
+                            Indicaciones adicionales para entregar tus compras en esta dirección (opcional)
+                        </div>
+
+                        <div class="text-left my-3 ml-3">
+                            <textarea name="extraReferences" id=""  class="extraReferences" maxlength="150" data-min-length="3" placeholder="Descripción de la fachada, puntos de referencia para encontrarla, indicaciones de seguridad, etc."></textarea>
+                        </div>
+                        
+                        {{!-- check address work or home --}}
+                        <div class="text-left my-3 ml-3">
+                            ¿Es tu trabajo o tu casa?
+                        </div>
+                        <div class="text-left my-3 ml-3">                                                         
+                            <input class="address" type="radio" name="address" value="Trabajo" id="addressW">
+                            <label for="addressW" class="mr-5">Trabajo</label>        
+                            <input class="address" type="radio" name="address" value="Casa" id="addressH">
+                            <label for="addressH">Casa</label>        
+                        </div>
+
+                        <div class="text-left my-3 ml-3">
+                        <button class="btn btn-primary ">Guardar</button>                    
+                        <button class="btn btn-grey " disabled>Cancelaree</button>                    
+                        </div>             
+                                    
+                    </div>
+                
+                </div>
+            </form>
+            <!--/.Form-->
+          </div>
+          <!--Grid column-->
+        </div>
+        <!--Grid row-->
+      </div>
+      <!-- Content -->
+    </div>
+    <!-- Mask & flexbox options-->
+  </section>
+
+</div>
+

@@ -16,18 +16,18 @@
         </div>
     </li>
 
-    <li><a href="/"><i class="fi fi-rs-home black-text"></i>Inicio</a></li>
-    <li><a href="/links/addresses"><i class="fi fi-rs-marker black-text"></i>Mis direcciones</a></li>
-    <li><a href="/links/purchases"><i class="fi fi-rs-receipt black-text"></i>Mis pedidos</a></li>
-    <li><a href="/links/favorites"><i class="fi fi-rs-heart black-text"></i>Mis favoritos</a></li>
-    <li><a href="/profile"><i class="fi fi-rs-user black-text"></i>Mi cuenta</a></li>
+    <li><a href="/"><i class="ri-home-2-line black-text"></i>Inicio</a></li>
+    <li><a href="/links/addresses"><i class="ri-map-2-line black-text"></i>Mis direcciones</a></li>
+    <li><a href="/links/purchases"><i class="ri-file-list-3-line black-text"></i>Mis pedidos</a></li>
+    <li><a href="/links/favorites"><i class="ri-heart-line black-text"></i>Mis favoritos</a></li>
+    <li><a href="/profile"><i class="ri-user-line black-text"></i>Mi cuenta</a></li>
     {{#if user.delivery}}
-    <li><a href="#!"><i class="fi fi-rs-box-alt black-text"></i>Entregas</a></li>
+    <li><a href="/links/onway"><i class="ri-takeaway-line black-text"></i>Pedidos</a></li>
     {{/if}}
     {{#if user.company}} 
-    <li><a href="/links/dashboard"><i class="fi fi-rs-shop black-text"></i>Mi negocio</a></li>
+    <li><a href="/links/dashboard"><i class="ri-store-2-line black-text"></i>Mi negocio</a></li>
     {{/if}}
-    <li class="last-item"><a href="/logout"><i class="fi fi-rs-sign-in black-text"></i>Cerrar</a></li>
+    <li class="last-item"><a href="/logout"><i class="ri-logout-box-line black-text"></i>Cerrar</a></li>
     {{else}}
         <li class="msg-home">
             <div class="user-view">      
@@ -35,9 +35,9 @@
             <a href="#msg"><span class=" black-text text-home">¡Qué bueno verte aquí!</span></a>
             </div>
         </li>
-        <li><a href="/"><i class="fi fi-rs-home black-text"></i>Inicio</a></li>
-        <li><a href="#!"><i class="fi fi-rs-headphones black-text"></i>Ayuda en línea</a></li>        
-        <li class="last-item"><a href="/ingreso"><i class="fi fi-rs-sign-in-alt black-text"></i>Registrarse/ Ingresar</a></li>
+        <li><a href="/"><i class="ri-home-2-line black-text"></i>Inicio</a></li>
+        <li><a href="/links/about"><i class="ri-customer-service-line black-text"></i>Ayuda en línea</a></li>        
+        <li class="last-item"><a href="/ingreso"><i class="ri-login-box-line black-text"></i>Registrarse/ Ingresar</a></li>
     {{/if}}
     </ul>
 
@@ -47,7 +47,7 @@
 
     {{#if user}}
     <div class="item3">
-    <a href="/links/cart" ><i class="fi fi-rs-shopping-cart black-text"></i></a>
+    <a href="/links/cart" ><i class="ri-shopping-cart-line black-text"></i></a>
     <div class="container__indicator " id="badge-cart"></div>
     </div>
     {{/if}}

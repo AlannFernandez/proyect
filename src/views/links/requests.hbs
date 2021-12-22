@@ -1,0 +1,273 @@
+{{#if user.company}}
+<style>
+    .mobile{
+        margin-top: 4px;
+    }
+</style>
+<div class="mobile">
+    <div class="row">
+        <div class="col s12" >
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#test1"><i class="ri-restaurant-line"></i></a></li>
+            <li class="tab col s3"><a  href="#test2"><i class="ri-notification-line"></i></a></li>
+            <li class="tab col s3 "><a href="#test3"><i class="ri-takeaway-line"></i></a></li>
+            <li class="tab col s3"><a href="#test4"><i class="ri-check-line"></i></a></li>
+        </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <h6 class="col s12">Para preparar</h6>
+            {{#if toMake}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Importe</th>
+                    <th>Cantidad</th>
+                    <th>Acción</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <a class=" modal-trigger" href="#pedido{{toMake.id}}">Ver pedido <i class="ri-todo-line"></i></a>
+                        <div id="pedido{{toMake.id}}" class="modal">
+                            <div class="modal-content">
+                            <h6>Pedido</h6>
+                                {{!--  --}}
+                                <div class="cont-im">
+                                    <img class="prdimgn" src="/uploads/{{pedido.img}}" alt="{{pedido.title}}" srcset="">
+                                </div>
+
+                                <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                                    <div class="d11zps-2 dgDVVW">
+                                    <span class="d11zps-1 jCEUsl">Producto</span>
+                                    <div>{{pedido.title}}</div>
+                                    
+                                    <span class="d11zps-1 jCEUsl">Notas</span>
+                                    <div>{{pedido.notes}}</div>
+                                   
+                                    <span class="d11zps-1 jCEUsl">Importe</span>
+                                    <div> <b>P/U:</b> ${{pedido.price}}.00 <b> Cant:</b>{{pedido.qt}}</div>
+                                    <div> <b>Envio:</b> $ {{pedido.delivery_price}}.00</div>
+                                    <div> <b>Total:</b> $ {{pedido.import}} ({{pedido.method_payment}})</div>
+                                    
+                                    </div>                                         
+                                </div>
+                                {{!--  --}}
+                            </div>
+                            <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>${{toMake.import}}.00</td>
+                    <td>{{toMake.qt}}</td>
+                    <td> <form action="/links/aceptOrder" method="post">
+                        <input type="hidden" name="id" value="{{toMake.id}}">
+                        <button class="waves-effect green btn"><i class="ri-check-line"></i>
+                        </button>
+                        </form>
+                        <form action="" method="post">
+
+                        <button class="waves-effect red btn"><i class="ri-close-line"></i>
+                        </button>
+                        </form>
+                    </td>
+                </tr>
+                
+                </tbody>
+            </table>
+            {{else}}
+            no hay pedidos para preparar
+            {{/if}}
+        </div>
+        {{!-- /////////////////////////////////////////////// --}}
+        <div id="test2" class="col s12">
+            <h6 class="col s12">Listos para despachar</h6>
+             {{#if ready}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Repartidor</th>
+                    <th>Depachar</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <form action="/links/Onway" method="post">
+                    <tr>
+                        <td>
+                            <a class=" modal-trigger" href="#pedido{{toMake.id}}">Ver pedido <i class="ri-todo-line"></i></a>
+                            <div id="pedido{{toMake.id}}" class="modal">
+                                <div class="modal-content">
+                                <h6>Pedido</h6>
+                                    {{!--  --}}
+                                    <div class="cont-im">
+                                        <img class="prdimgn" src="/uploads/{{pedido.img}}" alt="{{pedido.title}}" srcset="">
+                                    </div>
+
+                                    <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                                        <div class="d11zps-2 dgDVVW">
+                                        <span class="d11zps-1 jCEUsl">Producto</span>
+                                        <div>{{pedido.title}}</div>
+                                        
+                                        <span class="d11zps-1 jCEUsl">Notas</span>
+                                        <div>{{pedido.notes}}</div>
+                                    
+                                        <span class="d11zps-1 jCEUsl">Importe</span>
+                                        <div> <b>P/U:</b> ${{pedido.price}}.00 <b> Cant:</b>{{pedido.qt}}</div>
+                                        <div> <b>Envio:</b> $ {{pedido.delivery_price}}.00</div>
+                                        <div> <b>Total:</b> $ {{pedido.import}} ({{pedido.method_payment}})</div>
+                                        
+                                        </div>                                         
+                                    </div>
+                                    {{!--  --}}
+                                </div>
+                                <div class="modal-footer">
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            
+                            <div class="input-field col s12">
+                                <select>
+                                <option value="" disabled selected>Elige un repartidor</option>                                                      
+                                <option value="1" name="delivery_id"> Juan</option>                                                                                                                                    
+                                </select>
+                                <label>Repartidores</label>
+                            </div>
+                            
+                        </td>
+                        <td>
+                            <input type="hidden" name="id_order" value="{{ready.id}}">
+                            <input type="hidden" name="id_delivery" value="1"> <button class="waves-effect green btn"><i class="ri-check-line"></i>
+                        </button></td>
+                    </tr>
+                </form>
+                </tbody>
+            </table>
+            {{else}}
+            No hay pedidos para despachar
+            {{/if}}
+        </div>
+        <div id="test3" class="col s12">
+            <h6 class="col s12">En tránsito</h6>
+             {{#if onWay}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Estado</th>
+                    
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td><a class=" modal-trigger" href="#pedido{{toMake.id}}">Ver pedido <i class="ri-todo-line"></i></a>
+                        <div id="pedido{{toMake.id}}" class="modal">
+                            <div class="modal-content">
+                            <h6>Pedido</h6>
+                                {{!--  --}}
+                                <div class="cont-im">
+                                    <img class="prdimgn" src="/uploads/{{pedido.img}}" alt="{{pedido.title}}" srcset="">
+                                </div>
+
+                                <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                                    <div class="d11zps-2 dgDVVW">
+                                    <span class="d11zps-1 jCEUsl">Producto</span>
+                                    <div>{{pedido.title}}</div>
+                                    
+                                    <span class="d11zps-1 jCEUsl">Notas</span>
+                                    <div>{{pedido.notes}}</div>
+                                   
+                                    <span class="d11zps-1 jCEUsl">Importe</span>
+                                    <div> <b>P/U:</b> ${{pedido.price}}.00 <b> Cant:</b>{{pedido.qt}}</div>
+                                    <div> <b>Envio:</b> $ {{pedido.delivery_price}}.00</div>
+                                    <div> <b>Total:</b> $ {{pedido.import}} ({{pedido.method_payment}})</div>
+                                    
+                                    </div>                                         
+                                </div>
+                                {{!--  --}}
+                            </div>
+                            <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                            </div>
+                        </div></td>
+                    <td>En Camino</td>
+                    
+                </tr>
+                
+                </tbody>
+            </table>
+            {{else}}
+            No hay pedidos en tránsito
+            {{/if}}
+        </div>
+        <div id="test4" class="col s12">
+            <h6 class="col s12 ">Finalizados</h6>
+             {{#if success}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Pedido</th>
+                    <th>Estado</th>
+                    <th>Pago</th>
+
+                    
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <a class=" modal-trigger" href="#pedido{{toMake.id}}">Ver pedido <i class="ri-todo-line"></i></a>
+                        <div id="pedido{{toMake.id}}" class="modal">
+                            <div class="modal-content">
+                            <h6>Pedido</h6>
+                                {{!--  --}}
+                                <div class="cont-im">
+                                    <img class="prdimgn" src="/uploads/{{pedido.img}}" alt="{{pedido.title}}" srcset="">
+                                </div>
+
+                                <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                                    <div class="d11zps-2 dgDVVW">
+                                    <span class="d11zps-1 jCEUsl">Producto</span>
+                                    <div>{{pedido.title}}</div>
+                                    
+                                    <span class="d11zps-1 jCEUsl">Notas</span>
+                                    <div>{{pedido.notes}}</div>
+                                   
+                                    <span class="d11zps-1 jCEUsl">Importe</span>
+                                    <div> <b>P/U:</b> ${{pedido.price}}.00 <b> Cant:</b>{{pedido.qt}}</div>
+                                    <div> <b>Envio:</b> $ {{pedido.delivery_price}}.00</div>
+                                    <div> <b>Total:</b> $ {{pedido.import}} ({{pedido.method_payment}})</div>
+                                    
+                                    </div>                                         
+                                </div>
+                                {{!--  --}}
+                            </div>
+                            <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                            </div>
+                        </div>
+                    </td>
+                    <td>Finalizado</td>
+                    <td><p class="green-text">Correcto</p></td>
+                    
+                </tr>
+                
+                </tbody>
+            </table>
+            {{else}}
+            No hay pedidos terminados aún
+            {{/if}}
+        </div>
+    </div>
+</div>        
+{{else}}
+ñao ñao amiguito
+{{/if}}

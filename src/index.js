@@ -17,7 +17,6 @@ const http = require('http');
 const socketIO = require('socket.io');
 const app = express();
 const server = http.Server(app);
-
 const io = socketIO(server);
 
 const storage = multer.diskStorage({
@@ -27,6 +26,8 @@ const storage = multer.diskStorage({
   }
   
 });
+// sockets
+require('./sockets')(io);
 
 const { database } = require('./keys');
 const { getFips } = require('crypto');
@@ -99,8 +100,7 @@ app.use(require('./routes/index'));
 app.use(require('./routes/authentication'));
 app.use('/links', require('./routes/links'));
 
-// sockets
-require('./socket')(io);
+
 
 // Public
 app.use(express.static(path.join(__dirname, 'public')));

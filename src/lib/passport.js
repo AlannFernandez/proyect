@@ -52,15 +52,15 @@ passport.use('local.signup', new LocalStrategy({
   passReqToCallback: true
 }, async (req, name, password, done) => {
 
-  const { lastname,dni,email } = req.body;
+  const { lastname,dni,email } = req.body;  
   let id_rol=0,
-    newUser = {  
-    id_rol,
-    lastname,
-    email,
-    dni,
-    name,
-    password
+    newUser = { 
+      id_rol,       
+      lastname,
+      email,
+      dni,
+      name,
+      password
   };
   const query = await pool.query('SELECT * FROM users WHERE email = ?', [email]);
   if (query.length > 0) {

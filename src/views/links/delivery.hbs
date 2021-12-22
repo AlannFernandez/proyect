@@ -1,0 +1,44 @@
+<div class="mobile-geo">
+    <style>
+        #map-template {             
+            height: 100vh;
+        }
+    </style>
+        <input type="hidden" name="ClientLAT" id="lat-clien" value="{{address.lat}}">
+        <input type="hidden" name="ClientLNG" id="lng-clien" value="{{address.lng}}">
+    <div id="map-template"></div> 
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large red">
+            <i class="ri-map-pin-line"></i>
+        </a>
+    <ul>
+        <li><a class="btn-floating blue modal-trigger" id="UserContact"  href="#modal1"><i class="ri-user-settings-line"></i></a></li>
+        <li><a class="btn-floating green modal-trigger" id="orderDelivered" href="#modal2"><i class="ri-check-line"></i></a></li>               
+    </ul>   
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+        <h6>Información del cliente</h4>
+        <p><b>Nombre: </b> {{userInfo.name}} {{userInfo.lastname}}</p>
+        <p><b>Telefono:</b> <a href="tel:+{{userInfo.telephone}}">{{userInfo.telephone}}</a></p>        
+        <p><b>Telefono 2:</b> <a href="tel:+{{userInfo.altphone}}">{{userInfo.altphone}}</a></p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        </div>
+    </div>
+    {{!-- modal 2 --}}
+    <div id="modal2" class="modal">
+        <div class="modal-content">
+        <h6>¿El pedido llegó a su destino correctamente?</h4>
+            <form action="/links/finishOrder" method="post">
+                <input type="hidden" name="id_order" value="{{id_order}}">
+                <button class="waves-effect green btn"><i class="ri-check-line"></i></button>
+            </form>
+            <a href="http://">Hubo un problema con el envío</a>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        </div>
+    </div>
+    </div>
+</div>

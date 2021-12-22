@@ -17,9 +17,10 @@ router.post('/company', passport.authenticate('local.company', {
 }));
 
 // SIGNUP
-router.get('/signup', (req, res) => {
-  res.render('auth/signup');
-});
+// router.get('/signup', (req, res) => {
+//   res.render('auth/signup');
+// });
+
 router.get('/ingreso', (req, res) => {
   res.render('auth/ingreso');
 });

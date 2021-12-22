@@ -1,0 +1,95 @@
+<style>
+    .mobile{
+        margin-top: 4px;
+    }
+</style>
+<div class="mobile">
+    <div class="row">
+        <div class="col s12" >
+        <ul class="tabs">
+            <li class="tab col s3"><a class="active" href="#test1"><i class="ri-restaurant-line"></i></a></li>
+            <li class="tab col s3"><a  href="#test2"><i class="ri-notification-line"></i></a></li>
+            <li class="tab col s3 "><a href="#test3"><i class="ri-takeaway-line"></i></a></li>
+            
+        </ul>
+        </div>
+        <div id="test1" class="col s12">
+            <h6 class="col s12">Nuevos Pedidos</h6>            
+            {{#if pedidos}}
+            <table>
+                <thead>
+                <tr>
+                    <th>Pedido</th>
+                                      
+                    <th>Acción</th>
+                </tr>
+                </thead>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <a class=" modal-trigger" href="#pedido">Ver pedido <i class="ri-todo-line"></i></a>
+                        <div id="pedido" class="modal">
+                            <div class="modal-content">
+                            <h6>Pedido</h6>
+                                {{!--  --}}
+                                <div class="cont-im">
+                                    {{!-- <img class="prdimgn" src="/uploads/{{pedido.img}}" alt="{{pedido.title}}" srcset=""> --}}
+                                </div>
+                                <div class="cont-im">
+                                    <img class="prdimgn" src="/uploads/{{product.img}}" alt="{{product.title}}" srcset="">
+                                </div>
+                                <div direction="row" class="sc-1uudfj-0 d11zps-0 kIRbec">
+                                    <div class="d11zps-2 dgDVVW">
+                                    <span class="d11zps-1 jCEUsl">Producto</span>
+                                    <div>{{product.title}} ({{order.qt}})</div>
+
+                                    
+                                    <span class="d11zps-1 jCEUsl">Notas</span>
+                                    <div>{{order.notes}}</div>
+                                   
+                                    <span class="d11zps-1 jCEUsl">Importe</span>
+                                    <div> <b>Total:</b> $ {{order.import}}</div>
+                                    
+                                    </div>                                         
+                                </div>
+                                {{!--  --}}
+                            </div>
+                            <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                            </div>
+                        </div>
+                    </td>
+                    {{!-- <td>${{toMake.import}}.00</td> --}}
+                    {{!-- <td>{{toMake.qt}}</td> --}}
+                    <td> <form action="/links/aceptDelivery" method="post">
+                        <input type="hidden" name="id_order" value="{{order.id}}">
+                        <input type="hidden" name="id_address" value="{{order.delivery_address}}">
+                        <button class="waves-effect green btn"><i class="ri-check-line"></i>
+                        </button>
+                        </form>
+                        <form action="" method="post">
+
+                        <button class="waves-effect red btn"><i class="ri-close-line"></i>
+                        </button>
+                        </form>
+                    </td>
+                </tr>
+                
+                </tbody>
+            </table>
+            {{else}}
+            No hay pedidos nuevos
+            {{/if}}
+        </div>
+        </div>
+        {{!--  --}}
+        <div id="test2" class="col s12">
+            <h6 class="col s12">Finalizados</h6>
+        </div>
+        {{!--  --}}
+        <div id="test3" class="col s12">
+            <h6 class="col s12">Cancelados</h6>
+        </div>
+    </div>
+</div>

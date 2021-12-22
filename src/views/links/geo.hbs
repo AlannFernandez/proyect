@@ -1,5 +1,45 @@
-<div class="mobile">
-    <div id="map1">
+<div class="mobile-geo">
+    <style>
+        #map {             
+            height: 100vh;
+        }
+    </style>
+        
+    <div id="map"></div>  
+    {{!-- <div class="fixed-action-btn" id="eneable-geo">
+        <a class="btn-floating btn-large red">
+            <i class="ri-map-pin-line"></i>
+        </a>        
+    </div> --}}
+    <div class="fixed-action-btn click-to-toggle">
+        <a class="btn-floating btn-large red">
+            <i class="ri-map-pin-line"></i>
+        </a>
+    <ul>
+        <li><a class="btn-floating blue" id="eneable-geo"><i class="ri-map-pin-line"></i></a></li>
+        <li><a class="btn-floating green" id="save-geo"><i class="ri-save-line"></i></a></li>               
+    </ul>
+    </div>
+            <!-- Modal Trigger -->
+    
+    <button data-target="nameGeo" id="nameToGeo" class="btn modal-trigger"></button>
+    <!-- Modal Structure -->
+    <div id="nameGeo" class="modal">
+        <div class="modal-content">
+        <div class="row">
+            
+            <h2>Nombre para esta ubicación</h2>
+            <form action="/links/savegeo" method="post">   
+                <div class="input-field col s12">
+                <input id="name" name="name" type="text" class="validate namegeolocation">
+                <label for="name">Nombre</label>
+                <input type="hidden" name="lat" id="latitud" value="">
+                <input type="hidden" name="lng" id="longitud" value="">
+                <button class="saveNameGeo">Guardar</button>
+            </form> 
+            </div>
+        </div>
         
     </div>
+
 </div>

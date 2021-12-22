@@ -11,10 +11,10 @@
                         <label class="sc-19lpo4o-0 hUFbBn">{{company.social_reason}} - {{dirCompany.street}} {{dirCompany.numberST  }}</label>
                         <div>
                             <span>19 - 34 min · </span>
-                            <span>Envío ${{company.price_delivery}} · </span>
-                            <span>Sin mínimo</span>
+                            <span>Envío ${{company.price_delivery}}  </span>
+                            
                         </div>
-                        <input type="hidden" name="id_comapany" value="{{company.id_user}}">
+                        <input class="wtbr" type="hidden" name="id_company" value="{{company.id_user}}">
                     </div>
                 </div>
 
@@ -25,8 +25,11 @@
                 <div class="efbtbj-0 hTWpRO">
                     <div class="subtotal checkout format">
                         <span class="left">Subtotal</span>
+                        <input type="hidden" name="id_product" value="{{product}}">
+                        <input type="hidden" name="qt" value="{{quantity}}">
                         {{#if total}}
                         <span class="teqjqu-0 kTsFWn right">${{total}}</span>
+                        <input type="hidden" class="subTotal" value="{{total}}">
                         {{else}}
                             no hay precio
                         {{/if}}
@@ -35,7 +38,14 @@
                 <div class="efbtbj-0 hTWpRO">
                     <div class="modifier checkout format">
                         <span class="left">Envío</span>
+                        {{#if company.makes_delivery}}
                         <span class="teqjqu-0 kTsFWn right">${{company.price_delivery}}</span>
+                        <input type="hidden" class="priceDelivery wtbr" name="delivery_price" value="{{company.price_delivery}}">
+                        <input type="hidden" name="delivery_from" value="comercio">
+                        {{else}}
+                        <span class="teqjqu-0 kTsFWn right">Envios Meraki</span>
+                        <input type="hidden" name="delivery_from" value="meraki">
+                        {{/if}}
                     </div>
                 </div>
                 
@@ -44,8 +54,8 @@
             <div class="efbtbj-0 hTWpRO">
                 <div class="total format">
                     <span class="left">Total</span>
-                    <span class="teqjqu-0 kTsFWn right">$378</span>
-                    <input type="hidden" name="total" value="378">
+                    <span class="teqjqu-0 kTsFWn right spntlprcs">$378</span>
+                    <input type="hidden" name="total" class="pricePurchase" value="">
                 </div>
             </div>
         </div>
@@ -64,11 +74,11 @@
                     <div class="jg45ck-0 kqlBao">Dirección</div>
                     <div class="sc-1kvbujb-0 ibQrVs">
 
-                        {{#if direccionUsuario}}       
+                        {{#if Locations}}       
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <input type="hidden" id="user_id_add" name="id_address_user" value="{{direccionUsuario.id}}">
-                                <input class="data-checkout" name="calle"id="address_selected" type="text" readonly value="{{direccionUsuario.street}} {{direccionUsuario.numberST}}">                                
+                                <input type="hidden" id="user_id_add" name="id_address_user" value="{{Locations.id}}">
+                                <input class="data-checkout wtbr" id="address_selected" type="text" readonly value="{{Locations.name}}">                                
                             </div>
 
                         {{else}}
@@ -109,25 +119,28 @@
                                     </div>
                                 </div>
 
-                                {{#if userAddress}}                                    
-                                    {{#each userAddress}} 
+                                {{#if userLocation}}                                    
+                                    {{#each userLocation}} 
                                         <div direction="column" class="sc-1uudfj-0 iiTDbT">
                                                 <div class="sc-1b3hpd3-0 fJjbNk" >
                                                     <div class="mg59vo-1 TbqpF"  >
                                                         <label>
-                                                        <input type="radio" id="{{id}}" name="address_delivery" value="{{street}} {{numberST}}"/>
+                                                        <input type="radio" id="{{id}}" name="address_delivery" value="{{name}} "/>
                                                         <span></span>
                                                         </label>
                                                     </div>
                                                     
                                                     <div class="mg59vo-0 cOEVZv">
                                                         <div class="o9s9w5-0 jCAWyD">                                                                
-                                                            <div class="">{{street}} {{numberST}}</div>                                                            
+                                                            <div class="">{{name}} </div>                                                            
                                                         </div>                                                  
                                                     </div>
                                                 </div>
                                         </div>
-                                    {{/each}}                            
+                                    {{/each}}   
+                                    
+                                  {{else}}                         
+                                            <a href="/links/geo">Añadir dirección <i class="ri-map-pin-add-line"></i></a>
                                 {{/if}}                                                                                                                                
                             </div>
 
@@ -144,7 +157,7 @@
                   
                     <div class="sc-1kvbujb-0 ibQrVs">
                         <div class="sc-1o31e9d-0 dfQCLk">
-                            <div>Delivery propio</div>
+                            <div>Delivery del comercio</div>
                         </div>
                     </div>
                     {{else}}
@@ -238,7 +251,7 @@
 
                         <div class="sc-1o31e9d-0 dfQCLk">
                             
-                            <input class="data-checkout" id="method_selected" type="text" readonly value="Efectivo">                                                        
+                            <input class="data-checkout wtbr" id="method_selected" type="text" readonly value="Efectivo">                                                        
     
                         </div>
                     
@@ -261,16 +274,16 @@
                     
                     <div class="sc-1kvbujb-0 ibQrVs">
 
-                        {{#if userAddress}}       
+                        {{#if userLocation}}       
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <input id="notes_To_Product" class="data-checkout" type="text" readonly value="">                                       
+                                <input id="notes_To_Product" class="data-checkout wtbr" type="text" readonly value="">                                       
                             </div>
 
                         {{else}}
 
                             <div class="sc-1o31e9d-0 dfQCLk">
-                                <input class="data-checkout" type="text" readonly value="Primero añade una direccion">      
+                                <input class="data-checkout wtbr" type="text" readonly value="Primero añade una direccion">      
                             </div>
 
                         {{/if}}
@@ -325,14 +338,14 @@
         </div>
         <div class="sc-1f25ngo-0 dtrAVT">
             <button 
-                {{#if userAddress}}  
+                {{#if userLocation}}  
                     type="submit" class="sc-1y8jm7q-0 bDWbfv" id="finish_pursache_button" color="primary" 
                 {{else}}
                     href="#msgDir" class="sc-1y8jm7q-0 bDWbfv modal-trigger" id="finish_pursache_button" color="primary" 
                 {{/if}}>
                 Pagar
             </button>
-            {{#if userAddress}} 
+            {{#if userLocation}} 
             {{else}}
             <div id="msgDir" class="modal">
                 Antes de continuar añade una direccion

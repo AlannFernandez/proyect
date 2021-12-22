@@ -38,19 +38,7 @@
     </div>
 
     <div class="andes-card andes-card--flat andes-card--default profile-card andes-card--padding-default">
-        <div class="row__value">
-            <div class="col-sm my-3">
-            Usuario
-            </div>
-            <div class="col-sm my-3">
-            {{user.username}}
-            </div>
-            <div class="col-sm my-3 text-right">
-                <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
-                    <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
-                </svg>
-            </div>
-        </div>
+      
        
         <div class="row__value">
             <div class="col-sm my-3">
@@ -65,6 +53,30 @@
                 </svg>
             </div>
         </div>
+
+        <div class="row__value">
+            
+            <div class="col-sm my-3">
+            Tipo de cuenta
+            </div>
+            
+            <div class="col-sm my-3">
+                Usuario
+            </div>
+            
+            <div class="col-sm my-3 pr-0 ">        
+                <a class="dropdown-trigger text-right" href="#"  data-target="typeAcount" 
+                    aria-haspopup="true" aria-expanded="false">
+                <svg class="ui-icon ui-icon--menu" width="7" height="15" viewBox="0 0 8 35" xmlns="http://www.w3.org/2000/svg"><g fill="#000000cc" fill-rule="evenodd"><path d="M4 7.838c2.21 0 4-1.754 4-3.919C8 1.755 6.21 0 4 0S0 1.755 0 3.92c0 2.164 1.79 3.918 4 3.918z"></path><ellipse cx="4" cy="17.458" rx="4" ry="3.919"></ellipse><ellipse cx="4" cy="30.998" rx="4" ry="3.919"></ellipse></g>
+                </svg>
+                </a>
+                <ul id='typeAcount' class='dropdown-content'>
+                    <li><a href="/links/company">Empresa</a></li>
+                    <li><a href="#!">Delivery</a></li>    
+                </ul>
+            </div>
+        </div>
+
     </div>
 {{!-- personal data --}}
 <div class="section d-flex mb-3">
@@ -111,12 +123,31 @@
             <div class="col-sm my-3">Documento</div>
             <div class="col-sm my-3">{{user.dni}}</div>
             <div class="col-sm my-3 text-right">
-
+                {{#if user.dni}}
                 <a tabindex="0" href="#infodni" class="modal-trigger">
                 <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
                     <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
                 </svg>
-                </a>                
+                </a>  
+                {{else}}
+                    <a tabindex="0" href="#adddni" class="modal-trigger">
+                    <svg width="10" height="10" viewBox="0 0 6 10" class="right-arrow">
+                        <path fill="none" fill-rule="evenodd" stroke="#3483FA" stroke-width="1.5" d="M1 1l4 4-4 4"></path>
+                    </svg>
+                    </a> 
+
+                    <div id="adddni" class="modal">
+                        <div class="modal-content">
+                            <form action="/links/adddni" method="post">
+                                <label for="dni">DNI</label>
+                                <input placeholder="Dni" id="dni" name="dni"  type="tel" class="validate">
+                                <button  class="bDWbfv"type="submit">Guardar</button>
+                            </form>
+                        </div>                    
+                    </div>  
+
+
+                {{/if}}              
                 <!-- Modal dni -->
                 <div id="infodni" class="modal">
                     <div class="modal-content">
@@ -223,7 +254,7 @@
         {{/if}}
     </div>
 {{!-- addresses --}}
-    <div class="section d-flex mb-3">
+    {{!-- <div class="section d-flex mb-3">
         <div class="section__title" style="width:60%; line-height:1.25;">
             <h2 class="subtitle "style="font-size:18px; font-weight:700;">Domicilios</h2>
         </div>
@@ -289,6 +320,6 @@
                 </svg>
             </div>
         </div>
-    </div>
+    </div> --}}
 </div>
 

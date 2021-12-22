@@ -1,0 +1,86 @@
+<div class="main-container profile">
+    <h1 style="font-size:20px; font-weight:700;" class="my-5">Datos de tu comercio</h1>
+    
+    <form class="col s12" action="/links/createCompany" method="post" enctype="multipart/form-data">
+        
+        <input type="file" class="hip" name="image" id="files" accept="image/*" onChange="img_pathUrl(this);">
+        <label class="bDWbfv" id="lblfl" for="files"><i class="fi fi-rs-picture"></i> Elegir foto</label>
+        <img src="" id="img_url" alt="your image">
+                    
+                
+        {{!-- cuit & social reason --}}
+        <div class="row">        
+            <div class="input-field col s6">
+                <input id="cuit" type="tel" name="cuit" class="validate">
+                <label for="cuit">CUIT</label>
+            </div>
+                
+            <div class="input-field col s6">
+                <input id="social reason" type="text" name="social_reason" class="validate">
+                <label for="social reason">Razón social</label>
+            </div>
+       
+            <div class="input-field col s12">
+                {{#if categories}}
+            
+    
+                <select name="category">
+                    
+                <option value="" disabled selected>Elige la categoría</option>
+                {{#each categories}}
+                <option value="{{name_category}}">{{name_category}}</option>
+                {{/each}}
+           
+                </select>
+                {{/if}}
+                <label>Categoria</label>
+            </div>
+            
+            
+            <div class="input-field col s8">
+                <p>
+                    <label>
+                        <input type="checkbox" name="m_d" id="mkdlvy"/>
+                        <span>Tiene delivery propio</span>
+                    </label>
+                </p>
+            </div>
+            <div class="input-field col s4">
+                <i class="ri-information-line modal-trigger" href="#infoDelivery"></i>
+                 <div id="infoDelivery" class="modal">
+                    <div class="modal-content">
+                    <h4><i class="ri-information-line"></i></h4>
+                    <p>Si tu comercio no cuenta con delivery, Meraki se hará responsable de los envíos en caso de compras con envios a domicilio</p>
+                    </div>
+                    <div class="modal-footer">
+                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="input-field col s12" id="price_delivey" style="display: none;">
+                <input id="price_delivery" type="text" name="price_delivery" class="validate">
+                <label for="price_delivery">Precio de envio</label>
+            </div>
+            
+            <div class="input-field col s12">
+                <p>
+                    <label>
+                        <input type="checkbox" name="o_p"/>
+                        <span>Acepta pagos online</span>
+                    </label>
+                </p>
+            </div>
+
+
+
+           
+        
+        
+        </div>   
+
+
+        <button type="submit">crear</button>
+    </form>
+  
+</div>
